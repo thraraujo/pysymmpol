@@ -1,3 +1,3 @@
 # pyHallLittlewood
 
-A python package to calculate symmetric polynomials.
+A python package (a toolkit) to calculate symmetric polynomials.
