@@ -88,7 +88,8 @@ class YoungDiagram:
         French notation. 
         '''
         for i in range(self.rows):
-            print("🎲 " * self.partition[-i-1])
+            if self.partition[-i-1] > 0:
+                print("🎲 " * self.partition[-i-1])
 
 
     def count_diagonal(self) -> int: 
@@ -204,7 +205,3 @@ class YoungDiagram:
         conjugacy_class = dict(enumerate(partition,1)) # We finally create a dictionary for the conjugacy class
 
         return conjugacy_class
-
-
-class NonStandardError(ValueError):
-    pass

@@ -146,6 +146,3 @@ class ConjugacyClass:
         partition = partition.astype(int) # Converts entries into integers
 
         return tuple(partition)
-
-class NonStandardError(ValueError):
-    pass

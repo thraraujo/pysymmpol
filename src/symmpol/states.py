@@ -15,7 +15,9 @@ class State:
 
     def __post_init__(self) -> None:
         if self._level < 0:
-            raise ValueError("Level must be non-negative")
+            raise ValueError("Level must be a non-negative integer.")
+        if not isinstance(self._level, int):
+            raise TypeError("Level must be a non-negative integer.")
 
 
     @property
