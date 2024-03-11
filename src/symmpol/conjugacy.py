@@ -49,7 +49,7 @@ class ConjugacyClass:
         keys = tuple(self._conjugacy_vector.keys())
         A = all([keys[i] - keys[i-1] == 1 for i in range(1, len(keys))])
         if keys[0] != 1 or not A:
-           raise NonStandardError("Argument must be a dictionary in the form {1: k1, 2: k2, ..., n: kn}")
+           raise TypeError("Argument must be a dictionary in the form {1: k1, 2: k2, ..., n: kn}")
 
 
     @property

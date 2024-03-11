@@ -43,7 +43,7 @@ class YoungDiagram:
         #A = all([self._partition[i+1] <= self._partition[i] for i in range(len(self._partition) -1)])
 
         if not A:
-            raise NonStandardError("Argument must be a monotonic decreasing sequence.")
+            raise ValueError("Argument must be a monotonic decreasing sequence.")
         
 
     @property
