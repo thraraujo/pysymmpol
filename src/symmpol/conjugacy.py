@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from .young import YoungDiagram
 import numpy as np
-import sympy as sp
 
 '''
 In this module we define 2 concepts that

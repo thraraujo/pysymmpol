@@ -2,6 +2,8 @@ from dataclasses import dataclass
 import sympy as sp
 import numpy as np
 
+from .utils import _accel_asc
+
 
 @dataclass
 class State:
@@ -25,38 +27,6 @@ class State:
         return self._level
 
 
-    def _accel_asc(self):
-        '''
-        This is a fast algorithm to generate
-        integer partitions.  The author of this beauty is Jerome
-        Kelleher. He argues that it is the fasted algorithm in the
-        market today, so we use it. See more here:
-        https://jeromekelleher.net/category/combinatorics.html
-        '''
-        n = self.level
-
-        a = [0 for i in range(n + 1)]
-        k = 1
-        y = n - 1
-        while k != 0:
-            x = a[k - 1] + 1
-            k -= 1
-            while 2 * x <= y:
-                a[k] = x
-                y -= x
-                k += 1
-            l = k + 1
-            while x <= y:
-                a[k] = x
-                a[l] = y
-                yield a[:k + 2]
-                x += 1
-                y -= 1
-            a[k] = x + y
-            y = x + y - 1
-            yield a[:k + 1]
-
-
     def _conjugacy_states(self) -> tuple:
         '''
         For a level n, this function gives all vector k
@@ -73,7 +43,7 @@ class State:
             vectors_k = [] # Here I create a list to save the vectors
             vectors_k_tuple = [] # Here I create a list to save the tuples after all manipulations
 
-            for a in self._accel_asc():
+            for a in _accel_asc(lev):
                 vec = [0]*lev
                 for i in range(len(a)):
                     vec[a[i]-1] += 1
@@ -116,7 +86,7 @@ class State:
             partitions = [] # Here I create a list to save the states
             partitions_tuple = [] # Here I create a list to save the tuples after all manipulations
 
-            for a in self._accel_asc():
+            for a in _accel_asc(lev):
                 vec = [0]*lev
                 for i in range(len(a)):
                     vec[i] += a[i]
