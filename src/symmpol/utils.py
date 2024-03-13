@@ -47,9 +47,18 @@ def create_miwa(n: int) -> dict:
     This function creates the appropriate Miwa coordinates as a dictionary.
     '''
     return dict(enumerate(sp.symbols(f't1:{n+1}'), 1))
-    
 
-def create_x_coord(n: int, m: int=1) -> tuple:
+
+def create_x_coord(m) -> tuple:
+    '''
+    This function creates the x coordinates.
+    '''
+    x = np.array(sp.symbols(f'x1:{m+1}'))
+
+    return tuple(x)
+
+
+def tx_power_sum(n: int, m: int=1) -> tuple:
     '''
     This function creates the x coordinates.
     The integer n is the length of the Miwa coordinates.

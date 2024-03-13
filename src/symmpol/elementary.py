@@ -20,7 +20,7 @@ class ElementaryPolynomial:
         return self._level
 
 
-    def explicit(self, t, pol=False):
+    def explicit(self, t, pol: bool=False):
         '''
         This function gives the expansion of the elementary
         symmetric polynomials.

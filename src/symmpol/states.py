@@ -33,7 +33,7 @@ class State:
         (the conjugacy class states) that belong to this subspace.
         Remember that these states are built with the operators J_{-m} 
         of the Heisenberg algebra. In other words, these are
-        bosonic states. This nonpublic method will make our life easier.
+        bosonic states. This nonpublic method can make our life easier.
         '''
         lev = self.level
 

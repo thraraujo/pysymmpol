@@ -159,13 +159,15 @@ class YoungDiagram:
         return YoungDiagram(transposed_diagram_tuple)
 
 
-    def interlaces(self, other_young: YoungDiagram) -> bool:
+    # I want to test these two methods without iterating over all the list.
+    # probably using any(not conditions)
+    def contains(self, other_young: YoungDiagram) -> bool:
         '''
-        Check if the original partition interlaces the new one.
+        Check if the original partition contains the new one.
         '''
 
         # Create some lists because I need to concatenate these objects. 
-        partition = self._partition
+        partition = self.partition
         other_partition = other_young.partition
 
         # Here I pad some zeros to write the two partitions in the same form (length).
@@ -175,9 +177,31 @@ class YoungDiagram:
             partition += (0,)*abs(len(partition) - len(other_partition))
 
         sub_partition_condition = [x >= y for x, y in zip(partition, other_partition)]
+
+        if all(sub_partition_condition):
+            return True
+        else:
+            return False
+
+
+    def interlaces(self, other_young: YoungDiagram) -> bool:
+        '''
+        Check if the original partition interlaces the new one.
+        '''
+
+        # Create some lists because I need to concatenate these objects. 
+        partition = self.partition
+        other_partition = other_young.partition
+
+        # Here I pad some zeros to write the two partitions in the same form (length).
+        if len(other_partition) < len(partition):
+            other_partition += (0,)*abs(len(partition) - len(other_partition))
+        elif len(other_partition) > len(partition):
+            partition += (0,)*abs(len(partition) - len(other_partition))
+
         interlacing_condition   = [x >= y for x, y in zip(other_partition, partition[1:])]
 
-        if all(sub_partition_condition) and all(interlacing_condition):
+        if self.contains(other_young) and all(interlacing_condition):
             return True
         else:
             return False
