@@ -8,7 +8,8 @@ from .homogeneous import HomogeneousPolynomial
 from .elementary import ElementaryPolynomial
 from .states import State
 from ._monomial import _Monomial
-from .utils import create_x_coord
+from .utils import create_x_coord, vandermonde, newton_polynomial, character, _power_sum
+
 
 class SchurPolynomial:
     '''
@@ -81,73 +82,6 @@ class SchurPolynomial:
     # I use this implementation for tests. But it also have
     # the calculation of characters, and it might be useful later. 
 
-    def _vandermonde(self, x: tuple): # Vandermonde determinant
-        '''
-        Here I want to calculate the Vandermonde polynomial. 
-        '''
-        m = len(x)
-
-        vandermonde = 1
-
-        for i in range(m):
-            for j in range(m):
-                if i < j:
-                    vandermonde *= (x[i] - x[j])
-        return vandermonde
-
-
-    def _power_sum(self, x: tuple, j: int): #Power Sum
-        '''
-        In order to calculate the Newton polynomial,
-        we need the power sums P_j(\vec{x}). These objects
-        are equivalent to 'j*t_j' where t_j are the Miwa coordinates.
-        The partition gives the number of rows.
-        '''
-
-        y = np.array(x)
-        yj = y ** j
-
-        return sum(yj)
-
-
-    def _newton_polynomial(self, x: tuple, vector: ConjugacyClass):
-        '''
-        Calculation of the Newton polynomials themselves.
-        '''
-
-        k = vector.conjugacy
-        
-        r = len(k)
-        newton = 1
-
-        for j in range(r):
-            newton *= self._power_sum(x, j+1) ** (k[j])
-        return newton
-
-
-    def _character(self, vector: ConjugacyClass):
-        '''
-        Here I calculate the characters using the Frobenius Character Formula.
-        '''
-
-        m = len(self._partition)
-
-        x = create_x_coord(m)
-
-        l = []    # These are the powers (l1, l2, ..., lm) defined in the formula.
-        for i in range(m):
-            l.append(self._partition[i] + m - i -1) # the minus comes from the fact that python lists start at 0
-
-        power = 1 # This is the coefficient in x I need to extract
-        for j in range(len(l)):
-            power *= x[j]**l[j]
-
-        polynomial = sp.poly( self._vandermonde(x) * self._newton_polynomial(x, vector) )
-        coeff = polynomial.coeff_monomial(power)
-
-        return coeff
-
-
     def _schur_characters(self, t: tuple, pol: bool=False):
         '''
         Here we calculate the Schur polynomial in 
@@ -170,7 +104,7 @@ class SchurPolynomial:
             for vector in vectors:
                 vector = ConjugacyClass(vector)
                 mono = _Monomial(vector)
-                schur += mono._monomial(t) * self._character(vector)
+                schur += mono._monomial(t) * character(self._young ,vector)
 
             if pol:
                 return sp.poly(schur, domain='QQ')
