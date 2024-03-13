@@ -87,12 +87,12 @@ def newton_polynomial(x: tuple, vector: ConjugacyClass):
     return newton
 
 
-def character(young: YoungDiagram, vector: ConjugacyClass):
+def character(young_diagram: YoungDiagram, vector: ConjugacyClass):
     '''
     Here I calculate the characters using the Frobenius Character Formula.
     '''
 
-    young = young.partition
+    young = young_diagram.partition
     m = len(young)
 
     x = create_x_coord(m)

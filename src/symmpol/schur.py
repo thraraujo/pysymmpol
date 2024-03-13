@@ -103,5 +103,7 @@ class SchurPolynomial:
             if pol:
                 return sp.poly(schur, domain='QQ')
             else:
-                return schur.expand().simplify()
+                schur_pol = schur
+                #schur_pol = (schur).expand().simplify()
+                return schur_pol
 
