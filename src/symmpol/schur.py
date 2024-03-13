@@ -8,7 +8,7 @@ from .homogeneous import HomogeneousPolynomial
 from .elementary import ElementaryPolynomial
 from .states import State
 from ._monomial import _Monomial
-from .utils import create_x_coord, vandermonde, newton_polynomial, character, _power_sum
+from .utils import character
 
 
 class SchurPolynomial:
@@ -26,7 +26,7 @@ class SchurPolynomial:
         self._partition = young.partition
 
 
-    def schur(self, t: tuple, pol: bool=False, other_young: YoungDiagram = YoungDiagram((0,))):
+    def explicit(self, t: tuple, pol: bool=False, other_young: YoungDiagram=YoungDiagram((0,))):
         '''
         Here we calculate the Schur polynomial in 
         terms of Miwa coordinates using the determinant formula.
@@ -69,18 +69,13 @@ class SchurPolynomial:
                 return H.det()
 
 
-    def skew_schur(self, t, other_young: YoungDiagram, pol: bool=False):
+    def skew_schur(self, t, other_young: YoungDiagram=YoungDiagram((0,)), pol: bool=False):
         '''
         Here we calculate the Skew Schur polynomials.
         It is a wrap of the schur method. 
         '''
-        return self.schur(t, pol, other_young)
+        return self.explicit(t, pol, other_young)
 
-
-
-    ####### CHARACTER IMPLEMENTATION ####### 
-    # I use this implementation for tests. But it also have
-    # the calculation of characters, and it might be useful later. 
 
     def _schur_characters(self, t: tuple, pol: bool=False):
         '''
@@ -99,7 +94,6 @@ class SchurPolynomial:
         else:
             schur = 0
             vectors = State(level).conjugacy_states() # This method gives the stattes as a tuple
-            #t = sp.symbols('t1:{}'.format(level + 1))
 
             for vector in vectors:
                 vector = ConjugacyClass(vector)

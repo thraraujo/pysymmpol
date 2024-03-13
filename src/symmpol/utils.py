@@ -54,7 +54,7 @@ def _power_sum(x: tuple, j: int): #Power Sum
 
 
 
-# Public Functions
+# PUBLIC FUNCTIONS
 
 
 def vandermonde(x: tuple): # Vandermonde determinant
