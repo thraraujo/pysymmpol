@@ -16,6 +16,15 @@ class HallLittlewoodPolynomial:
         Initialization of the Hall-Littlewood polynomials.
         It depends on a partition and on the coordinates
         x = [x1, x2, ..., xn]. 
+
+        Hall-Littlewood polynomials are given by (LaTeX)
+
+        P_{lambda}(x_1, dots, x_n; Q) =
+                    prod_{i geq 0} prod_{j=1}^{p(i)} frac{1-Q}{1-Q^j} times
+                    sum_{omega in mathfrak{S}_n} omega left( x_1^{lambda_1} cdots x_n^{lambda_n}
+        prod_{i<j} frac{x_i - Q x_j}{x_i - x_j} right)
+
+        For practical reasons, we need to calculate these terms independently. 
         '''
 
         self._young = young
@@ -24,10 +33,9 @@ class HallLittlewoodPolynomial:
 
     def _factor(self, partition, Q: object=0):
         '''
-        The Hall-Littlewood polynomials are built from some differents terms.
-        The first is the product
+        Let us first calculate the prefactor
         prod_{i >= 0} prod_{j=1}^{p(i)} frac{(1- Q)}{(1- Q^j)}
-        Observe that this factor depends only on the partition. 
+        This term does not depend  on the coordinates (x).
         '''
         prod = 1
 
@@ -35,6 +43,8 @@ class HallLittlewoodPolynomial:
             if Q == 1:
                 for j in range(1, partition.count(i)+1):
                     prod *= sp.Rational(1, j)
+            elif Q == 0:
+                return 1
             else:
                 for j in range(1, partition.count(i)+1):
                     prod *= (1 - Q) / (1 - Q**j)
@@ -48,8 +58,8 @@ class HallLittlewoodPolynomial:
     def _quotient(self, x, i, j, Q: object=0): 
         '''
         Next we need to consider the product that is inside the sum.
-        prod_{i < j} frac{xi - Q xj}{ xi - xj}. Let us first calculate
-        the quotient. 
+        prod_{i < j} frac{xi - Q xj}{xi - xj}. Let us first calculate
+        the quotient. Observe that the denominator is the Vandermonde determinant. 
         '''
         return (x[i] - Q * x[j]) / (x[i] - x[j])
 
@@ -57,7 +67,7 @@ class HallLittlewoodPolynomial:
     def _xproducts(self, x, partition):
         '''
         We also need to calculate the products of the coordinates
-        power the partition legs.
+        power the partition arms (or legs, if you prefer).
         '''
 
         prod1 = 1
@@ -70,24 +80,32 @@ class HallLittlewoodPolynomial:
 
     def explicit(self, x: tuple, Q: object=0, pol: bool=False): 
         '''
-        Finally, we need to calculate the Hall-Littlewood polynomials themselves.
+        Finally, we need put all these definitions together
+        to calculate the Hall-Littlewood themselves. 
         '''
 
         # Here I write partitions and coordinates in the same length
-        # Problems with this conditional
         n = len(x)
-        if len(self._partition) < n:
-            _x = dict(enumerate(sp.symbols('x1:{}'.format(n+1)),1)) 
+        m = len(self._partition)
+
+        diff = n - m 
+
+        if diff < 0:
+            # Because we have less coordinates than the partitions.
+            # So we pad some zeros to the coordinates. 
+            return 0 
+        elif diff > 0:
+            # You passed more coordinates than the length of the partition.
+            # Padding zeros to the partition...
+            _x = dict(enumerate(x,1)) 
             partition = self._partition + (0,)*abs(len(self._partition) - n)
-        elif len(self._partition) > n:
-            _x = dict(enumerate(sp.symbols('x1:{}'.format(len(self._partition)+1)),1))
-            partition = self._partition
         else:
             _x = dict(enumerate(x,1)) 
             partition = self._partition
 
 
-        L = dict(enumerate(partition, 1)) # The partition lambda as a dictionary
+        # Write the partition as a dictionary. This makes the permutations easier to handle. 
+        L = dict(enumerate(partition, 1)) 
 
         # Here we create a dictionary of permutations of the n indices - starting with 1
         sigma = dict(enumerate(permutations(range(1,len(_x)+1)),1)) 
@@ -111,33 +129,21 @@ class HallLittlewoodPolynomial:
 
         hl = (self._factor(partition, Q) * sum).simplify()
 
-        #if self._Q == 0:
-            #'''
-            #If we want to use the _test below, I need to comment this line and calculate
-            #the Hall-Littlewood polynomial using the else condition below. Here I
-            #particularize the case Q=0 because the final answer has the denominator is simplified. 
-            #'''
-            #xx = tx_power_sum(self._young.boxes, len(x))
-            #assert (hl - SchurPolynomial(self._young).explicit(xx)).simplify() == 0
-            #hl = SchurPolynomial(self._young).explicit(xx, pol)
-
         if pol:
             return sp.Poly(hl, domain='QQ')
         else:
             return hl
 
 
-    def _test(self):
-        
-        '''
-        MEANINGLESS
-        Here I want to test if the definitions are correct. In particular,
-        I want to see if at Q = 0, the Hall-Littlewood polynomials
-        give the Schur polynomials, as we expect. 
-        '''
-        
-        test = HallLittlewood(self._young, len(self._x), 0).hall_littlewood()
-        schur = SchurPolynomial(self._young)._xschur(len(self._x)).simplify()
+class MonomialPolynomial(HallLittlewoodPolynomial):
+    '''
+    Here is an implementation of the symmetric Monomial Polynomials
+    through an inheritance of the Halllittlewoodpolynomial. 
+    '''
 
-        assert (test - schur).simplify() == 0
-        return 0
+    def explicit(self, x: tuple, pol: bool=False): 
+        '''
+        Here I want to particularize to the case Q = 0. 
+        '''
+        return super().explicit(x, 1, pol)
+

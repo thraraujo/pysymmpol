@@ -4,4 +4,4 @@ from .states import State
 from .homogeneous import HomogeneousPolynomial
 from .elementary import ElementaryPolynomial
 from .schur import SchurPolynomial
-from .hall import HallLittlewoodPolynomial
+from .hall import HallLittlewoodPolynomial, MonomialPolynomial
