@@ -82,14 +82,15 @@ class YoungDiagram:
         return sum(self.partition)
 
 
-    def draw_diagram(self) -> None:
+    def draw_diagram(self, n: int=0) -> None:
         '''
         Here we have a pictorial representation of the Young diagram in
         French notation. 
         '''
+        emo = ['■', '🎲', '🎯']
         for i in range(self.rows):
             if self.partition[-i-1] > 0:
-                print("🎲 " * self.partition[-i-1])
+                print(f"{emo[n]} " * self.partition[-i-1])
 
 
     def count_diagonal(self) -> int: 

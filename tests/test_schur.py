@@ -1,10 +1,10 @@
 import sys
-sys.path.append('/home/thiago/Documents/projects/work/pySymmetricPolynomials/src/')
+sys.path.append('/home/thiago/Documents/projects/work/pySymmetricPolynomials')
 
 import unittest
 import sympy as sp
-import symmpol as sy
-import symmpol.utils as ut
+import pysymmpol as sy
+import pysymmpol.utils as ut
 
 class TestSchurPolynomial(unittest.TestCase):
     '''

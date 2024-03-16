@@ -1,8 +1,10 @@
 import sys
-sys.path.append('/home/thiago/Documents/projects/work/pySymmetricPolynomials/src/')
+sys.path.append('/home/thiago/Documents/projects/work/pySymmetricPolynomials')
 
 import unittest
-import symmpol as sy
+import sympy as sp
+import pysymmpol as sy
+import pysymmpol.utils as ut
 
 class TestYoung(unittest.TestCase):
 
