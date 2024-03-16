@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pysymmpol.partitions.states &#8212; pySymmPol 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=61cd365c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for pysymmpol.partitions.states</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">..utils._inner</span> <span class="kn">import</span> <span class="n">_accel_asc</span>
+
+
+<div class="viewcode-block" id="State">
+<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">State</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    For a given level n, I want to find the</span>
+<span class="sd">    bosonic and fermionic states associated to</span>
+<span class="sd">    YoungDiagrams and conjugacy classes.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">_level</span><span class="p">:</span> <span class="nb">int</span>
+
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Level must be a non-negative integer.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_level</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Level must be a non-negative integer.&quot;</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span>
+
+
+    <span class="k">def</span> <span class="nf">_conjugacy_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        For a level n, this function gives all vector k</span>
+<span class="sd">        (the conjugacy class states) that belong to this subspace.</span>
+<span class="sd">        Remember that these states are built with the operators J_{-m} </span>
+<span class="sd">        of the Heisenberg algebra. In other words, these are</span>
+<span class="sd">        bosonic states. This nonpublic method can make our life easier.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">lev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span>
+
+        <span class="k">if</span> <span class="n">lev</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vectors_k</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Here I create a list to save the vectors</span>
+            <span class="n">vectors_k_tuple</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Here I create a list to save the tuples after all manipulations</span>
+
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_accel_asc</span><span class="p">(</span><span class="n">lev</span><span class="p">):</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">lev</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+                    <span class="n">vec</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">vectors_k</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">vectors_k</span><span class="p">:</span>
+                <span class="n">vectors_k_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">vectors_k_tuple</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="State.conjugacy_states">
+<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State.conjugacy_states">[docs]</a>
+    <span class="k">def</span> <span class="nf">conjugacy_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Here I return the previous method in</span>
+<span class="sd">        the dictionary form.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vectors_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_states</span><span class="p">()</span>
+            <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Here is a list to collect all states</span>
+
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">vectors_k</span><span class="p">:</span>
+                <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">states</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="State.partition_states">
+<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State.partition_states">[docs]</a>
+    <span class="k">def</span> <span class="nf">partition_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        For the level n, this function gives the partitions that</span>
+<span class="sd">        belong to this subspace. These states are built from the</span>
+<span class="sd">        the fermionic operators. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">lev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span>
+
+        <span class="k">if</span> <span class="n">lev</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">partitions</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Here I create a list to save the states</span>
+            <span class="n">partitions_tuple</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Here I create a list to save the tuples after all manipulations</span>
+
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">_accel_asc</span><span class="p">(</span><span class="n">lev</span><span class="p">):</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">lev</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+                    <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">vec</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">partitions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">partitions</span><span class="p">:</span>
+                <span class="n">partitions_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">partitions_tuple</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">pySymmPol</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pysymmpol</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Thiago Araujo.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

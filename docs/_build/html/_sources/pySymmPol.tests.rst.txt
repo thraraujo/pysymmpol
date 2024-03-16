@@ -1,0 +1,61 @@
+pySymmPol.tests package
+=======================
+
+Submodules
+----------
+
+pySymmPol.tests.test\_hall\_littlewood module
+---------------------------------------------
+
+.. automodule:: pySymmPol.tests.test_hall_littlewood
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.tests.test\_homogeneous\_elementary module
+----------------------------------------------------
+
+.. automodule:: pySymmPol.tests.test_homogeneous_elementary
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.tests.test\_monomial module
+-------------------------------------
+
+.. automodule:: pySymmPol.tests.test_monomial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.tests.test\_schur module
+----------------------------------
+
+.. automodule:: pySymmPol.tests.test_schur
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.tests.test\_states module
+-----------------------------------
+
+.. automodule:: pySymmPol.tests.test_states
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.tests.test\_young module
+----------------------------------
+
+.. automodule:: pySymmPol.tests.test_young
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pySymmPol.tests
+   :members:
+   :undoc-members:
+   :show-inheritance:

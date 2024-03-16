@@ -1,19 +1,19 @@
-import symmpol as sy
-import symmpol.utils as ut
-
+import pysymmpol as sy
+import pysymmpol.utils as ut
 
 def main():
 
-    a = sy.YoungDiagram((5,3,1))
+    a = sy.YoungDiagram((1,1,1))
     a.draw_diagram()
+    print(a.boxes)
 
-    #h3 = sy.HomogeneousPolynomial(3)
-    #h7 = sy.HomogeneousPolynomial(7)
-#
-    #t = ut.create_miwa(10)
-#
-    #print(h3.explicit(t))
-    #print(h7.explicit(t))
+    b = sy.State(4)
+    print(f'conjugacy states: {b.conjugacy_states()}')
+    print(f'parition states: {b.partition_states()}')
 
+
+    t = ut.create_miwa(a.boxes)
+    sc = sy.SchurPolynomial(a)
+    print(sc.explicit(t))
 
 if __name__ == "__main__":main()

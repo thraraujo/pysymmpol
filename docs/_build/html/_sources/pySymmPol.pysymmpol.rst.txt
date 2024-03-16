@@ -1,0 +1,77 @@
+pySymmPol.pysymmpol package
+===========================
+
+Submodules
+----------
+
+pySymmPol.pysymmpol.conjugacy module
+------------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.conjugacy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.elementary module
+-------------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.elementary
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.hall module
+-------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.hall
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.homogeneous module
+--------------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.homogeneous
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.schur module
+--------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.schur
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.states module
+---------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.states
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.utils module
+--------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pySymmPol.pysymmpol.young module
+--------------------------------
+
+.. automodule:: pySymmPol.pysymmpol.young
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pySymmPol.pysymmpol
+   :members:
+   :undoc-members:
+   :show-inheritance:

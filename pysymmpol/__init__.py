@@ -1,7 +1,10 @@
-from .young import YoungDiagram
-from .conjugacy import ConjugacyClass
-from .states import State
-from .homogeneous import HomogeneousPolynomial
-from .elementary import ElementaryPolynomial
-from .schur import SchurPolynomial
-from .hall import HallLittlewoodPolynomial, MonomialPolynomial
+from .utils import tools, _inner
+
+from .partitions.young import YoungDiagram
+from .partitions.conjugacy import ConjugacyClass
+from .partitions.states import State
+
+from .polynomials.homogeneous import HomogeneousPolynomial
+from .polynomials.elementary import ElementaryPolynomial
+from .polynomials.schur import SchurPolynomial
+from .polynomials.hall import HallLittlewoodPolynomial, MonomialPolynomial

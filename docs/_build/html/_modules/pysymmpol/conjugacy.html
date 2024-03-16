@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pysymmpol.conjugacy &#8212; pysymmpol 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=61cd365c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for pysymmpol.conjugacy</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">.young</span> <span class="kn">import</span> <span class="n">YoungDiagram</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">In this module we define 2 concepts that</span>
+<span class="sd">are completely connected.</span>
+<span class="sd">    1. First we define the class of Young Diagrams</span>
+<span class="sd">    using the usual partition notation.</span>
+
+<span class="sd">    2. Then we define the class of Conjugacy Classes.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="ConjugacyClass">
+<a class="viewcode-back" href="../../pysymmpol.html#pysymmpol.conjugacy.ConjugacyClass">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConjugacyClass</span><span class="p">:</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Represents the conjugacy class of the partitions; For example,</span>
+<span class="sd">    the partition L = (5,3,2,2,2,1,1) can represented by</span>
+<span class="sd">    L = (1: 2, 2: 3, 3: 1, 4: 0, 5: 1) that means 2 rows of</span>
+<span class="sd">    length 1, 3 rows of length 2, 2 rows of length 3, 0 rows of</span>
+<span class="sd">    length 4 and 1 row of length 5. To avoid cluttering, we</span>
+<span class="sd">    could simply write the vector k = (2,3,1,0,1) to describe the</span>
+<span class="sd">    same partition. We will do it in the internal below,</span>
+<span class="sd">    but we will return dictionaries to avoid confusion with</span>
+<span class="sd">    the partitions. </span>
+
+<span class="sd">    The dictionary must be in the form {1: k1, 2: k2, ..., n: kn}</span>
+
+<span class="sd">    The vectors k=(k1,k2, ..., kn) is one conjugacy class of the</span>
+<span class="sd">    symmetric group S_n, and for this reason, we call it</span>
+<span class="sd">    conjugacy class vectors.</span>
+
+<span class="sd">    In terms of the Heisenberg algebra, the components of these vectors</span>
+<span class="sd">    denote the power of the Heisenberg operator J_{-n} when acting on the</span>
+<span class="sd">    vacuum state |0&gt;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">_conjugacy_vector</span><span class="p">:</span> <span class="nb">dict</span>
+
+
+    <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Validate the form of the dictionary:</span>
+<span class="sd">        {1: k1, 2: k2, ..., n: kn}</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_vector</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">))])</span>
+        <span class="k">if</span> <span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">A</span><span class="p">:</span>
+           <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument must be a dictionary in the form {1: k1, 2: k2, ..., n: kn}&quot;</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">conjugacy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Getter for the conjugacy class vector</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_vector</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gives the number of rows in this diagram.</span>
+<span class="sd">        This is the sum over the conjugacy. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conjugacy</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">columns</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gives the number of columns in this diagram.</span>
+<span class="sd">        for the vector (1: k1, ..., n: kn), the number of</span>
+<span class="sd">        columns is n: the last entry in the dictionary.  </span>
+<span class="sd">        (max iterates over the keys). </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_vector</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gives the number of boxes in the diagram.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_vector</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">box</span> <span class="o">+=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+        <span class="k">return</span> <span class="n">box</span>
+
+
+<div class="viewcode-block" id="ConjugacyClass.draw_diagram">
+<a class="viewcode-back" href="../../pysymmpol.html#pysymmpol.conjugacy.ConjugacyClass.draw_diagram">[docs]</a>
+    <span class="k">def</span> <span class="nf">draw_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Here we have a pictorial representation of the Young diagram</span>
+<span class="sd">        associated to the conjugacy class in French notation. </span>
+<span class="sd">        Here I just rewrite the previous function for the partition states. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">young</span> <span class="o">=</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conjugacy_partition</span><span class="p">())</span>
+
+        <span class="n">young</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="ConjugacyClass.conjugacy_partition">
+<a class="viewcode-back" href="../../pysymmpol.html#pysymmpol.conjugacy.ConjugacyClass.conjugacy_partition">[docs]</a>
+    <span class="k">def</span> <span class="nf">conjugacy_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Converts the conjugacy class vector to the partition notation.</span>
+<span class="sd">        Example:</span>
+<span class="sd">        [1,2,0,4] is equivalent to the Young</span>
+<span class="sd">        diagram [4,4,4,4,2,2,1].</span>
+
+<span class="sd">        These vectors also denote the bosonic partition state that we can </span>
+<span class="sd">        build with the bosonic states</span>
+<span class="sd">        power of the operators J_{-n} that acts on the</span>
+<span class="sd">        vaccum state |0&gt;.</span>
+
+<span class="sd">        The algorithm works as follows:</span>
+<span class="sd">        We first create an empty array partition = []</span>
+<span class="sd">        and we define the range for the loop to be the length of</span>
+<span class="sd">        the vector k: In our case [1,2,0,3], i = 0,1,2,3.</span>
+
+<span class="sd">        </span>
+<span class="sd">        round 01: i = 0 k[0] = 1: </span>
+<span class="sd">                row = [1]</span>
+<span class="sd">                partition = [] U [1] = [1]</span>
+<span class="sd">        round 02: i = 1 k[1] = 2</span>
+<span class="sd">                row = [2,2]</span>
+<span class="sd">                partition = [1] U [2,2] = [1,2,2]</span>
+<span class="sd">        round 03: i = 2 k[2] = 0</span>
+<span class="sd">                row = []</span>
+<span class="sd">                partition = [1,2,2] U [] = [1,2,2]</span>
+<span class="sd">        round 04: i = 3 k[3] = 4</span>
+<span class="sd">                row = [4,4,4,4]</span>
+<span class="sd">                partition = [1,2,2] U [4,4,4,4] = [1,2,2,4,4,4,4]</span>
+<span class="sd">        Then when we put it in decreasing order we find [4,4,4,4,2,2,1]</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">partition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conjugacy</span><span class="p">)):</span>
+            <span class="c1">#row = list(np.repeat(i+1, self.conjugacy[i]))</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">conjugacy</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">partition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">partition</span><span class="p">,</span> <span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">partition</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="o">-</span><span class="n">partition</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Sorts the numpy array in decreasing order.</span>
+        <span class="n">partition</span> <span class="o">=</span> <span class="n">partition</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># Converts entries into integers</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">pysymmpol</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pysymmpol</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Thiago Araujo.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
