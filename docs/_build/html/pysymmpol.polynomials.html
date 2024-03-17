@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pysymmpol.tests package" href="pysymmpol.tests.html" />
+    <link rel="next" title="pysymmpol.utils package" href="pysymmpol.utils.html" />
     <link rel="prev" title="pysymmpol.partitions package" href="pysymmpol.partitions.html" /> 
 </head>
 
@@ -51,7 +51,6 @@
 <li class="toctree-l3 current"><a class="reference internal" href="pysymmpol.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="pysymmpol.partitions.html">pysymmpol.partitions package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pysymmpol.polynomials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pysymmpol.tests.html">pysymmpol.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysymmpol.utils.html">pysymmpol.utils package</a></li>
 </ul>
 </li>
@@ -126,22 +125,33 @@ symmetric polynomials.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Here is an implementation of the Hall-Littlewood polynomials.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.hall.HallLittlewoodPolynomial._factor">
+<span class="sig-name descname"><span class="pre">_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#HallLittlewoodPolynomial._factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._factor" title="Link to this definition"></a></dt>
+<dd><p>Let us first calculate the prefactor
+prod_{i &gt;= 0} prod_{j=1}^{p(i)} frac{(1- Q)}{(1- Q^j)}
+This term does not depend  on the coordinates (x).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.hall.HallLittlewoodPolynomial._quotient">
+<span class="sig-name descname"><span class="pre">_quotient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#HallLittlewoodPolynomial._quotient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._quotient" title="Link to this definition"></a></dt>
+<dd><p>Next we need to consider the product that is inside the sum.
+prod_{i &lt; j} frac{xi - Q xj}{xi - xj}. Let us first calculate
+the quotient. Observe that the denominator is the Vandermonde determinant.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.hall.HallLittlewoodPolynomial._xproducts">
+<span class="sig-name descname"><span class="pre">_xproducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#HallLittlewoodPolynomial._xproducts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._xproducts" title="Link to this definition"></a></dt>
+<dd><p>We also need to calculate the products of the coordinates
+power the partition arms (or legs, if you prefer).</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.polynomials.hall.HallLittlewoodPolynomial.explicit">
 <span class="sig-name descname"><span class="pre">explicit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#HallLittlewoodPolynomial.explicit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial.explicit" title="Link to this definition"></a></dt>
 <dd><p>Finally, we need put all these definitions together
 to calculate the Hall-Littlewood themselves.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pysymmpol.polynomials.hall.MonomialPolynomial">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysymmpol.polynomials.hall.</span></span><span class="sig-name descname"><span class="pre">MonomialPolynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">young</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#MonomialPolynomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.MonomialPolynomial" title="Link to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial" title="pysymmpol.polynomials.hall.HallLittlewoodPolynomial"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallLittlewoodPolynomial</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pysymmpol.polynomials.hall.MonomialPolynomial.explicit">
-<span class="sig-name descname"><span class="pre">explicit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/hall.html#MonomialPolynomial.explicit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.hall.MonomialPolynomial.explicit" title="Link to this definition"></a></dt>
-<dd><p>Here I want to particularize to the case Q = 1.</p>
 </dd></dl>
 
 </dd></dl>
@@ -156,6 +166,13 @@ to calculate the Hall-Littlewood themselves.</p>
 <p>Here we have a class that defines the 
 complete homogeneous polynomials.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous.HomogeneousPolynomial._states">
+<span class="sig-name descname"><span class="pre">_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/polynomials/homogeneous.html#HomogeneousPolynomial._states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial._states" title="Link to this definition"></a></dt>
+<dd><p>For this level, we find the conjugacy class
+states.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous.HomogeneousPolynomial.explicit">
 <span class="sig-name descname"><span class="pre">explicit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/homogeneous.html#HomogeneousPolynomial.explicit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial.explicit" title="Link to this definition"></a></dt>
 <dd><p>This function gives the expansion of the complete
@@ -166,6 +183,48 @@ symmetric polynomials.</p>
 <dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous.HomogeneousPolynomial.level">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial.level" title="Link to this definition"></a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous._Monomial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysymmpol.polynomials.homogeneous.</span></span><span class="sig-name descname"><span class="pre">_Monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conjugacy_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pysymmpol.partitions.html#pysymmpol.partitions.conjugacy.ConjugacyClass" title="pysymmpol.partitions.conjugacy.ConjugacyClass"><span class="pre">ConjugacyClass</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/homogeneous.html#_Monomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.homogeneous._Monomial" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Here we have a class to the calculation of the
+monomials necessary for the calculation of the
+Homogeneous Symmetric Polynomials.
+This is not related to the Monomial Symmetric Polynomials.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous._Monomial._monomial">
+<span class="sig-name descname"><span class="pre">_monomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/homogeneous.html#_Monomial._monomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.homogeneous._Monomial._monomial" title="Link to this definition"></a></dt>
+<dd><p>This function gives the monomial in the 
+definition of the complete symmetric polynomials
+associated with a given conjugacy class vector k.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.homogeneous._Monomial.level">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.polynomials.homogeneous._Monomial.level" title="Link to this definition"></a></dt>
+<dd><p>This function gives the level of the conjugacy class vector k, 
+that is, the number given by sum_i i k_i for a given bosonic 
+state k = (k_1, k_2, …). This corresponds to the number of
+boxes in the partition described by this conjugacy class vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pysymmpol.polynomials.monomial">
+<span id="pysymmpol-polynomials-monomial-module"></span><h2>pysymmpol.polynomials.monomial module<a class="headerlink" href="#module-pysymmpol.polynomials.monomial" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.monomial.MonomialPolynomial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysymmpol.polynomials.monomial.</span></span><span class="sig-name descname"><span class="pre">MonomialPolynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">young</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/monomial.html#MonomialPolynomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.monomial.MonomialPolynomial" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pysymmpol.polynomials.hall.HallLittlewoodPolynomial" title="pysymmpol.polynomials.hall.HallLittlewoodPolynomial"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallLittlewoodPolynomial</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.monomial.MonomialPolynomial.explicit">
+<span class="sig-name descname"><span class="pre">explicit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/monomial.html#MonomialPolynomial.explicit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.monomial.MonomialPolynomial.explicit" title="Link to this definition"></a></dt>
+<dd><p>Here I want to particularize to the case Q = 1.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -181,6 +240,14 @@ symmetric polynomials.</p>
 the Homogeneous polynomials.
 2. We also calculate them using the characters. We use this second
 implementation to test our results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.polynomials.schur.SchurPolynomial._schur_characters">
+<span class="sig-name descname"><span class="pre">_schur_characters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/schur.html#SchurPolynomial._schur_characters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.schur.SchurPolynomial._schur_characters" title="Link to this definition"></a></dt>
+<dd><p>Here we calculate the Schur polynomial in 
+terms of Miwa coordinates using the characters.
+This expression will be used to test our code.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.polynomials.schur.SchurPolynomial.explicit">
 <span class="sig-name descname"><span class="pre">explicit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_young</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YoungDiagram(_partition=(0,))</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/polynomials/schur.html#SchurPolynomial.explicit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.polynomials.schur.SchurPolynomial.explicit" title="Link to this definition"></a></dt>
@@ -210,7 +277,7 @@ It is a wrap of the schur method.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="pysymmpol.partitions.html" class="btn btn-neutral float-left" title="pysymmpol.partitions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="pysymmpol.tests.html" class="btn btn-neutral float-right" title="pysymmpol.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pysymmpol.utils.html" class="btn btn-neutral float-right" title="pysymmpol.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

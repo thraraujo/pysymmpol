@@ -2,8 +2,7 @@ import sympy as sp
 import numpy as np
 from itertools import product
 
-from ._monomial import _Monomial
-from .homogeneous import HomogeneousPolynomial
+from .homogeneous import HomogeneousPolynomial, _Monomial
 from .elementary import ElementaryPolynomial
 
 from ..partitions.states import State

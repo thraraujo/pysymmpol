@@ -28,6 +28,14 @@ pysymmpol.polynomials.homogeneous module
    :undoc-members:
    :show-inheritance:
 
+pysymmpol.polynomials.monomial module
+-------------------------------------
+
+.. automodule:: pysymmpol.polynomials.monomial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pysymmpol.polynomials.schur module
 ----------------------------------
 

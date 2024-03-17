@@ -51,7 +51,6 @@
 <li class="toctree-l3 current"><a class="reference internal" href="pysymmpol.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pysymmpol.partitions package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysymmpol.polynomials.html">pysymmpol.polynomials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pysymmpol.tests.html">pysymmpol.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pysymmpol.utils.html">pysymmpol.utils package</a></li>
 </ul>
 </li>
@@ -115,6 +114,11 @@ conjugacy class vectors.</p>
 <p>In terms of the Heisenberg algebra, the components of these vectors
 denote the power of the Heisenberg operator J_{-n} when acting on the
 vacuum state <a href="#id1"><span class="problematic" id="id2">|</span></a>0&gt;</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysymmpol.partitions.conjugacy.ConjugacyClass._conjugacy_vector">
+<span class="sig-name descname"><span class="pre">_conjugacy_vector</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pysymmpol.partitions.conjugacy.ConjugacyClass._conjugacy_vector" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.conjugacy.ConjugacyClass.boxes">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boxes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.conjugacy.ConjugacyClass.boxes" title="Link to this definition"></a></dt>
@@ -196,6 +200,21 @@ This is the sum over the conjugacy.</p>
 bosonic and fermionic states associated to
 YoungDiagrams and conjugacy classes.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysymmpol.partitions.states.State._conjugacy_states">
+<span class="sig-name descname"><span class="pre">_conjugacy_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State._conjugacy_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State._conjugacy_states" title="Link to this definition"></a></dt>
+<dd><p>For a level n, this function gives all vector k
+(the conjugacy class states) that belong to this subspace.
+Remember that these states are built with the operators J_{-m} 
+of the Heisenberg algebra. In other words, these are
+bosonic states. This nonpublic method can make our life easier.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysymmpol.partitions.states.State._level">
+<span class="sig-name descname"><span class="pre">_level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.states.State._level" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.states.State.conjugacy_states">
 <span class="sig-name descname"><span class="pre">conjugacy_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State.conjugacy_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State.conjugacy_states" title="Link to this definition"></a></dt>
 <dd><p>Here I return the previous method in
@@ -228,6 +247,11 @@ the fermionic operators.</p>
 partition notation: It is a monotonic decreasing sequence
 L = (L1, L2, L3, …,Ll) with L1 &gt;= L2 &gt;=L3 &gt;= … &gt;= Ll</p>
 <p>Example: (3,2,2,1)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram._partition">
+<span class="sig-name descname"><span class="pre">_partition</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram._partition" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.boxes">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boxes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.boxes" title="Link to this definition"></a></dt>

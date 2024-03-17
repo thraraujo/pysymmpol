@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import sympy as sp
 import numpy as np
 
-from ..utils._inner import _accel_asc
+from ..utils.inner import _accel_asc
 
 
 @dataclass

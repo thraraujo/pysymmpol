@@ -9,7 +9,6 @@ Subpackages
 
    pysymmpol.partitions
    pysymmpol.polynomials
-   pysymmpol.tests
    pysymmpol.utils
 
 Module contents

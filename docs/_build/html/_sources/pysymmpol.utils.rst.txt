@@ -4,6 +4,14 @@ pysymmpol.utils package
 Submodules
 ----------
 
+pysymmpol.utils.inner module
+----------------------------
+
+.. automodule:: pysymmpol.utils.inner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pysymmpol.utils.tools module
 ----------------------------
 

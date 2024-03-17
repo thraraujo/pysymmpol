@@ -1,0 +1,45 @@
+pysymmpol.pysymmpol.polynomials package
+=======================================
+
+Submodules
+----------
+
+pysymmpol.pysymmpol.polynomials.elementary module
+-------------------------------------------------
+
+.. automodule:: pysymmpol.pysymmpol.polynomials.elementary
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pysymmpol.pysymmpol.polynomials.hall module
+-------------------------------------------
+
+.. automodule:: pysymmpol.pysymmpol.polynomials.hall
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pysymmpol.pysymmpol.polynomials.homogeneous module
+--------------------------------------------------
+
+.. automodule:: pysymmpol.pysymmpol.polynomials.homogeneous
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pysymmpol.pysymmpol.polynomials.schur module
+--------------------------------------------
+
+.. automodule:: pysymmpol.pysymmpol.polynomials.schur
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pysymmpol.pysymmpol.polynomials
+   :members:
+   :undoc-members:
+   :show-inheritance:
