@@ -8,9 +8,8 @@ from ..utils.inner import _accel_asc
 @dataclass
 class State:
     '''
-    For a given level n, I want to find the
-    bosonic and fermionic states associated to
-    YoungDiagrams and conjugacy classes.
+    Defines the bosonic and fermionic states for a given
+    integer n. 
     '''
     _level: int
 
@@ -29,7 +28,7 @@ class State:
 
     def _conjugacy_states(self) -> tuple:
         '''
-        For a level n, this function gives all vector k
+        For a level n, this method gives all vector k
         (the conjugacy class states) that belong to this subspace.
         Remember that these states are built with the operators J_{-m} 
         of the Heisenberg algebra. In other words, these are
@@ -57,7 +56,7 @@ class State:
 
     def conjugacy_states(self) -> tuple:
         '''
-        Here I return the previous method in
+        Returns the previous method in
         the dictionary form.
         '''
         if self.level == 0:
@@ -74,7 +73,7 @@ class State:
 
     def partition_states(self) -> tuple:
         '''
-        For the level n, this function gives the partitions that
+        For the level n, this method gives the partitions that
         belong to this subspace. These states are built from the
         the fermionic operators. 
         '''

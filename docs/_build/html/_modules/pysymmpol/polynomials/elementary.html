@@ -79,19 +79,24 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.elementary.ElementaryPolynomial">[docs]</a>
 <span class="k">class</span> <span class="nc">ElementaryPolynomial</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Here we have a class that defines the </span>
-<span class="sd">    elementary symmetric polynomials. Their</span>
-<span class="sd">    implementation is built from the homogeneous polynimials.</span>
+<span class="sd">    A class that defines the elementary symmetric polynomials.</span>
+<span class="sd">    Their implementation is built from the homogeneous polynimials.</span>
 <span class="sd">    In particular, we use the relations: e_k(t) = (-1) h_k(-t) </span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialize the polynomial. It takes just one argument,</span>
+<span class="sd">        the level of the polynomial.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_level</span> <span class="o">=</span> <span class="n">level</span>
 
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Getter for the level.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span>
 
 
@@ -99,7 +104,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.elementary.ElementaryPolynomial.explicit">[docs]</a>
     <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This function gives the expansion of the elementary</span>
+<span class="sd">        This method gives the expansion of the elementary</span>
 <span class="sd">        symmetric polynomials.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 

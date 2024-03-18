@@ -88,10 +88,10 @@
 <span class="sd">    Here is an implementation of the Hall-Littlewood polynomials.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">,</span> <span class="n">Q</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Initialization of the Hall-Littlewood polynomials.</span>
-<span class="sd">        It depends on a partition and on the coordinates</span>
+<span class="sd">        It depends on a partition on the coordinates</span>
 <span class="sd">        x = [x1, x2, ..., xn]. </span>
 
 <span class="sd">        Hall-Littlewood polynomials are given by (LaTeX)</span>
@@ -103,31 +103,28 @@
 
 <span class="sd">        For practical reasons, we need to calculate these terms independently. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_young</span> <span class="o">=</span> <span class="n">young</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span> <span class="o">=</span> <span class="n">young</span><span class="o">.</span><span class="n">partition</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span> <span class="o">=</span> <span class="n">Q</span>
-
 
 <div class="viewcode-block" id="HallLittlewoodPolynomial._factor">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._factor">[docs]</a>
-    <span class="k">def</span> <span class="nf">_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">Q</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Let us first calculate the prefactor</span>
+<span class="sd">        Calculation of the multiplicative prefactor</span>
 <span class="sd">        prod_{i &gt;= 0} prod_{j=1}^{p(i)} frac{(1- Q)}{(1- Q^j)}</span>
 <span class="sd">        This term does not depend  on the coordinates (x).</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">prod</span> <span class="o">=</span> <span class="mi">1</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span>  <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Q</span>  <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">partition</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
                     <span class="n">prod</span> <span class="o">*=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">Q</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">partition</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-                    <span class="n">prod</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span>  <span class="o">**</span> <span class="n">j</span><span class="p">)</span>
+                    <span class="n">prod</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Q</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Q</span>  <span class="o">**</span> <span class="n">j</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span>
@@ -138,13 +135,12 @@
 
 <div class="viewcode-block" id="HallLittlewoodPolynomial._quotient">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._quotient">[docs]</a>
-    <span class="k">def</span> <span class="nf">_quotient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">_quotient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Next we need to consider the product that is inside the sum.</span>
-<span class="sd">        prod_{i &lt; j} frac{xi - Q xj}{xi - xj}. Let us first calculate</span>
-<span class="sd">        the quotient. Observe that the denominator is the Vandermonde determinant. </span>
+<span class="sd">        Calculation of the terms inside the sum, prod_{i &lt; j} frac{xi - Q xj}{xi - xj}.</span>
+<span class="sd">        Observe that the denominator is the Vandermonde determinant. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span>  <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span>  <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">])</span></div>
 
 
 
@@ -152,8 +148,8 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.hall.HallLittlewoodPolynomial._xproducts">[docs]</a>
     <span class="k">def</span> <span class="nf">_xproducts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        We also need to calculate the products of the coordinates</span>
-<span class="sd">        power the partition arms (or legs, if you prefer).</span>
+<span class="sd">        Calculation the products of the coordinates power the</span>
+<span class="sd">        partition arms (or legs, if you prefer).</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">prod1</span> <span class="o">=</span> <span class="mi">1</span>
@@ -167,10 +163,9 @@
 
 <div class="viewcode-block" id="HallLittlewoodPolynomial.explicit">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.hall.HallLittlewoodPolynomial.explicit">[docs]</a>
-    <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">Q</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Finally, we need put all these definitions together</span>
-<span class="sd">        to calculate the Hall-Littlewood themselves. </span>
+<span class="sd">        Calculation of the Hall-Littlewood themselves. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="c1"># Here I write partitions and coordinates in the same length</span>
@@ -212,11 +207,11 @@
 
             <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
-                    <span class="n">prod2</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quotient</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                    <span class="n">prod2</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quotient</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
             <span class="nb">sum</span> <span class="o">+=</span> <span class="n">prod1</span> <span class="o">*</span> <span class="n">prod2</span>
 
-        <span class="n">hl</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_factor</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+        <span class="n">hl</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_factor</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">pol</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">Poly</span><span class="p">(</span><span class="n">hl</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;QQ&#39;</span><span class="p">)</span>

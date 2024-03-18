@@ -76,32 +76,39 @@
 
 <div class="viewcode-block" id="MonomialPolynomial">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.monomial.MonomialPolynomial">[docs]</a>
-<span class="k">class</span> <span class="nc">MonomialPolynomial</span><span class="p">(</span><span class="n">HallLittlewoodPolynomial</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MonomialPolynomial</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Initialization of the Monomial Symmetric Polynomials. </span>
-
-<span class="sd">        Since they are Hall-Littlewood polynomials with Q=0, we </span>
-<span class="sd">        Defined them through an inheritance of the</span>
-<span class="sd">        Halllittlewoodpolynomial class. </span>
+<span class="sd">        These polynomial are defined from the Hall-Littlewood</span>
+<span class="sd">        polynomials at the point Q = 1.</span>
 
 <span class="sd">        They depends on a partition and on the coordinates</span>
 <span class="sd">        x = [x1, x2, ..., xn]. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_young</span> <span class="o">=</span> <span class="n">young</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span> <span class="o">=</span> <span class="n">young</span><span class="o">.</span><span class="n">partition</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_Q</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hall</span> <span class="o">=</span> <span class="n">HallLittlewoodPolynomial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_young</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Getter for the partition associated to this monomial.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span>
 
 
 <div class="viewcode-block" id="MonomialPolynomial.explicit">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.monomial.MonomialPolynomial.explicit">[docs]</a>
     <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here I want to particularize to the case Q = 1. </span>
+<span class="sd">        Determine the explicit expression for the Monomial</span>
+<span class="sd">        Symmetric Polynomials. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">explicit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pol</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hall</span><span class="o">.</span><span class="n">explicit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pol</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

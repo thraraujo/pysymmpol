@@ -80,7 +80,8 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">In this module we define 2 concepts that</span>
 <span class="sd">are completely connected.</span>
-<span class="sd">    1. First we define the class of Young Diagrams</span>
+
+<span class="sd">    1. First we define the class of Young (or Ferrers) Diagrams</span>
 <span class="sd">    using the usual partition notation.</span>
 
 <span class="sd">    2. Then we define the class of Conjugacy Classes.</span>
@@ -93,7 +94,7 @@
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Represents Young diagrams in the standard</span>
 <span class="sd">    partition notation: It is a monotonic decreasing sequence</span>
-<span class="sd">    L = (L1, L2, L3, ...,Ll) with L1 &gt;= L2 &gt;=L3 &gt;= ... &gt;= Ll</span>
+<span class="sd">    L = (L1, L2, L3, ...,Ln) with L1 &gt;= L2 &gt;=L3 &gt;= ... &gt;= Ln.</span>
 
 <span class="sd">    Example: (3,2,2,1)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -104,7 +105,7 @@
 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Validade Young diagram:</span>
-<span class="sd">        1) The argument must be monotonic decreasing (.</span>
+<span class="sd">        1) The argument must be monotonic decreasing.</span>
 <span class="sd">        2) The argument is a tuple.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
@@ -124,8 +125,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Gives the partition notation for the</span>
-<span class="sd">        Young diagram.</span>
+<span class="sd">        Gives the partition notation for the Young diagram.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span>
 
@@ -133,8 +133,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This gives the number of rowns in this</span>
-<span class="sd">        partition</span>
+<span class="sd">        This gives the number of rows in the diagram.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">)</span>
 
@@ -142,8 +141,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">columns</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This gives the number of rows in this</span>
-<span class="sd">        partition</span>
+<span class="sd">        This gives the number of columns in the diagram.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -151,8 +149,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This gives the number of boxes in this</span>
-<span class="sd">        partition.</span>
+<span class="sd">        This gives the number of boxes in the diagram.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">)</span>
 
@@ -161,10 +158,10 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.draw_diagram">[docs]</a>
     <span class="k">def</span> <span class="nf">draw_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here we have a pictorial representation of the Young diagram in</span>
+<span class="sd">        Pictorial representation of the Young/Ferrers diagram in</span>
 <span class="sd">        French notation. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">emo</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;■&#39;</span><span class="p">,</span> <span class="s1">&#39;🎲&#39;</span><span class="p">,</span> <span class="s1">&#39;🎯&#39;</span><span class="p">]</span>
+        <span class="n">emo</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;■&#39;</span><span class="p">,</span> <span class="s1">&#39;•&#39;</span><span class="p">,</span> <span class="s1">&#39;🎲&#39;</span><span class="p">,</span> <span class="s1">&#39;🎯&#39;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">emo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
@@ -178,9 +175,9 @@
 <span class="sd">        Gives the number of boxes in the diagonal.</span>
 
 <span class="sd">        In order to do this calculation,</span>
-<span class="sd">        we represent the Young diagram as a </span>
+<span class="sd">        the method represents the Young diagram as a </span>
 <span class="sd">        partition[0] x len(partition) matrix filled</span>
-<span class="sd">        with 1 and 0. After that, I sum over the diagonal.</span>
+<span class="sd">        with 1 and 0. After that, it sums over the diagonal.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
@@ -198,13 +195,17 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates">[docs]</a>
     <span class="k">def</span> <span class="nf">frobenius_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Frobenius Coordinates for a given partition.</span>
+<span class="sd">        Frobenius coordinates for a given partition.</span>
+
+<span class="sd">        The minus in the definition below is related</span>
+<span class="sd">        to the fact that python lists start at 0 and not 1.</span>
+<span class="sd">        Moreover, the method uses the definition where the coordinates</span>
+<span class="sd">        are half integers. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">transposed_diagram</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">partition</span>
         <span class="n">FrobCoor</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count_diagonal</span><span class="p">()):</span>
-            <span class="c1"># The minus in the definition below comes from the fact that python lists start at 0 and not 1</span>
             <span class="n">FrobCoor</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
                              <span class="o">-</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
         <span class="k">return</span> <span class="n">FrobCoor</span></div>
@@ -215,22 +216,26 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.transpose">[docs]</a>
     <span class="k">def</span> <span class="nf">transpose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">YoungDiagram</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here we find the transposed (or conjugate) Young diagram. </span>
-<span class="sd">        For example, given the partition [3,2],</span>
-<span class="sd">        its transposed is [2,2,1].</span>
+<span class="sd">        Gives the transposed (or conjugate) Young diagram. </span>
+<span class="sd">        For example, the conjugate of [3,2] is [2,2,1].</span>
 
-<span class="sd">        First of all, we build a list of zeros</span>
-<span class="sd">        and length with is equal to the highest column,</span>
-<span class="sd">        that is the partition[0]. In our example: [0,0,0]</span>
+<span class="sd">        The algorithm follows the logic: </span>
 
-<span class="sd">        We now fill in the list defined above.</span>
-<span class="sd">        For the list [0,0,0]. The code works as follows:</span>
-<span class="sd">        round 01: (i, row_length) = (0,3) =&gt; j =0,1,2. </span>
+<span class="sd">        The method builds a list of zeros and length equal</span>
+<span class="sd">        to the highest column: that is the partition[0].</span>
+<span class="sd">        In our example: partition[0]=3, then [0,0,0]</span>
+
+<span class="sd">        We now fill in the list defined above, we loop over</span>
+<span class="sd">        the length of the original partition, in our case i =1, 2</span>
+
+<span class="sd">        transposed_diagram = [0,0,0]</span>
+
+<span class="sd">        - loop 01: (i, row_length) = (0,3) =&gt; j =0,1,2. </span>
 <span class="sd">                j = 0 transporsed_diagram[0] = 1</span>
 <span class="sd">                j = 1 transposed_diagram[1] = 1</span>
 <span class="sd">                j = 2 transposed diagram[2] = 1</span>
 <span class="sd">        and now we have transposed_diagram = [1,1,1]</span>
-<span class="sd">        round 02 (i, row_length) = (1, 2) =&gt; j =0,1</span>
+<span class="sd">        - loop 02 (i, row_length) = (1, 2) =&gt; j =0,1</span>
 <span class="sd">                j = 0 transposed_diagram[0] = 2</span>
 <span class="sd">                j = 1 transposed_diagram[0] = 2</span>
 <span class="sd">        and now we have transposed_diagram = [2,2,1]</span>
@@ -247,20 +252,18 @@
 
 
 
-    <span class="c1"># I want to test these two methods without iterating over all the list.</span>
-    <span class="c1"># probably using any(not conditions)</span>
 <div class="viewcode-block" id="YoungDiagram.contains">
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.contains">[docs]</a>
     <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Check if the original partition contains the new one.</span>
+<span class="sd">        Checks if the original partition contains the new one.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="c1"># Create some lists because I need to concatenate these objects. </span>
+        <span class="c1"># Create some lists to concatenate these objects. </span>
         <span class="n">partition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span>
         <span class="n">other_partition</span> <span class="o">=</span> <span class="n">other_young</span><span class="o">.</span><span class="n">partition</span>
 
-        <span class="c1"># Here I pad some zeros to write the two partitions in the same form (length).</span>
+        <span class="c1"># Pad some zeros to write the two partitions in the same form (length).</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
             <span class="n">other_partition</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">))</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
@@ -279,7 +282,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.interlaces">[docs]</a>
     <span class="k">def</span> <span class="nf">interlaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Check if the original partition interlaces the new one.</span>
+<span class="sd">        Checks if the original partition interlaces the new one.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="c1"># Create some lists because I need to concatenate these objects. </span>
@@ -308,21 +311,48 @@
 <span class="sd">        Converts the partition notation to </span>
 <span class="sd">        the conjugacy class notation</span>
 <span class="sd">        Example:</span>
-<span class="sd">        [4,4,4,4,2,2,1] to [1,2,0,4].</span>
+<span class="sd">        [4,4,4,2,2,1] to {1: 1, 2: 2, 3: 0, 4: 3}.</span>
 
 <span class="sd">        The algorithm works as follows:</span>
-<span class="sd">        We first create an empty array partition = []</span>
-<span class="sd">        and we define the range for the loop to be the length of</span>
-<span class="sd">        the vector k: In our case [1,2,0,3], i = 0,1,2,3.</span>
+
+<span class="sd">        It creates a list of zeros with length equal</span>
+<span class="sd">        to the largest row. In our case, 4</span>
+<span class="sd">        conjugacy = [0, 0, 0, 0].</span>
+
+<span class="sd">        It iterates over the partition, adding 1s to the</span>
+<span class="sd">        corresponding slot in the conjugacy vector, for example</span>
+<span class="sd">        partition (4,4,4,2,2,1) gives</span>
+<span class="sd">        - loop 01: i = 4</span>
+<span class="sd">            conjugacy[3] = 1</span>
+<span class="sd">            conjugacy = [0,0,0,1]</span>
+<span class="sd">        - loop 02: i = 4</span>
+<span class="sd">            conjugacy[3] = 2</span>
+<span class="sd">            conjugacy = [0,0,0,2]</span>
+<span class="sd">        - loop 03: i = 4</span>
+<span class="sd">            conjugacy[3] = 3</span>
+<span class="sd">            conjugacy = [0,0,0,3]</span>
+<span class="sd">        - loop 04: i = 2</span>
+<span class="sd">            conjugacy[1] = 1</span>
+<span class="sd">            conjugacy = [0,1,0,3]</span>
+<span class="sd">        - loop 05: i = 2</span>
+<span class="sd">            conjugacy[1] = 2</span>
+<span class="sd">            conjugacy = [0,2,0,3]</span>
+<span class="sd">        - loop 06: i = 1</span>
+<span class="sd">            conjugacy[0] = 1</span>
+<span class="sd">            conjugacy = [1,2,0,3]</span>
+
+<span class="sd">        At the end we convert to a dictionary, and</span>
+<span class="sd">        conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}</span>
 <span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">partition</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">length</span>
-        <span class="n">conjugacy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+        <span class="n">conjugacy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">length</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">:</span>
-            <span class="n">partition</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">conjugacy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="n">conjugacy_class</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># We finally create a dictionary for the conjugacy class</span>
+        <span class="c1"># We finally create a dictionary for the conjugacy class</span>
+        <span class="n">conjugacy_class</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">conjugacy</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> 
 
         <span class="k">return</span> <span class="n">conjugacy_class</span></div>
 </div>

@@ -11,9 +11,8 @@ def _accel_asc(n):
     partitions is the heart of this project.
 
     The author of this beauty is Jerome Kelleher, and 
-    He argues that it is the fasted algorithm in the
-    market today, so we use it. See more here:
-    https://jeromekelleher.net/category/combinatorics.html
+    He argues that it is the fasted algorithm available nowadays.
+    See more here: https://jeromekelleher.net/category/combinatorics.html
     '''
     a = [0 for i in range(n + 1)]
     k = 1
@@ -39,13 +38,11 @@ def _accel_asc(n):
 
 def _power_sum(x: tuple, j: int): #Power Sum
     '''
-    In order to calculate the Newton polynomial,
-    we need the power sums P_j(\vec{x}). These objects
-    are equivalent to 'j*t_j' where t_j are the Miwa coordinates.
-    The partition gives the number of rows.
+    This is the calculation of power sums. 
+    In order to calculate the Newton polynomial P_j(\vec{x}).
+    These objects are equivalent to 'j*t_j' where t_j
+    are the Miwa coordinates.
     '''
-
     y = np.array(x)
     yj = y ** j
-
     return sum(yj)

@@ -77,30 +77,22 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">.young</span> <span class="kn">import</span> <span class="n">YoungDiagram</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">In this module we define 2 concepts that</span>
-<span class="sd">are completely connected.</span>
-<span class="sd">    1. First we define the class of Young Diagrams</span>
-<span class="sd">    using the usual partition notation.</span>
-
-<span class="sd">    2. Then we define the class of Conjugacy Classes.</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
 
 <div class="viewcode-block" id="ConjugacyClass">
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.conjugacy.ConjugacyClass">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">ConjugacyClass</span><span class="p">:</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Represents the conjugacy class of the partitions; For example,</span>
-<span class="sd">    the partition L = (5,3,2,2,2,1,1) can represented by</span>
+<span class="sd">    Represents the conjugacy class of the partitions. For example,</span>
+<span class="sd">    the partition L = (5, 3, 2, 2, 2, 1, 1) can represented by</span>
 <span class="sd">    L = (1: 2, 2: 3, 3: 1, 4: 0, 5: 1) that means 2 rows of</span>
 <span class="sd">    length 1, 3 rows of length 2, 2 rows of length 3, 0 rows of</span>
-<span class="sd">    length 4 and 1 row of length 5. To avoid cluttering, we</span>
-<span class="sd">    could simply write the vector k = (2,3,1,0,1) to describe the</span>
-<span class="sd">    same partition. We will do it in the internal below,</span>
-<span class="sd">    but we will return dictionaries to avoid confusion with</span>
-<span class="sd">    the partitions. </span>
+<span class="sd">    length 4 and 1 row of length 5.</span>
+
+<span class="sd">    To avoid cluttering, we could simply write the vector</span>
+<span class="sd">    k = (2, 3, 1, 0, 1) to describe the same partition.</span>
+<span class="sd">    We do it in an internal method below, but we will return</span>
+<span class="sd">    dictionaries to avoid confusion with the partitions. </span>
 
 <span class="sd">    The dictionary must be in the form {1: k1, 2: k2, ..., n: kn}</span>
 
@@ -117,8 +109,7 @@
 
     <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Validate the form of the dictionary:</span>
-<span class="sd">        {1: k1, 2: k2, ..., n: kn}</span>
+<span class="sd">        Validates the form of the dictionary: {1: k1, 2: k2, ..., n: kn}</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">keys</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_vector</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">A</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">))])</span>
@@ -167,15 +158,15 @@
 
 <div class="viewcode-block" id="ConjugacyClass.draw_diagram">
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.conjugacy.ConjugacyClass.draw_diagram">[docs]</a>
-    <span class="k">def</span> <span class="nf">draw_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">draw_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Here we have a pictorial representation of the Young diagram</span>
 <span class="sd">        associated to the conjugacy class in French notation. </span>
-<span class="sd">        Here I just rewrite the previous function for the partition states. </span>
+<span class="sd">        Here I just call the function for the partition states. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">young</span> <span class="o">=</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conjugacy_partition</span><span class="p">())</span>
 
-        <span class="n">young</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">()</span></div>
+        <span class="n">young</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
 
 
 
@@ -199,18 +190,19 @@
 <span class="sd">        the vector k: In our case [1,2,0,3], i = 0,1,2,3.</span>
 
 <span class="sd">        </span>
-<span class="sd">        round 01: i = 0 k[0] = 1: </span>
+<span class="sd">        - loop 01: i = 0 k[0] = 1: </span>
 <span class="sd">                row = [1]</span>
 <span class="sd">                partition = [] U [1] = [1]</span>
-<span class="sd">        round 02: i = 1 k[1] = 2</span>
+<span class="sd">        - loop 02: i = 1 k[1] = 2</span>
 <span class="sd">                row = [2,2]</span>
 <span class="sd">                partition = [1] U [2,2] = [1,2,2]</span>
-<span class="sd">        round 03: i = 2 k[2] = 0</span>
+<span class="sd">        - loop 03: i = 2 k[2] = 0</span>
 <span class="sd">                row = []</span>
 <span class="sd">                partition = [1,2,2] U [] = [1,2,2]</span>
-<span class="sd">        round 04: i = 3 k[3] = 4</span>
+<span class="sd">        - loop 04: i = 3 k[3] = 4</span>
 <span class="sd">                row = [4,4,4,4]</span>
 <span class="sd">                partition = [1,2,2] U [4,4,4,4] = [1,2,2,4,4,4,4]</span>
+
 <span class="sd">        Then when we put it in decreasing order we find [4,4,4,4,2,2,1]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 

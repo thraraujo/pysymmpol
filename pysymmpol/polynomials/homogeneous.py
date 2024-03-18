@@ -4,21 +4,28 @@ from ..partitions.states import State
 
 class HomogeneousPolynomial:
     '''
-    Here we have a class that defines the 
-    complete homogeneous polynomials.
+    A class that defines the complete homogeneous
+    polynomials.
     '''
 
 
     def __init__(self, level: int) -> None:
+        '''
+        Initialize the polynomial. It takes just one argument,
+        the level of the polynomial.
+        '''
         self._level = level
 
     @property
     def level(self) -> int:
+        '''
+        Getter for the level.
+        '''
         return self._level
 
     def _states(self) -> tuple:
         '''
-        For this level, we find the conjugacy class
+        For this level, this method gives the conjugacy class
         states.
         '''
         states = State(self._level)
@@ -27,8 +34,10 @@ class HomogeneousPolynomial:
 
     def explicit(self, t: tuple, pol: bool=False): # t are the Miwa coordinates
         '''
-        This function gives the expansion of the complete
-        symmetric polynomials.
+        This method gives the expansion of the complete
+        symmetric polynomials. It accepts a tuple, the Miwa coordinates,
+        as argument, as well as boolean, that specifies if the
+        result is a sympy polynomial.
         '''
 
         if isinstance(t, dict):
@@ -67,12 +76,16 @@ class _Monomial:
     '''
 
     def __init__(self, conjugacy_class: ConjugacyClass) -> None:
+        '''
+        Initialization of the monomial. Its argument is a conjugacy class
+        vector. 
+        '''
         self._conjugacy_class = conjugacy_class
         self._vector_k = conjugacy_class.conjugacy 
 
 
     @property
-    def level(self) -> int:
+    def _level(self) -> int:
         '''
         This function gives the level of the conjugacy class vector k, 
         that is, the number given by sum_i i k_i for a given bosonic 
@@ -96,7 +109,7 @@ class _Monomial:
         associated with a given conjugacy class vector k.
         '''
 
-        if len(t) < self.level:
+        if len(t) < self._level:
             raise TypeError('''The list t must have, at least, as many coordinates
                 as the level of the conjugacy class''')
         else:

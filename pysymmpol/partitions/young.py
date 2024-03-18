@@ -7,7 +7,8 @@ import sympy as sp
 '''
 In this module we define 2 concepts that
 are completely connected.
-    1. First we define the class of Young Diagrams
+
+    1. First we define the class of Young (or Ferrers) Diagrams
     using the usual partition notation.
 
     2. Then we define the class of Conjugacy Classes.
@@ -18,7 +19,7 @@ class YoungDiagram:
     '''
     Represents Young diagrams in the standard
     partition notation: It is a monotonic decreasing sequence
-    L = (L1, L2, L3, ...,Ll) with L1 >= L2 >=L3 >= ... >= Ll
+    L = (L1, L2, L3, ...,Ln) with L1 >= L2 >=L3 >= ... >= Ln.
 
     Example: (3,2,2,1)
     '''
@@ -29,7 +30,7 @@ class YoungDiagram:
 
         '''
         Validade Young diagram:
-        1) The argument must be monotonic decreasing (.
+        1) The argument must be monotonic decreasing.
         2) The argument is a tuple.
         '''
 
@@ -49,8 +50,7 @@ class YoungDiagram:
     @property
     def partition(self) -> tuple:
         '''
-        Gives the partition notation for the
-        Young diagram.
+        Gives the partition notation for the Young diagram.
         '''
         return self._partition
 
@@ -58,8 +58,7 @@ class YoungDiagram:
     @property
     def rows(self) -> int:
         '''
-        This gives the number of rowns in this
-        partition
+        This gives the number of rows in the diagram.
         '''
         return len(self.partition)
 
@@ -67,8 +66,7 @@ class YoungDiagram:
     @property
     def columns(self) -> int:
         '''
-        This gives the number of rows in this
-        partition
+        This gives the number of columns in the diagram.
         '''
         return self.partition[0]
 
@@ -76,18 +74,17 @@ class YoungDiagram:
     @property
     def boxes(self) -> int: 
         '''
-        This gives the number of boxes in this
-        partition.
+        This gives the number of boxes in the diagram.
         '''
         return sum(self.partition)
 
 
     def draw_diagram(self, n: int=0) -> None:
         '''
-        Here we have a pictorial representation of the Young diagram in
+        Pictorial representation of the Young/Ferrers diagram in
         French notation. 
         '''
-        emo = ['■', '🎲', '🎯']
+        emo = ['■', '•', '🎲', '🎯']
         for i in range(self.rows):
             if self.partition[-i-1] > 0:
                 print(f"{emo[n]} " * self.partition[-i-1])
@@ -98,9 +95,9 @@ class YoungDiagram:
         Gives the number of boxes in the diagonal.
 
         In order to do this calculation,
-        we represent the Young diagram as a 
+        the method represents the Young diagram as a 
         partition[0] x len(partition) matrix filled
-        with 1 and 0. After that, I sum over the diagonal.
+        with 1 and 0. After that, it sums over the diagonal.
         '''
 
         matrix = np.zeros((self.rows, self.columns))
@@ -115,13 +112,17 @@ class YoungDiagram:
 
     def frobenius_coordinates(self) -> list:
         '''
-        Frobenius Coordinates for a given partition.
+        Frobenius coordinates for a given partition.
+
+        The minus in the definition below is related
+        to the fact that python lists start at 0 and not 1.
+        Moreover, the method uses the definition where the coordinates
+        are half integers. 
         '''
 
         transposed_diagram = self.transpose().partition
         FrobCoor = []
         for i in range(self.count_diagonal()):
-            # The minus in the definition below comes from the fact that python lists start at 0 and not 1
             FrobCoor.append([self.partition[i] - i - sp.Rational(1,2),
                              -(transposed_diagram[i] - i - sp.Rational(1,2))])
         return FrobCoor
@@ -129,22 +130,26 @@ class YoungDiagram:
 
     def transpose(self) -> YoungDiagram:
         '''
-        Here we find the transposed (or conjugate) Young diagram. 
-        For example, given the partition [3,2],
-        its transposed is [2,2,1].
+        Gives the transposed (or conjugate) Young diagram. 
+        For example, the conjugate of [3,2] is [2,2,1].
 
-        First of all, we build a list of zeros
-        and length with is equal to the highest column,
-        that is the partition[0]. In our example: [0,0,0]
+        The algorithm follows the logic: 
 
-        We now fill in the list defined above.
-        For the list [0,0,0]. The code works as follows:
-        round 01: (i, row_length) = (0,3) => j =0,1,2. 
+        The method builds a list of zeros and length equal
+        to the highest column: that is the partition[0].
+        In our example: partition[0]=3, then [0,0,0]
+
+        We now fill in the list defined above, we loop over
+        the length of the original partition, in our case i =1, 2
+
+        transposed_diagram = [0,0,0]
+
+        - loop 01: (i, row_length) = (0,3) => j =0,1,2. 
                 j = 0 transporsed_diagram[0] = 1
                 j = 1 transposed_diagram[1] = 1
                 j = 2 transposed diagram[2] = 1
         and now we have transposed_diagram = [1,1,1]
-        round 02 (i, row_length) = (1, 2) => j =0,1
+        - loop 02 (i, row_length) = (1, 2) => j =0,1
                 j = 0 transposed_diagram[0] = 2
                 j = 1 transposed_diagram[0] = 2
         and now we have transposed_diagram = [2,2,1]
@@ -160,18 +165,16 @@ class YoungDiagram:
         return YoungDiagram(transposed_diagram_tuple)
 
 
-    # I want to test these two methods without iterating over all the list.
-    # probably using any(not conditions)
     def contains(self, other_young: YoungDiagram) -> bool:
         '''
-        Check if the original partition contains the new one.
+        Checks if the original partition contains the new one.
         '''
 
-        # Create some lists because I need to concatenate these objects. 
+        # Create some lists to concatenate these objects. 
         partition = self.partition
         other_partition = other_young.partition
 
-        # Here I pad some zeros to write the two partitions in the same form (length).
+        # Pad some zeros to write the two partitions in the same form (length).
         if len(other_partition) < len(partition):
             other_partition += (0,)*abs(len(partition) - len(other_partition))
         elif len(other_partition) > len(partition):
@@ -187,7 +190,7 @@ class YoungDiagram:
 
     def interlaces(self, other_young: YoungDiagram) -> bool:
         '''
-        Check if the original partition interlaces the new one.
+        Checks if the original partition interlaces the new one.
         '''
 
         # Create some lists because I need to concatenate these objects. 
@@ -213,20 +216,47 @@ class YoungDiagram:
         Converts the partition notation to 
         the conjugacy class notation
         Example:
-        [4,4,4,4,2,2,1] to [1,2,0,4].
+        [4,4,4,2,2,1] to {1: 1, 2: 2, 3: 0, 4: 3}.
 
         The algorithm works as follows:
-        We first create an empty array partition = []
-        and we define the range for the loop to be the length of
-        the vector k: In our case [1,2,0,3], i = 0,1,2,3.
+
+        It creates a list of zeros with length equal
+        to the largest row. In our case, 4
+        conjugacy = [0, 0, 0, 0].
+
+        It iterates over the partition, adding 1s to the
+        corresponding slot in the conjugacy vector, for example
+        partition (4,4,4,2,2,1) gives
+        - loop 01: i = 4
+            conjugacy[3] = 1
+            conjugacy = [0,0,0,1]
+        - loop 02: i = 4
+            conjugacy[3] = 2
+            conjugacy = [0,0,0,2]
+        - loop 03: i = 4
+            conjugacy[3] = 3
+            conjugacy = [0,0,0,3]
+        - loop 04: i = 2
+            conjugacy[1] = 1
+            conjugacy = [0,1,0,3]
+        - loop 05: i = 2
+            conjugacy[1] = 2
+            conjugacy = [0,2,0,3]
+        - loop 06: i = 1
+            conjugacy[0] = 1
+            conjugacy = [1,2,0,3]
+
+        At the end we convert to a dictionary, and
+        conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}
         '''
+
         length = self.partition[0]
-        partition = [0]*length
-        conjugacy = np.repeat(0, length)
+        conjugacy = [0]*length
 
         for i in self.partition:
-            partition[i-1] += 1
+            conjugacy[i-1] += 1
 
-        conjugacy_class = dict(enumerate(partition,1)) # We finally create a dictionary for the conjugacy class
+        # We finally create a dictionary for the conjugacy class
+        conjugacy_class = dict(enumerate(conjugacy,1)) 
 
         return conjugacy_class

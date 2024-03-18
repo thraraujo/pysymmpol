@@ -88,7 +88,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.schur.SchurPolynomial">[docs]</a>
 <span class="k">class</span> <span class="nc">SchurPolynomial</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Here we have two implementations of the Schur polynomials.</span>
+<span class="sd">    Implementations of the Schur polynomials.</span>
 <span class="sd">    1. We calculate these polynomials using the determinant of</span>
 <span class="sd">    the Homogeneous polynomials.</span>
 <span class="sd">    2. We also calculate them using the characters. We use this second</span>
@@ -97,6 +97,10 @@
 
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialization of the Schur polynomia. It depends on the</span>
+<span class="sd">        Young Diagram.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_young</span> <span class="o">=</span> <span class="n">young</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span> <span class="o">=</span> <span class="n">young</span><span class="o">.</span><span class="n">partition</span>
 
@@ -105,10 +109,15 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.schur.SchurPolynomial.explicit">[docs]</a>
     <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">other_young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="o">=</span><span class="n">YoungDiagram</span><span class="p">((</span><span class="mi">0</span><span class="p">,))):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here we calculate the Schur polynomial in </span>
-<span class="sd">        terms of Miwa coordinates using the determinant formula.</span>
-<span class="sd">        If we Enter an second argument, it calculates the</span>
-<span class="sd">        Skew-Schur Polynomials.</span>
+<span class="sd">        Calculates the Schur polynomial in terms of Miwa coordinates using</span>
+<span class="sd">        the determinant formula.</span>
+
+<span class="sd">        First argument is the set of Miwa coordinates. The second argument is a</span>
+<span class="sd">        boolean to define the sympy polynomial. The third argument gives the </span>
+<span class="sd">        skew Schur polynomials.</span>
+
+<span class="sd">        There is a method below, skew_schur, to make the calculation of</span>
+<span class="sd">        skew-Schur polynomials more explicit.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -149,10 +158,10 @@
 
 <div class="viewcode-block" id="SchurPolynomial.skew_schur">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.schur.SchurPolynomial.skew_schur">[docs]</a>
-    <span class="k">def</span> <span class="nf">skew_schur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">other_young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="o">=</span><span class="n">YoungDiagram</span><span class="p">((</span><span class="mi">0</span><span class="p">,)),</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">skew_schur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">other_young</span><span class="p">:</span> <span class="n">YoungDiagram</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here we calculate the Skew Schur polynomials.</span>
-<span class="sd">        It is a wrap of the schur method. </span>
+<span class="sd">        This method returns the Skew Schur polynomials. </span>
+<span class="sd">        It is a wrap of the explicit method. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">explicit</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pol</span><span class="p">,</span> <span class="n">other_young</span><span class="p">)</span></div>
 
@@ -162,9 +171,10 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.schur.SchurPolynomial._schur_characters">[docs]</a>
     <span class="k">def</span> <span class="nf">_schur_characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here we calculate the Schur polynomial in </span>
-<span class="sd">        terms of Miwa coordinates using the characters.</span>
-<span class="sd">        This expression will be used to test our code. </span>
+<span class="sd">        This method returts the Schur polynomial in </span>
+<span class="sd">        terms of Miwa coordinates using the characters expansion.</span>
+<span class="sd">        This method is slower, but it is used to test the implementation. </span>
+<span class="sd">        It adds another safety layer to this code. </span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -176,7 +186,7 @@
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">schur</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">vectors</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="o">.</span><span class="n">conjugacy_states</span><span class="p">()</span> <span class="c1"># This method gives the stattes as a tuple</span>
+            <span class="n">vectors</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">level</span><span class="p">)</span><span class="o">.</span><span class="n">conjugacy_states</span><span class="p">()</span> 
 
             <span class="k">for</span> <span class="n">vector</span> <span class="ow">in</span> <span class="n">vectors</span><span class="p">:</span>
                 <span class="n">vector</span> <span class="o">=</span> <span class="n">ConjugacyClass</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
@@ -187,7 +197,6 @@
                 <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="n">schur</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;QQ&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">schur_pol</span> <span class="o">=</span> <span class="n">schur</span>
-                <span class="c1">#schur_pol = (schur).expand().simplify()</span>
                 <span class="k">return</span> <span class="n">schur_pol</span></div>
 </div>
 

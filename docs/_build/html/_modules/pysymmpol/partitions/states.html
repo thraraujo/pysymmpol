@@ -83,9 +83,8 @@
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">State</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    For a given level n, I want to find the</span>
-<span class="sd">    bosonic and fermionic states associated to</span>
-<span class="sd">    YoungDiagrams and conjugacy classes.</span>
+<span class="sd">    Defines the bosonic and fermionic states for a given</span>
+<span class="sd">    integer n. </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">_level</span><span class="p">:</span> <span class="nb">int</span>
 
@@ -106,7 +105,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State._conjugacy_states">[docs]</a>
     <span class="k">def</span> <span class="nf">_conjugacy_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        For a level n, this function gives all vector k</span>
+<span class="sd">        For a level n, this method gives all vector k</span>
 <span class="sd">        (the conjugacy class states) that belong to this subspace.</span>
 <span class="sd">        Remember that these states are built with the operators J_{-m} </span>
 <span class="sd">        of the Heisenberg algebra. In other words, these are</span>
@@ -137,7 +136,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State.conjugacy_states">[docs]</a>
     <span class="k">def</span> <span class="nf">conjugacy_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Here I return the previous method in</span>
+<span class="sd">        Returns the previous method in</span>
 <span class="sd">        the dictionary form.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -157,7 +156,7 @@
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.states.State.partition_states">[docs]</a>
     <span class="k">def</span> <span class="nf">partition_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        For the level n, this function gives the partitions that</span>
+<span class="sd">        For the level n, this method gives the partitions that</span>
 <span class="sd">        belong to this subspace. These states are built from the</span>
 <span class="sd">        the fermionic operators. </span>
 <span class="sd">        &#39;&#39;&#39;</span>

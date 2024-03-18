@@ -79,23 +79,30 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial">[docs]</a>
 <span class="k">class</span> <span class="nc">HomogeneousPolynomial</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Here we have a class that defines the </span>
-<span class="sd">    complete homogeneous polynomials.</span>
+<span class="sd">    A class that defines the complete homogeneous</span>
+<span class="sd">    polynomials.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialize the polynomial. It takes just one argument,</span>
+<span class="sd">        the level of the polynomial.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_level</span> <span class="o">=</span> <span class="n">level</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Getter for the level.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span>
 
 <div class="viewcode-block" id="HomogeneousPolynomial._states">
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial._states">[docs]</a>
     <span class="k">def</span> <span class="nf">_states</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        For this level, we find the conjugacy class</span>
+<span class="sd">        For this level, this method gives the conjugacy class</span>
 <span class="sd">        states.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">states</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_level</span><span class="p">)</span>
@@ -107,8 +114,10 @@
 <a class="viewcode-back" href="../../../pysymmpol.polynomials.html#pysymmpol.polynomials.homogeneous.HomogeneousPolynomial.explicit">[docs]</a>
     <span class="k">def</span> <span class="nf">explicit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">pol</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> <span class="c1"># t are the Miwa coordinates</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        This function gives the expansion of the complete</span>
-<span class="sd">        symmetric polynomials.</span>
+<span class="sd">        This method gives the expansion of the complete</span>
+<span class="sd">        symmetric polynomials. It accepts a tuple, the Miwa coordinates,</span>
+<span class="sd">        as argument, as well as boolean, that specifies if the</span>
+<span class="sd">        result is a sympy polynomial.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -151,12 +160,16 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conjugacy_class</span><span class="p">:</span> <span class="n">ConjugacyClass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Initialization of the monomial. Its argument is a conjugacy class</span>
+<span class="sd">        vector. </span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_conjugacy_class</span> <span class="o">=</span> <span class="n">conjugacy_class</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vector_k</span> <span class="o">=</span> <span class="n">conjugacy_class</span><span class="o">.</span><span class="n">conjugacy</span> 
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        This function gives the level of the conjugacy class vector k, </span>
 <span class="sd">        that is, the number given by sum_i i k_i for a given bosonic </span>
@@ -182,7 +195,7 @@
 <span class="sd">        associated with a given conjugacy class vector k.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_level</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;The list t must have, at least, as many coordinates</span>
 <span class="s1">                as the level of the conjugacy class&#39;&#39;&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

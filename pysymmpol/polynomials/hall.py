@@ -13,10 +13,10 @@ class HallLittlewoodPolynomial:
     Here is an implementation of the Hall-Littlewood polynomials.
     '''
 
-    def __init__(self, young: YoungDiagram, Q: object) -> None:
+    def __init__(self, young: YoungDiagram) -> None:
         '''
         Initialization of the Hall-Littlewood polynomials.
-        It depends on a partition and on the coordinates
+        It depends on a partition on the coordinates
         x = [x1, x2, ..., xn]. 
 
         Hall-Littlewood polynomials are given by (LaTeX)
@@ -28,29 +28,26 @@ class HallLittlewoodPolynomial:
 
         For practical reasons, we need to calculate these terms independently. 
         '''
-
         self._young = young
         self._partition = young.partition
-        self._Q = Q
 
-
-    def _factor(self, partition):
+    def _factor(self, partition, Q):
         '''
-        Let us first calculate the prefactor
+        Calculation of the multiplicative prefactor
         prod_{i >= 0} prod_{j=1}^{p(i)} frac{(1- Q)}{(1- Q^j)}
         This term does not depend  on the coordinates (x).
         '''
         prod = 1
 
         for i in range(max(partition)+1):
-            if self._Q  == 1:
+            if Q  == 1:
                 for j in range(1, partition.count(i)+1):
                     prod *= sp.Rational(1, j)
-            elif self._Q  == 0:
+            elif Q  == 0:
                 return 1
             else:
                 for j in range(1, partition.count(i)+1):
-                    prod *= (1 - self._Q ) / (1 - self._Q  ** j)
+                    prod *= (1 - Q) / (1 - Q  ** j)
 
         if type(prod) is float and abs(prod) > 1:
             return int(prod)
@@ -58,19 +55,18 @@ class HallLittlewoodPolynomial:
             return prod
         
 
-    def _quotient(self, x, i, j): 
+    def _quotient(self, x, Q, i, j): 
         '''
-        Next we need to consider the product that is inside the sum.
-        prod_{i < j} frac{xi - Q xj}{xi - xj}. Let us first calculate
-        the quotient. Observe that the denominator is the Vandermonde determinant. 
+        Calculation of the terms inside the sum, prod_{i < j} frac{xi - Q xj}{xi - xj}.
+        Observe that the denominator is the Vandermonde determinant. 
         '''
-        return (x[i] - self._Q  * x[j]) / (x[i] - x[j])
+        return (x[i] - Q  * x[j]) / (x[i] - x[j])
 
 
     def _xproducts(self, x, partition):
         '''
-        We also need to calculate the products of the coordinates
-        power the partition arms (or legs, if you prefer).
+        Calculation the products of the coordinates power the
+        partition arms (or legs, if you prefer).
         '''
 
         prod1 = 1
@@ -81,10 +77,9 @@ class HallLittlewoodPolynomial:
         return prod1
     
 
-    def explicit(self, x: tuple, pol: bool=False): 
+    def explicit(self, x: tuple, Q: object, pol: bool=False): 
         '''
-        Finally, we need put all these definitions together
-        to calculate the Hall-Littlewood themselves. 
+        Calculation of the Hall-Littlewood themselves. 
         '''
 
         # Here I write partitions and coordinates in the same length
@@ -126,11 +121,11 @@ class HallLittlewoodPolynomial:
 
             for (i, j) in product(range(1, len(xx)+1), repeat=2):
                 if i < j:
-                    prod2 *= self._quotient(xx, i, j)
+                    prod2 *= self._quotient(xx, Q, i, j)
 
             sum += prod1 * prod2
 
-        hl = (self._factor(partition) * sum).simplify()
+        hl = (self._factor(partition, Q) * sum).simplify()
 
         if pol:
             return sp.Poly(hl, domain='QQ')

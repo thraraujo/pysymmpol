@@ -1,27 +1,34 @@
 from .hall import HallLittlewoodPolynomial
 from ..partitions.young import YoungDiagram
 
-class MonomialPolynomial(HallLittlewoodPolynomial):
+class MonomialPolynomial:
 
     def __init__(self, young: YoungDiagram) -> None:
 
         '''
         Initialization of the Monomial Symmetric Polynomials. 
-
-        Since they are Hall-Littlewood polynomials with Q=0, we 
-        Defined them through an inheritance of the
-        Halllittlewoodpolynomial class. 
+        These polynomial are defined from the Hall-Littlewood
+        polynomials at the point Q = 1.
 
         They depends on a partition and on the coordinates
         x = [x1, x2, ..., xn]. 
         '''
         self._young = young
         self._partition = young.partition
-        self._Q = 1
+        self._hall = HallLittlewoodPolynomial(self._young)
+
+
+    @property
+    def partition(self):
+        '''
+        Getter for the partition associated to this monomial.
+        '''
+        return self._partition
 
 
     def explicit(self, x: tuple, pol: bool=False): 
         '''
-        Here I want to particularize to the case Q = 1. 
+        Determine the explicit expression for the Monomial
+        Symmetric Polynomials. 
         '''
-        return super().explicit(x, pol)
+        return self._hall.explicit(x, 1, pol)

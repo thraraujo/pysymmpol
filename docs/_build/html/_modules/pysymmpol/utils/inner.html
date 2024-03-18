@@ -86,9 +86,8 @@
 <span class="sd">    partitions is the heart of this project.</span>
 
 <span class="sd">    The author of this beauty is Jerome Kelleher, and </span>
-<span class="sd">    He argues that it is the fasted algorithm in the</span>
-<span class="sd">    market today, so we use it. See more here:</span>
-<span class="sd">    https://jeromekelleher.net/category/combinatorics.html</span>
+<span class="sd">    He argues that it is the fasted algorithm available nowadays.</span>
+<span class="sd">    See more here: https://jeromekelleher.net/category/combinatorics.html</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
@@ -117,15 +116,13 @@
 <a class="viewcode-back" href="../../../pysymmpol.utils.html#pysymmpol.utils.inner._power_sum">[docs]</a>
 <span class="k">def</span> <span class="nf">_power_sum</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="c1">#Power Sum</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    In order to calculate the Newton polynomial,</span>
-<span class="sd">    we need the power sums P_j(\vec{x}). These objects</span>
-<span class="sd">    are equivalent to &#39;j*t_j&#39; where t_j are the Miwa coordinates.</span>
-<span class="sd">    The partition gives the number of rows.</span>
+<span class="sd">    This is the calculation of power sums. </span>
+<span class="sd">    In order to calculate the Newton polynomial P_j(\vec{x}).</span>
+<span class="sd">    These objects are equivalent to &#39;j*t_j&#39; where t_j</span>
+<span class="sd">    are the Miwa coordinates.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">yj</span> <span class="o">=</span> <span class="n">y</span> <span class="o">**</span> <span class="n">j</span>
-
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">yj</span><span class="p">)</span></div>
 
 </pre></div>

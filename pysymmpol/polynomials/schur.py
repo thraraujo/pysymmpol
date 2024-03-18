@@ -13,7 +13,7 @@ from ..utils.tools import character
 
 class SchurPolynomial:
     '''
-    Here we have two implementations of the Schur polynomials.
+    Implementations of the Schur polynomials.
     1. We calculate these polynomials using the determinant of
     the Homogeneous polynomials.
     2. We also calculate them using the characters. We use this second
@@ -22,16 +22,25 @@ class SchurPolynomial:
 
 
     def __init__(self, young: YoungDiagram) -> None:
+        '''
+        Initialization of the Schur polynomia. It depends on the
+        Young Diagram.
+        '''
         self._young = young
         self._partition = young.partition
 
 
     def explicit(self, t: tuple, pol: bool=False, other_young: YoungDiagram=YoungDiagram((0,))):
         '''
-        Here we calculate the Schur polynomial in 
-        terms of Miwa coordinates using the determinant formula.
-        If we Enter an second argument, it calculates the
-        Skew-Schur Polynomials.
+        Calculates the Schur polynomial in terms of Miwa coordinates using
+        the determinant formula.
+
+        First argument is the set of Miwa coordinates. The second argument is a
+        boolean to define the sympy polynomial. The third argument gives the 
+        skew Schur polynomials.
+
+        There is a method below, skew_schur, to make the calculation of
+        skew-Schur polynomials more explicit.
         '''
 
         if isinstance(t, dict):
@@ -69,19 +78,20 @@ class SchurPolynomial:
                 return H.det()
 
 
-    def skew_schur(self, t, other_young: YoungDiagram=YoungDiagram((0,)), pol: bool=False):
+    def skew_schur(self, t: tuple, other_young: YoungDiagram, pol: bool=False):
         '''
-        Here we calculate the Skew Schur polynomials.
-        It is a wrap of the schur method. 
+        This method returns the Skew Schur polynomials. 
+        It is a wrap of the explicit method. 
         '''
         return self.explicit(t, pol, other_young)
 
 
     def _schur_characters(self, t: tuple, pol: bool=False):
         '''
-        Here we calculate the Schur polynomial in 
-        terms of Miwa coordinates using the characters.
-        This expression will be used to test our code. 
+        This method returts the Schur polynomial in 
+        terms of Miwa coordinates using the characters expansion.
+        This method is slower, but it is used to test the implementation. 
+        It adds another safety layer to this code. 
         '''
 
         if isinstance(t, dict):
@@ -93,7 +103,7 @@ class SchurPolynomial:
             return 1
         else:
             schur = 0
-            vectors = State(level).conjugacy_states() # This method gives the stattes as a tuple
+            vectors = State(level).conjugacy_states() 
 
             for vector in vectors:
                 vector = ConjugacyClass(vector)
@@ -104,6 +114,5 @@ class SchurPolynomial:
                 return sp.poly(schur, domain='QQ')
             else:
                 schur_pol = schur
-                #schur_pol = (schur).expand().simplify()
                 return schur_pol
 

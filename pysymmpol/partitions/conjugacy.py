@@ -4,28 +4,20 @@ from dataclasses import dataclass
 import numpy as np
 from .young import YoungDiagram
 
-'''
-In this module we define 2 concepts that
-are completely connected.
-    1. First we define the class of Young Diagrams
-    using the usual partition notation.
-
-    2. Then we define the class of Conjugacy Classes.
-'''
-
 
 @dataclass(frozen=True)
 class ConjugacyClass: 
     '''
-    Represents the conjugacy class of the partitions; For example,
-    the partition L = (5,3,2,2,2,1,1) can represented by
+    Represents the conjugacy class of the partitions. For example,
+    the partition L = (5, 3, 2, 2, 2, 1, 1) can represented by
     L = (1: 2, 2: 3, 3: 1, 4: 0, 5: 1) that means 2 rows of
     length 1, 3 rows of length 2, 2 rows of length 3, 0 rows of
-    length 4 and 1 row of length 5. To avoid cluttering, we
-    could simply write the vector k = (2,3,1,0,1) to describe the
-    same partition. We will do it in the internal below,
-    but we will return dictionaries to avoid confusion with
-    the partitions. 
+    length 4 and 1 row of length 5.
+
+    To avoid cluttering, we could simply write the vector
+    k = (2, 3, 1, 0, 1) to describe the same partition.
+    We do it in an internal method below, but we will return
+    dictionaries to avoid confusion with the partitions. 
 
     The dictionary must be in the form {1: k1, 2: k2, ..., n: kn}
 
@@ -42,8 +34,7 @@ class ConjugacyClass:
 
     def __post_init__(self) -> None:
         '''
-        Validate the form of the dictionary:
-        {1: k1, 2: k2, ..., n: kn}
+        Validates the form of the dictionary: {1: k1, 2: k2, ..., n: kn}
         '''
         keys = tuple(self._conjugacy_vector.keys())
         A = all([keys[i] - keys[i-1] == 1 for i in range(1, len(keys))])
@@ -90,15 +81,15 @@ class ConjugacyClass:
         return box
 
 
-    def draw_diagram(self) -> None:
+    def draw_diagram(self, n=0) -> None:
         '''
         Here we have a pictorial representation of the Young diagram
         associated to the conjugacy class in French notation. 
-        Here I just rewrite the previous function for the partition states. 
+        Here I just call the function for the partition states. 
         '''
         young = YoungDiagram(self.conjugacy_partition())
 
-        young.draw_diagram()
+        young.draw_diagram(n)
 
 
     def conjugacy_partition(self) -> tuple:
@@ -119,18 +110,19 @@ class ConjugacyClass:
         the vector k: In our case [1,2,0,3], i = 0,1,2,3.
 
         
-        round 01: i = 0 k[0] = 1: 
+        - loop 01: i = 0 k[0] = 1: 
                 row = [1]
                 partition = [] U [1] = [1]
-        round 02: i = 1 k[1] = 2
+        - loop 02: i = 1 k[1] = 2
                 row = [2,2]
                 partition = [1] U [2,2] = [1,2,2]
-        round 03: i = 2 k[2] = 0
+        - loop 03: i = 2 k[2] = 0
                 row = []
                 partition = [1,2,2] U [] = [1,2,2]
-        round 04: i = 3 k[3] = 4
+        - loop 04: i = 3 k[3] = 4
                 row = [4,4,4,4]
                 partition = [1,2,2] U [4,4,4,4] = [1,2,2,4,4,4,4]
+
         Then when we put it in decreasing order we find [4,4,4,4,2,2,1]
         '''
 

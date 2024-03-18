@@ -1,13 +1,14 @@
 import sympy as sp
 import numpy as np
 
+from .inner import _power_sum
 from ..partitions.young import YoungDiagram
 from ..partitions.conjugacy import ConjugacyClass
 
 
 def vandermonde(x: tuple): # Vandermonde determinant
     '''
-    Here I want to calculate the Vandermonde polynomial. 
+    Function to calculate the Vandermonde polynomial. 
     '''
     m = len(x)
 
@@ -22,7 +23,7 @@ def vandermonde(x: tuple): # Vandermonde determinant
 
 def newton_polynomial(x: tuple, vector: ConjugacyClass):
     '''
-    Calculation of the Newton polynomials themselves.
+    Function to calculate the Newton polynomials.
     '''
 
     k = vector.conjugacy
@@ -37,7 +38,7 @@ def newton_polynomial(x: tuple, vector: ConjugacyClass):
 
 def character(young_diagram: YoungDiagram, vector: ConjugacyClass):
     '''
-    Here I calculate the characters using the Frobenius Character Formula.
+    Characters of the symmetric group using the Frobenius Character Formula.
     '''
 
     young = young_diagram.partition
@@ -61,8 +62,7 @@ def character(young_diagram: YoungDiagram, vector: ConjugacyClass):
 
 def partitions_of(n: int) -> int:
     '''
-    Small function that returns the
-    partition of the integer n.
+    Function that returns the number of partitions of a given integer.
     '''
     return sum(1 for x in _accel_asc(n))
 
@@ -76,7 +76,7 @@ def create_miwa(n: int) -> dict:
 
 def create_x_coord(m) -> tuple:
     '''
-    This function creates the x coordinates.
+    This function creates the x coordinates as a tuple.
     '''
     x = np.array(sp.symbols(f'x1:{m+1}'))
 
@@ -85,9 +85,9 @@ def create_x_coord(m) -> tuple:
 
 def tx_power_sum(n: int, m: int=1) -> tuple:
     '''
-    This function creates the x coordinates.
-    The integer n is the length of the Miwa coordinates.
-    The integer m is the length of the x coordinates. 
+    This function creates the power sum. The integer n is the length
+    of the Miwa coordinates. The integer m is the length of the x
+    coordinates. 
     '''
     x = np.array(sp.symbols(f'x1:{m+1}'))
     t = [sum(x ** j) / j  for j in range(1, n+1)] 

@@ -98,15 +98,15 @@
 <dt class="sig sig-object py" id="pysymmpol.partitions.conjugacy.ConjugacyClass">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysymmpol.partitions.conjugacy.</span></span><span class="sig-name descname"><span class="pre">ConjugacyClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_conjugacy_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/partitions/conjugacy.html#ConjugacyClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.conjugacy.ConjugacyClass" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents the conjugacy class of the partitions; For example,
-the partition L = (5,3,2,2,2,1,1) can represented by
+<p>Represents the conjugacy class of the partitions. For example,
+the partition L = (5, 3, 2, 2, 2, 1, 1) can represented by
 L = (1: 2, 2: 3, 3: 1, 4: 0, 5: 1) that means 2 rows of
 length 1, 3 rows of length 2, 2 rows of length 3, 0 rows of
-length 4 and 1 row of length 5. To avoid cluttering, we
-could simply write the vector k = (2,3,1,0,1) to describe the
-same partition. We will do it in the internal below,
-but we will return dictionaries to avoid confusion with
-the partitions.</p>
+length 4 and 1 row of length 5.</p>
+<p>To avoid cluttering, we could simply write the vector
+k = (2, 3, 1, 0, 1) to describe the same partition.
+We do it in an internal method below, but we will return
+dictionaries to avoid confusion with the partitions.</p>
 <p>The dictionary must be in the form {1: k1, 2: k2, …, n: kn}</p>
 <p>The vectors k=(k1,k2, …, kn) is one conjugacy class of the
 symmetric group S_n, and for this reason, we call it
@@ -155,29 +155,41 @@ vaccum state <a href="#id3"><span class="problematic" id="id4">|</span></a>0&gt;
 We first create an empty array partition = []
 and we define the range for the loop to be the length of
 the vector k: In our case [1,2,0,3], i = 0,1,2,3.</p>
-<dl class="simple">
-<dt>round 01: i = 0 k[0] = 1: </dt><dd><p>row = [1]
+<ul class="simple">
+<li><dl class="simple">
+<dt>loop 01: i = 0 k[0] = 1: </dt><dd><p>row = [1]
 partition = [] U [1] = [1]</p>
 </dd>
-<dt>round 02: i = 1 k[1] = 2</dt><dd><p>row = [2,2]
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 02: i = 1 k[1] = 2</dt><dd><p>row = [2,2]
 partition = [1] U [2,2] = [1,2,2]</p>
 </dd>
-<dt>round 03: i = 2 k[2] = 0</dt><dd><p>row = []
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 03: i = 2 k[2] = 0</dt><dd><p>row = []
 partition = [1,2,2] U [] = [1,2,2]</p>
 </dd>
-<dt>round 04: i = 3 k[3] = 4</dt><dd><p>row = [4,4,4,4]
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 04: i = 3 k[3] = 4</dt><dd><p>row = [4,4,4,4]
 partition = [1,2,2] U [4,4,4,4] = [1,2,2,4,4,4,4]</p>
 </dd>
 </dl>
+</li>
+</ul>
 <p>Then when we put it in decreasing order we find [4,4,4,4,2,2,1]</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.conjugacy.ConjugacyClass.draw_diagram">
-<span class="sig-name descname"><span class="pre">draw_diagram</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/conjugacy.html#ConjugacyClass.draw_diagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.conjugacy.ConjugacyClass.draw_diagram" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">draw_diagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/conjugacy.html#ConjugacyClass.draw_diagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.conjugacy.ConjugacyClass.draw_diagram" title="Link to this definition"></a></dt>
 <dd><p>Here we have a pictorial representation of the Young diagram
 associated to the conjugacy class in French notation. 
-Here I just rewrite the previous function for the partition states.</p>
+Here I just call the function for the partition states.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -196,13 +208,12 @@ This is the sum over the conjugacy.</p>
 <dt class="sig sig-object py" id="pysymmpol.partitions.states.State">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysymmpol.partitions.states.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>For a given level n, I want to find the
-bosonic and fermionic states associated to
-YoungDiagrams and conjugacy classes.</p>
+<p>Defines the bosonic and fermionic states for a given
+integer n.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.states.State._conjugacy_states">
 <span class="sig-name descname"><span class="pre">_conjugacy_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State._conjugacy_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State._conjugacy_states" title="Link to this definition"></a></dt>
-<dd><p>For a level n, this function gives all vector k
+<dd><p>For a level n, this method gives all vector k
 (the conjugacy class states) that belong to this subspace.
 Remember that these states are built with the operators J_{-m} 
 of the Heisenberg algebra. In other words, these are
@@ -217,7 +228,7 @@ bosonic states. This nonpublic method can make our life easier.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.states.State.conjugacy_states">
 <span class="sig-name descname"><span class="pre">conjugacy_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State.conjugacy_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State.conjugacy_states" title="Link to this definition"></a></dt>
-<dd><p>Here I return the previous method in
+<dd><p>Returns the previous method in
 the dictionary form.</p>
 </dd></dl>
 
@@ -229,7 +240,7 @@ the dictionary form.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.states.State.partition_states">
 <span class="sig-name descname"><span class="pre">partition_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/states.html#State.partition_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.states.State.partition_states" title="Link to this definition"></a></dt>
-<dd><p>For the level n, this function gives the partitions that
+<dd><p>For the level n, this method gives the partitions that
 belong to this subspace. These states are built from the
 the fermionic operators.</p>
 </dd></dl>
@@ -245,7 +256,7 @@ the fermionic operators.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Represents Young diagrams in the standard
 partition notation: It is a monotonic decreasing sequence
-L = (L1, L2, L3, …,Ll) with L1 &gt;= L2 &gt;=L3 &gt;= … &gt;= Ll</p>
+L = (L1, L2, L3, …,Ln) with L1 &gt;= L2 &gt;=L3 &gt;= … &gt;= Ln.</p>
 <p>Example: (3,2,2,1)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram._partition">
@@ -255,15 +266,13 @@ L = (L1, L2, L3, …,Ll) with L1 &gt;= L2 &gt;=L3 &gt;= … &gt;= Ll</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.boxes">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boxes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.boxes" title="Link to this definition"></a></dt>
-<dd><p>This gives the number of boxes in this
-partition.</p>
+<dd><p>This gives the number of boxes in the diagram.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.columns">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">columns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.columns" title="Link to this definition"></a></dt>
-<dd><p>This gives the number of rows in this
-partition</p>
+<dd><p>This gives the number of columns in the diagram.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -272,17 +281,59 @@ partition</p>
 <dd><p>Converts the partition notation to 
 the conjugacy class notation
 Example:
-[4,4,4,4,2,2,1] to [1,2,0,4].</p>
-<p>The algorithm works as follows:
-We first create an empty array partition = []
-and we define the range for the loop to be the length of
-the vector k: In our case [1,2,0,3], i = 0,1,2,3.</p>
+[4,4,4,2,2,1] to {1: 1, 2: 2, 3: 0, 4: 3}.</p>
+<p>The algorithm works as follows:</p>
+<p>It creates a list of zeros with length equal
+to the largest row. In our case, 4
+conjugacy = [0, 0, 0, 0].</p>
+<p>It iterates over the partition, adding 1s to the
+corresponding slot in the conjugacy vector, for example
+partition (4,4,4,2,2,1) gives
+- loop 01: i = 4</p>
+<blockquote>
+<div><p>conjugacy[3] = 1
+conjugacy = [0,0,0,1]</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>loop 02: i = 4</dt><dd><p>conjugacy[3] = 2
+conjugacy = [0,0,0,2]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 03: i = 4</dt><dd><p>conjugacy[3] = 3
+conjugacy = [0,0,0,3]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 04: i = 2</dt><dd><p>conjugacy[1] = 1
+conjugacy = [0,1,0,3]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 05: i = 2</dt><dd><p>conjugacy[1] = 2
+conjugacy = [0,2,0,3]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>loop 06: i = 1</dt><dd><p>conjugacy[0] = 1
+conjugacy = [1,2,0,3]</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>At the end we convert to a dictionary, and
+conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.contains">
 <span class="sig-name descname"><span class="pre">contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_young</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.contains"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.contains" title="Link to this definition"></a></dt>
-<dd><p>Check if the original partition contains the new one.</p>
+<dd><p>Checks if the original partition contains the new one.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -290,63 +341,69 @@ the vector k: In our case [1,2,0,3], i = 0,1,2,3.</p>
 <span class="sig-name descname"><span class="pre">count_diagonal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.count_diagonal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.count_diagonal" title="Link to this definition"></a></dt>
 <dd><p>Gives the number of boxes in the diagonal.</p>
 <p>In order to do this calculation,
-we represent the Young diagram as a 
+the method represents the Young diagram as a 
 partition[0] x len(partition) matrix filled
-with 1 and 0. After that, I sum over the diagonal.</p>
+with 1 and 0. After that, it sums over the diagonal.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.draw_diagram">
 <span class="sig-name descname"><span class="pre">draw_diagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.draw_diagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.draw_diagram" title="Link to this definition"></a></dt>
-<dd><p>Here we have a pictorial representation of the Young diagram in
+<dd><p>Pictorial representation of the Young/Ferrers diagram in
 French notation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates">
 <span class="sig-name descname"><span class="pre">frobenius_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.frobenius_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates" title="Link to this definition"></a></dt>
-<dd><p>Frobenius Coordinates for a given partition.</p>
+<dd><p>Frobenius coordinates for a given partition.</p>
+<p>The minus in the definition below is related
+to the fact that python lists start at 0 and not 1.
+Moreover, the method uses the definition where the coordinates
+are half integers.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.interlaces">
 <span class="sig-name descname"><span class="pre">interlaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_young</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.interlaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.interlaces" title="Link to this definition"></a></dt>
-<dd><p>Check if the original partition interlaces the new one.</p>
+<dd><p>Checks if the original partition interlaces the new one.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.partition">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">partition</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.partition" title="Link to this definition"></a></dt>
-<dd><p>Gives the partition notation for the
-Young diagram.</p>
+<dd><p>Gives the partition notation for the Young diagram.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.rows">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.rows" title="Link to this definition"></a></dt>
-<dd><p>This gives the number of rowns in this
-partition</p>
+<dd><p>This gives the number of rows in the diagram.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.transpose">
 <span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pysymmpol.partitions.young.YoungDiagram" title="pysymmpol.partitions.young.YoungDiagram"><span class="pre">YoungDiagram</span></a></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.transpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.transpose" title="Link to this definition"></a></dt>
-<dd><p>Here we find the transposed (or conjugate) Young diagram. 
-For example, given the partition [3,2],
-its transposed is [2,2,1].</p>
-<p>First of all, we build a list of zeros
-and length with is equal to the highest column,
-that is the partition[0]. In our example: [0,0,0]</p>
-<p>We now fill in the list defined above.
-For the list [0,0,0]. The code works as follows:
-round 01: (i, row_length) = (0,3) =&gt; j =0,1,2.</p>
-<blockquote>
-<div><p>j = 0 transporsed_diagram[0] = 1
+<dd><p>Gives the transposed (or conjugate) Young diagram. 
+For example, the conjugate of [3,2] is [2,2,1].</p>
+<p>The algorithm follows the logic:</p>
+<p>The method builds a list of zeros and length equal
+to the highest column: that is the partition[0].
+In our example: partition[0]=3, then [0,0,0]</p>
+<p>We now fill in the list defined above, we loop over
+the length of the original partition, in our case i =1, 2</p>
+<p>transposed_diagram = [0,0,0]</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>loop 01: (i, row_length) = (0,3) =&gt; j =0,1,2. </dt><dd><p>j = 0 transporsed_diagram[0] = 1
 j = 1 transposed_diagram[1] = 1
 j = 2 transposed diagram[2] = 1</p>
-</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
 <p>and now we have transposed_diagram = [1,1,1]
-round 02 (i, row_length) = (1, 2) =&gt; j =0,1</p>
+- loop 02 (i, row_length) = (1, 2) =&gt; j =0,1</p>
 <blockquote>
 <div><p>j = 0 transposed_diagram[0] = 2
 j = 1 transposed_diagram[0] = 2</p>
