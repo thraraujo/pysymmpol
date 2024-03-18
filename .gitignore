@@ -18,3 +18,4 @@ ipython_config.py
 *.log
 *.xml
 *.toc
+*.pdf
