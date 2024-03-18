@@ -1,10 +1,11 @@
+import os 
 import sys
-sys.path.append('/home/thiago/Documents/projects/work/pySymmetricPolynomials')
+sys.path.insert(0, os.path.abspath('..'))
 
 import unittest
 import sympy as sp
 import pysymmpol as sy
-import pysymmpol.utils as ut
+import pysymmpol.utils.tools as ut
 
 class TestHallLittlewood(unittest.TestCase):
 
@@ -20,8 +21,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -38,8 +39,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -56,8 +57,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -74,8 +75,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -92,8 +93,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -110,8 +111,8 @@ class TestHallLittlewood(unittest.TestCase):
 
         mp = sy.MonomialPolynomial(yg).explicit(x) 
         sc = sy.SchurPolynomial(yg).explicit(t)
-        hl0 = sy.HallLittlewoodPolynomial(yg, 0).explicit(x)
-        hl1 = sy.HallLittlewoodPolynomial(yg, 1).explicit(x)
+        hl0 = sy.HallLittlewoodPolynomial(yg).explicit(x, 0)
+        hl1 = sy.HallLittlewoodPolynomial(yg).explicit(x, 1)
 
         self.assertEqual((hl0 - sc).simplify(), 0)
         self.assertEqual((hl1 - mp).simplify(), 0)
@@ -125,7 +126,7 @@ class TestHallLittlewood(unittest.TestCase):
 
         x = ut.create_x_coord(2)
 
-        hl = sy.HallLittlewoodPolynomial(yg, Q).explicit(x)
+        hl = sy.HallLittlewoodPolynomial(yg).explicit(x, Q)
 
         self.assertEqual((hl -  ( x[0]**4 * x[1]**2 + x[0]**2 * x[1]**4 + (1 - Q) * x[0]**3 * x[1]**3 )).simplify(), 0)
 

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pysymmpol"
 version = "0.1.0"
-description = "A python package for basic manipulation of symmetric polynomials and Young Diagrams."
+description = "A python package for manipulation of symmetric polynomials."
 authors = ["Thiago Araujo"]
 license = "GPL-3.0"
 readme = "README.md"
@@ -11,6 +11,9 @@ python = "^3.12"
 sympy = "^1.12"
 numpy = "^1.26.4"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
 
 [build-system]
 requires = ["poetry-core"]

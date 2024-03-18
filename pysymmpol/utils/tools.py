@@ -1,7 +1,7 @@
 import sympy as sp
 import numpy as np
 
-from .inner import _power_sum
+from .inner import _accel_asc, _power_sum
 from ..partitions.young import YoungDiagram
 from ..partitions.conjugacy import ConjugacyClass
 
