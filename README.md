@@ -1,8 +1,10 @@
 # pySymmPol: Symmetric Polynomials
 
+![Static Badge](https://img.shields.io/badge/3.12-green?style=plastic&logo=python&logoColor=yellow&label=python)
+![Static Badge](https://img.shields.io/badge/Lab-blue?style=plastic&logo=jupyter&logoColor=yellow&label=Jupyter)
+![Static Badge](https://img.shields.io/badge/1.26-orange?style=plastic&logo=numpy&logoColor=green&label=Numpy)
+![Static Badge](https://img.shields.io/badge/1.12-blue?style=plastic&logo=sympy&logoColor=green&label=Sympy)
 ![Static Badge](https://img.shields.io/badge/os-Linux?style=plastic&logo=Linux&logoColor=white&label=GNU%2FLinux)
-[![jupyter](https://img.shields.io/badge/Jupyter-Lab-F37626.svg?style=flat&logo=Jupyter)](https://jupyterlab.readthedocs.io/en/stable)
-![Static Badge](https://img.shields.io/badge/Jupyter-Lab?style=plastic&logo=jupyter&label=Jupyter%20Lab&color=blue)
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This is a python package for manipulation of some symmetric 
