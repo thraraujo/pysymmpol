@@ -1,7 +1,7 @@
 # Citation & Contributing
 
-If you considered this package useful in your research, please,
-cite is as 
+If you found this package useful in your research, please consider citing our companion 
+paper, available at arXiv [LINK].
 ```
 @article{Araujo:2024XXX,
     author = "Araujo, Thiago",
@@ -12,7 +12,6 @@ cite is as
     year = "2024"
 }
 ```
-There is a companion paper at arXiv, you can find it here [LINK].
 
 Feeling like contributing? Fork the project and open a pull request with your modifications. 
-Found a bug? Just open a Github Issue.
+Found a bug? Just open a GitHub issue.
