@@ -1,4 +1,4 @@
-pysymmpol
+PySymmPol
 =========
 
 .. toctree::

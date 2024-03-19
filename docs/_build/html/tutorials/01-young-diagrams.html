@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class: YoungDiagram &mdash; pySymmPol 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Class: ConjugacyClass" href="02-conjugacy-class.html" />
+    <link rel="prev" title="tutorials" href="tutorials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pySymmPol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">PySymmPol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Class: YoungDiagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Diagram">Diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Getters">Getters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Count-diagonal">Count diagonal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Frobenius-Coordinates">Frobenius Coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Transposed-Young-Diagram">Transposed Young Diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Conjugacy-Partition">Conjugacy Partition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Contains-and-Interlaces">Contains and Interlaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-conjugacy-class.html">Class: ConjugacyClass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-states.html">Class: State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-complete-homogeneous.html">Class: HomogeneousPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-elementary.html">Class: ElementaryPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-schur.html">Class: SchurPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-monomial-symmetric.html">Class: MonomialPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08-hall-littlewood.html">Class: HallLittlewoodPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="characters.html">Characters (utils)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/thraraujo/pysymmpol">Github Repository</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pySymmPol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorials.html">tutorials</a></li>
+      <li class="breadcrumb-item active">Class: YoungDiagram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/01-young-diagrams.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">pysymmpol</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">import</span> <span class="nn">pysymmpol.utils</span> <span class="k">as</span> <span class="nn">ut</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+</pre></div>
+</div>
+</div>
+<section id="Class:-YoungDiagram">
+<h1>Class: YoungDiagram<a class="headerlink" href="#Class:-YoungDiagram" title="Link to this heading"></a></h1>
+<p>There are two modules describing the creation and manipulation of young diagrams, this and the next one. We basically have two notations for these objects, and we treat them differently.</p>
+<ol class="arabic simple">
+<li><p>The first is the usual definition in a partition form, with the usual notation <span class="math notranslate nohighlight">\(\lambda = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span> with <span class="math notranslate nohighlight">\(\lambda_{i+1} \leq \lambda_i\)</span> for any <span class="math notranslate nohighlight">\(i \in [1, N-1]\)</span>.</p></li>
+<li><p>We also define Young diagrams in the conjugacy class notation, where <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots)\)</span>.</p></li>
+</ol>
+<p>In the subsections below, we describe how to initialize and work with these classes.</p>
+<p>We initialize the Young diagrams with the class <strong>YoungDiagram(partition: tuple)</strong>. The partition must be tuple in the standard monotonic decreasing form, otherwise it will raise a ‘NonStandardError’. Of course, the user can remove this error with some simple list methods to reorder the list, but I do not recommend this approach because this error might be useful when we use this to study symmetric polynomials. Moreover, we should pass a tuple as argument since it is imutable and we do not want
+the user doing silly things, such as bringing the partition to a nonstandard form after the initialization.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us create some Young diagrams to use as examples in the text.</span>
+<span class="n">lambda1</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">YoungDiagram</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">lambda2</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">YoungDiagram</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">lambda3</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">YoungDiagram</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+YoungDiagram(_partition=(10, 9, 8, 7, 5, 4, 2, 1))
+</pre></div></div>
+</div>
+<section id="Properties">
+<h2>Properties<a class="headerlink" href="#Properties" title="Link to this heading"></a></h2>
+<section id="Diagram">
+<h3>Diagram<a class="headerlink" href="#Diagram" title="Link to this heading"></a></h3>
+<p>The graphical representation can be obtained from the getter .diagram</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># It accepts  4 arguments: 0 (default), 1, 2, 3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+🎲
+🎲 🎲
+🎲 🎲 🎲 🎲
+🎲 🎲 🎲 🎲 🎲
+🎲 🎲 🎲 🎲 🎲 🎲 🎲
+🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲
+🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲
+🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲 🎲
+</pre></div></div>
+</div>
+</section>
+<section id="Getters">
+<h3>Getters<a class="headerlink" href="#Getters" title="Link to this heading"></a></h3>
+<p>The Young diagrams the following getters: 1) partition 2) rows 3) columns 4) boxes</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">partition</span> <span class="c1"># returns the partition as a list or a tuple.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(10, 9, 8, 7, 5, 4, 2, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda2</span><span class="o">.</span><span class="n">rows</span> <span class="c1"># returns the number of rows</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda3</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># returns the number of columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">boxes</span> <span class="c1"># returns the number of boxes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+46
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Methods">
+<h2>Methods<a class="headerlink" href="#Methods" title="Link to this heading"></a></h2>
+<section id="Count-diagonal">
+<h3>Count diagonal<a class="headerlink" href="#Count-diagonal" title="Link to this heading"></a></h3>
+<p>This method counts the number of boxes in the diagonal of the Young diagram</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">count_diagonal</span><span class="p">()</span> <span class="c1"># Retturns the number of boxes in the diagonal</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5
+</pre></div></div>
+</div>
+</section>
+<section id="Frobenius-Coordinates">
+<h3>Frobenius Coordinates<a class="headerlink" href="#Frobenius-Coordinates" title="Link to this heading"></a></h3>
+<p>From these methods and properties, we have also find the Frobenius coordinates for a given partition.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">frobenius_coordinates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[19/2, -15/2], [15/2, -11/2], [11/2, -7/2], [7/2, -5/2], [1/2, -1/2]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda2</span><span class="o">.</span><span class="n">frobenius_coordinates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[9/2, -7/2], [7/2, -5/2], [3/2, -3/2]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda3</span><span class="o">.</span><span class="n">frobenius_coordinates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[5/2, -5/2], [3/2, -3/2]]
+</pre></div></div>
+</div>
+</section>
+<section id="Transposed-Young-Diagram">
+<h3>Transposed Young Diagram<a class="headerlink" href="#Transposed-Young-Diagram" title="Link to this heading"></a></h3>
+<p>The method transpose, as the name suggests,returns the transposed (or conjugate) Young diagram as a new object.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1_T</span> <span class="o">=</span> <span class="n">lambda1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1_T</span><span class="o">.</span><span class="n">partition</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(8, 7, 6, 6, 5, 4, 4, 3, 2, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And all the getters are also available for the conjugate diagram</span>
+<span class="n">lambda1_T</span><span class="o">.</span><span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+</pre></div></div>
+</div>
+</section>
+<section id="Conjugacy-Partition">
+<h3>Conjugacy Partition<a class="headerlink" href="#Conjugacy-Partition" title="Link to this heading"></a></h3>
+<p>It is also useful to represent the partitions in terms of its cycles conjugacy class. For example, we know that: <span class="math notranslate nohighlight">\(\lambda_1 = (4, 3, 2) = (2^1 3^1 2^1)\)</span> and <span class="math notranslate nohighlight">\(\mu_1 = (5, 5, 4, 3, 3, 3, 2, 2, 1, 1) = (1^2 2^2 3^3 4^1 5^2)\)</span>.</p>
+<p>We can get these representations from the method .conjugacy_partition. For a generic partition <span class="math notranslate nohighlight">\(\lambda = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span> we have <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots)\)</span>. In order to avoid confusion with the partition notation, this method returns a dictinary <span class="math notranslate nohighlight">\((1: k_1, 2: k_2, 3: k_3, \dots)\)</span>. In our examples, we have <span class="math notranslate nohighlight">\(\lambda_1 = \{1: 0, 2: 1, 3: 1, 4: 1\}\)</span> and <span class="math notranslate nohighlight">\(\mu_1 = \{1: 2, 2: 2, 3: 3, 4: 1, 5: 2\}\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">conjugacy_partition</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{1: 1, 2: 1, 3: 0, 4: 1, 5: 1, 6: 0, 7: 1, 8: 1, 9: 1, 10: 1}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda2</span><span class="o">.</span><span class="n">conjugacy_partition</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{1: 0, 2: 0, 3: 1, 4: 1, 5: 2}
+</pre></div></div>
+</div>
+</section>
+<section id="Contains-and-Interlaces">
+<h3>Contains and Interlaces<a class="headerlink" href="#Contains-and-Interlaces" title="Link to this heading"></a></h3>
+<p>Finally, given two Young diagrams, say <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span>, the contains and interlaces methods, lambda.contains(mu) and lambda.interlaces(mu), checks if the partition lambda contains and interlaced the partition mu, respectivelly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+■
+■ ■
+■ ■ ■ ■
+■ ■ ■ ■ ■
+■ ■ ■ ■ ■ ■ ■
+■ ■ ■ ■ ■ ■ ■ ■
+■ ■ ■ ■ ■ ■ ■ ■ ■
+■ ■ ■ ■ ■ ■ ■ ■ ■ ■
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda2</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+• • •
+• • • •
+• • • • •
+• • • • •
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda1</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">lambda2</span><span class="p">)</span> <span class="c1"># partition lambda1 contains lambda2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda2</span><span class="o">.</span><span class="n">interlaces</span><span class="p">(</span><span class="n">lambda1</span><span class="p">)</span> <span class="c1"># partition lambda2 interlaces lambda1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials.html" class="btn btn-neutral float-left" title="tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02-conjugacy-class.html" class="btn btn-neutral float-right" title="Class: ConjugacyClass" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Thiago Araujo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

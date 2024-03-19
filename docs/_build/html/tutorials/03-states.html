@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class: State &mdash; pySymmPol 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Class: HomogeneousPolynomial" href="04-complete-homogeneous.html" />
+    <link rel="prev" title="Class: ConjugacyClass" href="02-conjugacy-class.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pySymmPol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">PySymmPol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-young-diagrams.html">Class: YoungDiagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-conjugacy-class.html">Class: ConjugacyClass</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Class: State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Conjugacy-States">Conjugacy States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Partition-State">Partition State</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-complete-homogeneous.html">Class: HomogeneousPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-elementary.html">Class: ElementaryPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-schur.html">Class: SchurPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-monomial-symmetric.html">Class: MonomialPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08-hall-littlewood.html">Class: HallLittlewoodPolynomial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="characters.html">Characters (utils)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/thraraujo/pysymmpol">Github Repository</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pySymmPol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorials.html">tutorials</a></li>
+      <li class="breadcrumb-item active">Class: State</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/03-states.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">pysymmpol</span> <span class="k">as</span> <span class="nn">sy</span>
+<span class="kn">import</span> <span class="nn">pysymmpol.utils</span> <span class="k">as</span> <span class="nn">ut</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+</pre></div>
+</div>
+</div>
+<section id="Class:-State">
+<h1>Class: State<a class="headerlink" href="#Class:-State" title="Link to this heading"></a></h1>
+<p>In two dimensions, there is a isomorphism between the bosonic and fermionic Fock spaces known as the Fermion-Boson correspondence. The bosonic states are represented in terms of conjugacy classes <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots)\)</span>, and the fermionic states <span class="math notranslate nohighlight">\(\lambda = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span> are represented in terms of partition states that we have discussed above. These states are not equivalent, but since the Fock space is decomposed in terms of the number of
+boxes, that we call <strong>level</strong>, therefore, we have an expansion of the form</p>
+<p>$ <span class="math">\tag{1}</span> |1^{k_1} 2^{k_2}:nbsphinx-math:<cite>cdots</cite><span class="math">\rangle `= :nbsphinx-math:</span>sum`<em>{:nbsphinx-math:`lambda`} C</em>{<span class="math">\lambda</span>} |:nbsphinx-math:<cite>lambda</cite>_1, <span class="math">\lambda</span>_2, <span class="math">\dots</span>, <span class="math">\lambda</span>_N:nbsphinx-math:<cite>rangle</cite><span class="math">\qquad `:nbsphinx-math:</span>left`(n = <span class="math">\sum</span>_i:nbsphinx-math:<cite>lambda</cite>_i = <span class="math">\sum</span>_j j k_j:nbsphinx-math:<cite>right</cite>) $</p>
+<p>and the sum is over all partitions with <span class="math notranslate nohighlight">\(n\)</span> boxes, and the coefficients above are written in terms of Schur polynomials.</p>
+<p>Therefore, this module consider a given level <span class="math notranslate nohighlight">\(n\)</span>, number of boxes, and build all possible bosonic and fermionic states. From the mathematical viewpoint, we determine the partitions of the integers <span class="math notranslate nohighlight">\(n\)</span> and write these partitions in both forms <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots) = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span>.</p>
+<p><em>As before, we represent conjugacy classes as dictionaries and partitions as tuples.</em></p>
+<p>Before we start, it is important to undertand that the empty state at level zero (no boxes) is the quantum vacuum, and is represented by the absence of bosonic or fermionic operators. It is represented as an empty tuple.</p>
+<section id="Conjugacy-States">
+<h2>Conjugacy States<a class="headerlink" href="#Conjugacy-States" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given the level n, we can build the class states:</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">State</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state</span><span class="o">.</span><span class="n">conjugacy_states</span><span class="p">()</span> <span class="c1"># and with this method, we see the possible states in this level. 3 states. This number is equal the partition of the n, in our case, n=3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+({1: 3, 2: 0, 3: 0}, {1: 1, 2: 1, 3: 0}, {1: 0, 2: 0, 3: 1})
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state</span><span class="o">.</span><span class="n">_conjugacy_states</span><span class="p">()</span> <span class="c1"># There is also a nonpublic method that returns these states as tuples.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+((3, 0, 0), (1, 1, 0), (0, 0, 1))
+</pre></div></div>
+</div>
+<p>Now one can see that we can build the corresponding Young diagrams using the previous module.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_level3</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">State</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">state_level3</span><span class="o">.</span><span class="n">_conjugacy_states</span><span class="p">())</span> <span class="c1"># There are 3 states, of course.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use the ConjugacyClass to write the diagrams</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">state_level3</span><span class="o">.</span><span class="n">conjugacy_states</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bosonic state </span><span class="si">{</span><span class="n">state_level3</span><span class="o">.</span><span class="n">conjugacy_states</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: |</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+    <span class="n">sy</span><span class="o">.</span><span class="n">ConjugacyClass</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--------------------------------------------------------------------------------
+Bosonic state 1: |{1: 3, 2: 0, 3: 0}&gt;
+■
+■
+■
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Bosonic state 2: |{1: 1, 2: 1, 3: 0}&gt;
+■
+■ ■
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Bosonic state 3: |{1: 0, 2: 0, 3: 1}&gt;
+■ ■ ■
+--------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+</section>
+<section id="Partition-State">
+<h2>Partition State<a class="headerlink" href="#Partition-State" title="Link to this heading"></a></h2>
+<p>Using the same examples, we can build the ‘’fermionic’’ states.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">state_level3</span><span class="o">.</span><span class="n">partition_states</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">state_level3</span><span class="o">.</span><span class="n">partition_states</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fermionic representation </span><span class="si">{</span><span class="n">state_level3</span><span class="o">.</span><span class="n">partition_states</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: |</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+    <span class="n">sy</span><span class="o">.</span><span class="n">YoungDiagram</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">draw_diagram</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--------------------------------------------------------------------------------
+Fermionic representation 1: |(1, 1, 1)&gt;
+■
+■
+■
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Fermionic representation 2: |(2, 1, 0)&gt;
+■
+■ ■
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Fermionic representation 3: |(3, 0, 0)&gt;
+■ ■ ■
+--------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02-conjugacy-class.html" class="btn btn-neutral float-left" title="Class: ConjugacyClass" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04-complete-homogeneous.html" class="btn btn-neutral float-right" title="Class: HomogeneousPolynomial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Thiago Araujo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -84,7 +84,7 @@ class YoungDiagram:
         Pictorial representation of the Young/Ferrers diagram in
         French notation. 
         '''
-        emo = ['■', '•', '🎲', '🎯']
+        emo = ['■', '•', '🎲', '🎯', '#']
         for i in range(self.rows):
             if self.partition[-i-1] > 0:
                 print(f"{emo[n]} " * self.partition[-i-1])

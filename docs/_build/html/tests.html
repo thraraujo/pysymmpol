@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tests &mdash; pySymmPol 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="prev" title="Tutorials" href="tutorials/tutorials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pySymmPol
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">PySymmPol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.hall_littlewood_test">tests.hall_littlewood_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_21_3coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_21_3coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_22_3coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_22_3coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_2coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_2_2coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_3coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_2_3coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_31_2coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_31_2coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_3_2coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_3_2coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_42_2coord"><code class="docutils literal notranslate"><span class="pre">TestHallLittlewood.test_hl_42_2coord()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.homogeneous_elementary_test">tests.homogeneous_elementary_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_coordinates"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary.test_elementary_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_ep5"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary.test_elementary_ep5()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_coordinates"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary.test_homogeneous_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_hp6"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary.test_homogeneous_hp6()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_initialization"><code class="docutils literal notranslate"><span class="pre">TestHomogeneousElementary.test_initialization()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.monomial_test">tests.monomial_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.monomial_test.TestMonomial"><code class="docutils literal notranslate"><span class="pre">TestMonomial</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestMonomial._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestMonomial._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial.test_partition21_1coord"><code class="docutils literal notranslate"><span class="pre">TestMonomial.test_partition21_1coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial.test_partition21_2coord"><code class="docutils literal notranslate"><span class="pre">TestMonomial.test_partition21_2coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial.test_partition21_3coord"><code class="docutils literal notranslate"><span class="pre">TestMonomial.test_partition21_3coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial.test_partition3311_3coord"><code class="docutils literal notranslate"><span class="pre">TestMonomial.test_partition3311_3coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.monomial_test.TestMonomial.test_partition3311_4coord"><code class="docutils literal notranslate"><span class="pre">TestMonomial.test_partition3311_4coord()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.schur_test">tests.schur_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_2111"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_2111()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_3"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_3()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_421"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_421()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_43"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_43()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_753"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_753()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.schur_test.TestSchurPolynomial.test_schur_753321"><code class="docutils literal notranslate"><span class="pre">TestSchurPolynomial.test_schur_753321()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.states_test">tests.states_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.states_test.TestYoung"><code class="docutils literal notranslate"><span class="pre">TestYoung</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.states_test.TestYoung._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestYoung._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.states_test.TestYoung._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestYoung._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.states_test.TestYoung.test_conjugacy_partition_states"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_conjugacy_partition_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.states_test.TestYoung.test_initialization_young_list"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_initialization_young_list()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests.young_test">tests.young_test module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tests.young_test.TestYoung"><code class="docutils literal notranslate"><span class="pre">TestYoung</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung._classSetupFailed"><code class="docutils literal notranslate"><span class="pre">TestYoung._classSetupFailed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung._class_cleanups"><code class="docutils literal notranslate"><span class="pre">TestYoung._class_cleanups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_equavalence_objects"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_equavalence_objects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_initialization_young_list"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_initialization_young_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_methods_conjugacy"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_methods_conjugacy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_methods_young"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_methods_young()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_properties_conjugacy"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_properties_conjugacy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.young_test.TestYoung.test_properties_young"><code class="docutils literal notranslate"><span class="pre">TestYoung.test_properties_young()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tests">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/thraraujo/pysymmpol">Github Repository</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pySymmPol</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tests">
+<h1>Tests<a class="headerlink" href="#tests" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-tests.hall_littlewood_test">
+<span id="tests-hall-littlewood-test-module"></span><h2>tests.hall_littlewood_test module<a class="headerlink" href="#module-tests.hall_littlewood_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.hall_littlewood_test.</span></span><span class="sig-name descname"><span class="pre">TestHallLittlewood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_21_3coord">
+<span class="sig-name descname"><span class="pre">test_hl_21_3coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_21_3coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_21_3coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_22_3coord">
+<span class="sig-name descname"><span class="pre">test_hl_22_3coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_22_3coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_22_3coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_2coord">
+<span class="sig-name descname"><span class="pre">test_hl_2_2coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_2_2coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_2coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_3coord">
+<span class="sig-name descname"><span class="pre">test_hl_2_3coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_2_3coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_2_3coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_31_2coord">
+<span class="sig-name descname"><span class="pre">test_hl_31_2coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_31_2coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_31_2coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_3_2coord">
+<span class="sig-name descname"><span class="pre">test_hl_3_2coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_3_2coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_3_2coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.hall_littlewood_test.TestHallLittlewood.test_hl_42_2coord">
+<span class="sig-name descname"><span class="pre">test_hl_42_2coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/hall_littlewood_test.html#TestHallLittlewood.test_hl_42_2coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.hall_littlewood_test.TestHallLittlewood.test_hl_42_2coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.homogeneous_elementary_test">
+<span id="tests-homogeneous-elementary-test-module"></span><h2>tests.homogeneous_elementary_test module<a class="headerlink" href="#module-tests.homogeneous_elementary_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.homogeneous_elementary_test.</span></span><span class="sig-name descname"><span class="pre">TestHomogeneousElementary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_coordinates">
+<span class="sig-name descname"><span class="pre">test_elementary_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary.test_elementary_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_coordinates" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_ep5">
+<span class="sig-name descname"><span class="pre">test_elementary_ep5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary.test_elementary_ep5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_elementary_ep5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_coordinates">
+<span class="sig-name descname"><span class="pre">test_homogeneous_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary.test_homogeneous_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_coordinates" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_hp6">
+<span class="sig-name descname"><span class="pre">test_homogeneous_hp6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary.test_homogeneous_hp6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_homogeneous_hp6" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.homogeneous_elementary_test.TestHomogeneousElementary.test_initialization">
+<span class="sig-name descname"><span class="pre">test_initialization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/homogeneous_elementary_test.html#TestHomogeneousElementary.test_initialization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.homogeneous_elementary_test.TestHomogeneousElementary.test_initialization" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.monomial_test">
+<span id="tests-monomial-test-module"></span><h2>tests.monomial_test module<a class="headerlink" href="#module-tests.monomial_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.monomial_test.</span></span><span class="sig-name descname"><span class="pre">TestMonomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.monomial_test.TestMonomial._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.monomial_test.TestMonomial._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial.test_partition21_1coord">
+<span class="sig-name descname"><span class="pre">test_partition21_1coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial.test_partition21_1coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial.test_partition21_1coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial.test_partition21_2coord">
+<span class="sig-name descname"><span class="pre">test_partition21_2coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial.test_partition21_2coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial.test_partition21_2coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial.test_partition21_3coord">
+<span class="sig-name descname"><span class="pre">test_partition21_3coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial.test_partition21_3coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial.test_partition21_3coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial.test_partition3311_3coord">
+<span class="sig-name descname"><span class="pre">test_partition3311_3coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial.test_partition3311_3coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial.test_partition3311_3coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.monomial_test.TestMonomial.test_partition3311_4coord">
+<span class="sig-name descname"><span class="pre">test_partition3311_4coord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/monomial_test.html#TestMonomial.test_partition3311_4coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.monomial_test.TestMonomial.test_partition3311_4coord" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.schur_test">
+<span id="tests-schur-test-module"></span><h2>tests.schur_test module<a class="headerlink" href="#module-tests.schur_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.schur_test.</span></span><span class="sig-name descname"><span class="pre">TestSchurPolynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>We have two different implementations of the Schur polynomials.
+The first, faster, uses the determinant of the homogeneous polynomials.
+The second is defined via de characters of the symmetric group.
+In this test we calculate the equality of these polynomials for some partitions,
+including two edge cases: partitions = (7, 5, 3) and (7, 5, 3, 1)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_2111">
+<span class="sig-name descname"><span class="pre">test_schur_2111</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_2111"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_2111" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_3">
+<span class="sig-name descname"><span class="pre">test_schur_3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_421">
+<span class="sig-name descname"><span class="pre">test_schur_421</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_421"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_421" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_43">
+<span class="sig-name descname"><span class="pre">test_schur_43</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_43"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_43" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_753">
+<span class="sig-name descname"><span class="pre">test_schur_753</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_753"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_753" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.schur_test.TestSchurPolynomial.test_schur_753321">
+<span class="sig-name descname"><span class="pre">test_schur_753321</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/schur_test.html#TestSchurPolynomial.test_schur_753321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.schur_test.TestSchurPolynomial.test_schur_753321" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.states_test">
+<span id="tests-states-test-module"></span><h2>tests.states_test module<a class="headerlink" href="#module-tests.states_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.states_test.TestYoung">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.states_test.</span></span><span class="sig-name descname"><span class="pre">TestYoung</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/states_test.html#TestYoung"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.states_test.TestYoung" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.states_test.TestYoung._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.states_test.TestYoung._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.states_test.TestYoung._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.states_test.TestYoung._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.states_test.TestYoung.test_conjugacy_partition_states">
+<span class="sig-name descname"><span class="pre">test_conjugacy_partition_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/states_test.html#TestYoung.test_conjugacy_partition_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.states_test.TestYoung.test_conjugacy_partition_states" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.states_test.TestYoung.test_initialization_young_list">
+<span class="sig-name descname"><span class="pre">test_initialization_young_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/states_test.html#TestYoung.test_initialization_young_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.states_test.TestYoung.test_initialization_young_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.young_test">
+<span id="tests-young-test-module"></span><h2>tests.young_test module<a class="headerlink" href="#module-tests.young_test" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.young_test.</span></span><span class="sig-name descname"><span class="pre">TestYoung</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung._classSetupFailed">
+<span class="sig-name descname"><span class="pre">_classSetupFailed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tests.young_test.TestYoung._classSetupFailed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung._class_cleanups">
+<span class="sig-name descname"><span class="pre">_class_cleanups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#tests.young_test.TestYoung._class_cleanups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_equavalence_objects">
+<span class="sig-name descname"><span class="pre">test_equavalence_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_equavalence_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_equavalence_objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_initialization_young_list">
+<span class="sig-name descname"><span class="pre">test_initialization_young_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_initialization_young_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_initialization_young_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_methods_conjugacy">
+<span class="sig-name descname"><span class="pre">test_methods_conjugacy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_methods_conjugacy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_methods_conjugacy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_methods_young">
+<span class="sig-name descname"><span class="pre">test_methods_young</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_methods_young"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_methods_young" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_properties_conjugacy">
+<span class="sig-name descname"><span class="pre">test_properties_conjugacy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_properties_conjugacy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_properties_conjugacy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.young_test.TestYoung.test_properties_young">
+<span class="sig-name descname"><span class="pre">test_properties_young</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/tests/young_test.html#TestYoung.test_properties_young"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.young_test.TestYoung.test_properties_young" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tests" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials/tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CHANGELOG.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Thiago Araujo.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
