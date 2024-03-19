@@ -19,3 +19,4 @@ ipython_config.py
 *.xml
 *.toc
 *.pdf
+dist/
