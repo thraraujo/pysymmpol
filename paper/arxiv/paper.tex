@@ -1,8 +1,64 @@
 \documentclass[a4paper,10pt]{amsart}
 
-\usepackage[backend=biber, style=alphabetic,
-sorting=ynt]{biblatex}
+%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \bibliography{../paper.bib}
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\setlength\parindent{0pt}
+
+%%%%%%%%%%
+% METADATA
+%%%%%%%%%%
+\hypersetup{ 
+	pdftitle={pySymmPol},
+	pdfsubject={Computational Physics,
+      Mathematical-Physics, High Energy Physics}, 
+	pdfauthor={Thiago Araujo},
+	pdfkeywords={python},
+	colorlinks=true, 
+    linkcolor=red, 
+    citecolor=red, 
+    urlcolor=violet,
+    linktocpage=true
+  }
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{myPurple},
+  keywordstyle=\color{myRed},
+  commentstyle=\color{myPurple},
+  stringstyle=\color{myPurple!80},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3, 
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt
+}
+
+%%%%%%%%
+% COLORS
+%%%%%%%%
+\definecolor{myPurple}{RGB}{90, 74, 120}
+\definecolor{myBlue}{RGB}{15, 75, 110}
+\definecolor{myRed}{RGB}{191,97,106}
 
 \begin{document}
 
@@ -19,7 +75,8 @@ Universidade de S\~ao Paulo\\
 Rua do Matão Travessa 1371, 05508-090\\
 São Paulo, SP. Brazil}
 
-\email{\texttt{tharaujo@if.usp.br}{tharaujo@if.usp.br}}
+\email{\href{tr.araujo@unesp.br}{tr.araujo@unesp.br}}
+%\email{\href{tharaujo@if.usp.br}{tharaujo@if.usp.br}}
 
 \keywords{python, symmetric polynomials}
 \date{\today}
@@ -32,8 +89,7 @@ São Paulo, SP. Brazil}
 
 \section{Summary}
 
-\textbf{PySymmPol}
-is a Python package designed for efficient manipulation of
+\textbf{PySymmPol} is a Python package designed for efficient manipulation of
 symmetric polynomials. It provides functionalities for working with
 various types of symmetric polynomials, including elementary,
 homogeneous, monomial symmetric, (skew-) Schur, and Hall-Littlewood
@@ -48,7 +104,17 @@ correspondence. \textbf{PySymmPol} aims to facilitate computational tasks
 related to symmetric polynomials and their applications in diverse
 fields.
 
-Link to the github repository: \texttt{github.com/thraraujo/pysymmpol}.
+Instructions for instalation and tutorials for the different modules in the documentation page. 
+\begin{itemize}
+    \item Github repository: \href{https://github.com/thraraujo/pysymmpol}{github.com/thraraujo/pysymmpol}
+    \item Documentation: \href{https://thraraujo.github.io/pysymmpol}{thraraujo.github.io/pysymmpol}
+    \item PyPI: \href{https://pypi.org/project/pysymmpol}{pypi.org/project/pysymmpol}
+\end{itemize}
+Instalation with pip 
+\begin{lstlisting}[language=Python]
+  $ pip install pysymmpol
+\end{lstlisting}
+
 
 \section{Statement of need}
 
@@ -71,15 +137,11 @@ PySymmPol provide researchers and practitioners with efficient means
 to explore and manipulate symmetric polynomials, facilitating
 advancements in both theoretical studies and practical applications.
  
-
-\section{Main features and functionalities}
-
-\textbf{PySymmPol} has several modules in two main packages. 
+\textbf{PySymmPol} has several modules dealing with
 \begin{enumerate}
 \item Partitions
 \item Polynomials
 \end{enumerate}
-Let us briefly explain them. 
 
 \subsection{Integer Partitions and Young Diagrams}
 
@@ -117,7 +179,6 @@ also available in the package, and the \textrm{ACCELASC}
 algorithm~\cite{Kelleher:2009} greatly improved the
 speed of these methods.
 
-
 \subsection{Symmetric Polynomials}
 
 One of the main goals of the package is to provide the definitions of the 
@@ -136,16 +197,173 @@ $\lambda$ and $\mu$ are integer partitions, via \emph{Jacobi-Trudi identity}
 $$ s_{\lambda/\mu} = \det_{p,q}(h_{\lambda_q - \mu_p - q + p}(\mathbf{t})) \; . $$
 
 The \emph{Hall-Littlewood polynomials} are defined via
-$$P_{\lambda}(x_1, \dots, x_N; Q) =
-    \prod_{i\geq 0} \prod_{j=1}^{p(i)} \frac{1-Q}{1-Q^j}
-    \sum_{\omega \in \mathfrak{S}_N} \omega\left( x_1^{\lambda_1}\cdots x_n^{\lambda_n}
-    \prod_{i<j} \frac{x_i - Q x_j}{x_i - x_j} \right)$$
-where $p(i)$ is the number of rows of size $i$ in $\lambda$, and $\mathfrak{S}_N$ is the 
-symmetric group. The limit $Q=0$ in the Hall-Littlewood polynomials gives the Schur 
-polynomials, while $Q=1$ returns the \emph{Monomial Symmetric Polynomials}
-$m_\lambda(x_1, \dots, x_N)$.
-        
-For more information on these topics, see [REFERENCES].
+$$
+P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
+\frac{1-Q}{1-Q^j} \sum_{\omega \in \mathfrak{S}_N} \omega\left(
+x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{i<j} \frac{x_i - Q
+  x_j}{x_i - x_j} \right)
+$$
+where $p(i)$ is the number of rows of size $i$ in $\lambda$, and
+$\mathfrak{S}_N$ is the symmetric group. The limit $Q=0$ in the
+Hall-Littlewood polynomials gives the Schur polynomials, while $Q=1$
+returns the \emph{Monomial Symmetric Polynomials} $m_\lambda(x_1,
+\dots, x_N)$. For more information on these topics, see the references
+below.
+
+
+\section{Basic Usage}
+
+The \textbf{PySymmPol} package has seven main classes for manipulating
+various symmetric polynomials.
+
+\subsection{YoungDiagram} and ConjugacyClass
+
+For the construction and manipulation of Young diagrams, we need to import 
+the YoungDiagram and the ConjugacyClass classes. 
+\begin{lstlisting}[language=Python]
+from pysymmpol import YoungDiagram, ConjugacyClass
+\end{lstlisting}
+
+The distinction between these two classes lies in the representations of the diagrams 
+they handle. The YoungDiagram class represents diagrams using a monotonic decreasing sequence, 
+while the ConjugacyClass class represents them as a sequence representing the cycle 
+of the symmetric group $\mathfrak{S}_N$. For example, let us consider the partition
+$(3,2,1)$, which is represented as a tuple in the YoungDiagram class and 
+as a dictionary in the ConjugacyClass class $\{1: 1, 2: 1, 3: 1\}$, respectively.
+\begin{lstlisting}[language=Python]
+young = YoungDiagram((3,2,1))
+conjugacy = ConjugacyClass({1: 1, 2: 1, 3: 1})
+\end{lstlisting}
+Both objects describe the same mathematical entity, the partition \(6=3+2+1\).
+In fact, 
+we have the usual pictorial representation 
+\begin{lstlisting}[language=Python]
+young.draw_diagram(4)
+
+conjugacy.draw_diagram(4)
+\end{lstlisting}
+that give the same output (the argument 4 means that we draw the octothorpe, and
+there are 4 other symbols available).
+\begin{lstlisting}[language=Python]
+#
+# #
+# # #
+
+#
+# #
+# # #
+\end{lstlisting}
+Further details on the other functionalities can be found in the tutorial.
+
+\subsection{Homogeneous and Elementary Polynomials}
+
+These classes can be initialized as 
+\begin{lstlisting}[language=Python]
+from pysymmpol import HomogeneousPolynomial, ElementaryPolynomial
+from pysymmpol.utils import create_miwa
+\end{lstlisting}
+We also imported the function \verb|create_miwa| from the \verb|utils| module for convenience. 
+Now, let us create the polynomials at level $n=3$. We can instantiate 
+them and find their explicit expressions using the \verb|explicit(t)| method, where \verb|t| 
+represents the Miwa coordinates. The block
+\begin{lstlisting}[language=Python]
+n = 3
+t = create_miwa(n)
+
+homogeneous = HomogeneousPolynomial(n)
+elementary = ElementaryPolynomial(n)
+print(f"homogeneous: {homogeneous.explicit(t)}")
+print(f"elementary: {elementary.explicit(t)})
+\end{lstlisting}
+gives the output 
+\begin{lstlisting}[language=Python]
+homogeneous: t1**3/6 + t1*t2 + t3
+elementary: t1**3/6 - t1*t2 + t3
+\end{lstlisting}
+
+
+
+\subsection{Schur Polynomials}
+
+To create Schur polynomials, we first need to instantiate a partition 
+before defining the polynomial itself. Let us use the Young diagram we 
+considered a few lines above, then
+\begin{lstlisting}[language=Python]
+from pysymmpol import YoungDiagram
+from pysymmpol import SchurPolynomial
+from pysymmpol.utils import create_miwa
+\end{lstlisting}
+The YoungDiagram class includes a getter method for retrieving the number 
+of boxes in the diagram, which we utilize to construct the Miwa coordinates. 
+Subsequently, the SchurPolynomial class is instantiated using the Young diagram. Then
+\begin{lstlisting}[language=Python]
+young = YoungDiagram((3,2,1))
+t = create_miwa(young.boxes)
+
+schur = SchurPolynomial(young)
+
+print(f"schur: {schur.explicit(t)}")
+\end{lstlisting}
+gives
+\begin{lstlisting}[language=Python]
+schur: t1**6/45 - t1**3*t3/3 + t1*t5 - t3**2
+\end{lstlisting}
+The documentation and tutorial contain examples demonstrating how to find 
+\textbf{skew-Schur polynomials.}
+
+
+\subsection{Monomial Symmetric Polynomials}
+
+For Monomial symmetric polynomials, we have a similar structure. 
+\begin{lstlisting}[language=Python]
+from pysymmpol import YoungDiagram
+from pysymmpol import MonomialPolynomial
+from pysymmpol.utils import create_x_coord
+\end{lstlisting}
+The only difference is the function \verb|create_x_coord| from the
+\verb|utils| module. Therefore,
+\begin{lstlisting}[language=Python]
+young = YoungDiagram((3,2,1))
+
+n = 3
+x = create_x_coord(n)
+
+monomial = MonomialPolynomial(young)
+
+print(f"monomial: {monomial.explicit(x)}")
+\end{lstlisting}
+gives the output 
+\begin{lstlisting}[language=Python]
+monomial: x1*x2*x3*(x1**2*x2 + x1**2*x3 + x1*x2**2 + x1*x3**2 + x2**2*x3 + x2*x3**2)
+\end{lstlisting}
+
+\subsection{Hall-Littlewood Polynomials}
+
+In addition to partitions, for the Hall-Littlewood polynomials, 
+we also require the deformation parameter \(Q\) (as \(t\) has been used to 
+denote the Miwa coordinates).
+\begin{lstlisting}[language=Python]
+from sympy import Symbol
+from pysymmpol import YoungDiagram
+from pysymmpol import HallLittlewoodPolynomial
+from pysymmpol.utils import create_x_coord
+\end{lstlisting}
+The method \verb|explicit(x, Q)| needs another argument. Finally, the code
+\begin{lstlisting}[language=Python]
+Q = Symbol('Q')
+young = YoungDiagram((3,2,1))
+
+n = 3
+x = create_x_coord(n)
+
+hall_littlewood = HallLittlewoodPolynomial(young)
+
+print(f"hall-littlewood: {hall_littlewood.explicit(x, Q)}")
+\end{lstlisting}
+gives
+\begin{lstlisting}[language=Python]
+hall-littlewood: x1*x2*x3*(-Q**2*x1*x2*x3 - Q*x1*x2*x3 + x1**2*x2 + x1**2*x3 + x1*x2**2 + 2*x1*x2*x3 + x1*x3**2 + x2**2*x3 + x2*x3**2)
+\end{lstlisting}
 
 \section{Acknowledgements}
 
