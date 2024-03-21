@@ -2,8 +2,8 @@
 title: 'PySymmPol - Symmetric Polynomials'
 tags:
   - Python
-  - Symmetric Polynomials
-  - Partitions
+  - Combinatorics
+  - Physics
 authors:
   - name: Thiago Araujo
     orcid: 0000-0001-5792-2530
@@ -24,14 +24,14 @@ bibliography: paper.bib
 symmetric polynomials. It provides functionalities for working with
 various types of symmetric polynomials, including elementary,
 homogeneous, monomial symmetric, (skew-) Schur, and Hall-Littlewood
-polynomials. In addition to polynomial operations, \textbf{PySymmPol} offers
+polynomials. In addition to polynomial operations, **PySymmPol** offers
 tools to explore key properties of integer partitions and Young
 diagrams, such as transposition, Frobenius coordinates, characters of
 symmetric groups and others. 
 
-This package originated from research conducted in the realm of
-integrable systems applied to string theory and the AdS/CFT
-correspondence. \textbf{PySymmPol} aims to facilitate computational tasks
+This package originated from research conducted in the field of
+integrable systems applied to string theory, and the AdS/CFT
+correspondence. **PySymmPol** aims to facilitate computational tasks
 related to symmetric polynomials and their applications in diverse
 fields.
 
@@ -41,28 +41,29 @@ Symmetric polynomials play a crucial role across various domains of
 mathematics and theoretical physics due to their rich structure and
 broad applications. They arise naturally in combinatorics, algebraic
 geometry, representation theory, and mathematical
-physics [@Macdonald:1998, @Fulton:2004]. These polynomials encode
+physics [@Macdonald:1998, @Fulton:2004, @Babelon:2003,
+ @Korepin:1993, @Marino:2005, @Wheeler:2010]. These polynomials encode
 essential information about symmetries and patterns, making them
 indispensable in the study of symmetric functions and their
 connections to diverse mathematical structures. Moreover, symmetric
 polynomials find extensive applications in theoretical physics,
 particularly in quantum mechanics, statistical mechanics, and quantum
-field theory [@Babelon:2003, @Korepin:1993, @Marino:2005, @Wheeler:2010]. 
-Their utility extends to areas such as algebraic
+field theory. Their utility extends to areas such as algebraic
 combinatorics, where they serve as powerful tools for solving
 combinatorial problems and understanding intricate relationships
 between different mathematical objects. Thus, tools and libraries like
 PySymmPol provide researchers and practitioners with efficient means
 to explore and manipulate symmetric polynomials, facilitating
 advancements in both theoretical studies and practical applications.
- 
 
 # Main features and functionalities 
 
 **PySymmPol** is composed of several modules in two main packages. 
+
 1. Partitions
 2. Polynomials
-Let us briefly explain them. 
+
+Let us give some mathematical background on these topics.
 
 ## Integer Partitions and Young Diagrams
 
@@ -95,10 +96,9 @@ sheds light on the fundamental properties of fermion states within
 CFTs but also provides valuable insights for theoretical developments
 in quantum field theory and related fields.
 
-Some methods to deal with these bosonic and fermionic states are
-also available in the package, and the \textrm{ACCELASC}
-algorithm~[@Kelleher:2009] greatly improved the
-speed of these methods.
+Further details on the other functionalities can be found in the tutorial.
+The *ACCELASC* algorithm [@Kelleher:2009] greatly improved the
+speed of the methods associated to these calculations. 
 
 ## Symmetric Polynomials
 
@@ -112,27 +112,29 @@ and *Elementary Symmetric Polynomials* $e_n(\mathbf{t}) =
 (-1)^n h_n(-\mathbf{t})$ are defined via 
 $$ h_n(\mathbf{t}) = \sum_{k_1 + 2k_2+ \cdots = n} 
 \frac{t_1^{k_1}}{k_1}\frac{t_2^{k_2}}{k_2} \cdots $$
-From these expressions, we obtain the *(skew-) Schur polynomials* $s_{\lambda/\mu}(\mathbf{t})$, where 
-$\lambda$ and $\mu$ are integer partitions, via **Jacobi-Trudi 
-identity
+From these expressions, we obtain the (*skew-*) *Schur polynomials*
+$s_{\lambda/\mu}(\mathbf{t})$, where 
+$\lambda$ and $\mu$ are integer partitions, via *Jacobi-Trudi identity*
 $$ s_{\lambda/\mu} = \det_{p,q}(h_{\lambda_q - \mu_p - q + p}(\mathbf{t})) \; . $$
 
 The *Hall-Littlewood polynomials* are defined via
-$$P_{\lambda}(x_1, \dots, x_N; Q) =
-    \prod_{i\geq 0} \prod_{j=1}^{p(i)} \frac{1-Q}{1-Q^j}
-    \sum_{\omega \in \mathfrak{S}_N} \omega\left( x_1^{\lambda_1}\cdots x_n^{\lambda_n}
-    \prod_{i<j} \frac{x_i - Q x_j}{x_i - x_j} \right)$$
-where $p(i)$ is the number of rows of size $i$ in $\lambda$, and $\mathfrak{S}_N$ is the 
-symmetric group. The limit $Q=0$ in the Hall-Littlewood polynomials gives the Schur 
-polynomials, while $Q=1$ returns the *Monomial Symmetric Polynomials* 
-$m_\lambda(x_1, \dots, x_N)$.
-        
-For more information on these topics, see [REFERENCES].
+$$
+P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
+\frac{1-Q}{1-Q^j} \sum_{\omega \in \mathfrak{S}_N} \omega\left(
+x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{i<j} \frac{x_i - Q
+  x_j}{x_i - x_j} \right)
+$$
+where $p(i)$ is the number of rows of size $i$ in $\lambda$, and
+$\mathfrak{S}_N$ is the symmetric group. The limit $Q=0$ in the
+Hall-Littlewood polynomials gives the Schur polynomials, while $Q=1$
+returns the *Monomial Symmetric Polynomials* $m_\lambda(x_1,
+\dots, x_N)$. For more information on these topics, see the references
+below.
 
 # Acknowledgements
 
 I would like to thank Fapesp for finantial support, grant
-**2022/06599-0**. I would also like to thank the Free and Open
+\textbf{2022/06599-0}.  I would also like to thank the Free and Open
 Source Software community.
 
 # References
