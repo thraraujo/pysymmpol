@@ -14,7 +14,7 @@ affiliations:
  - name: Institute of Physics, São Paulo University, Rua do Matão 1371 - CEP 05508-090 Cidade Universitária, São Paulo/SP, Brazil
    index: 2
 
-date: 
+date: 21 March 2024
 bibliography: paper.bib
 ---
 
@@ -56,7 +56,7 @@ PySymmPol provide researchers and practitioners with efficient means
 to explore and manipulate symmetric polynomials, facilitating
 advancements in both theoretical studies and practical applications.
 
-# Main features and functionalities 
+# Core features and functionalities 
 
 **PySymmPol** is composed of several modules in two main packages. 
 
