@@ -23,6 +23,7 @@ Learn more:
    tests
    CHANGELOG.md
    Github Repository <https://github.com/thraraujo/pysymmpol>
+   PyPI package <https://pypi.org/project/pysymmpol>
    citation.md 
 
 

@@ -54,7 +54,7 @@ there are 4 other symbols available).
 # #
 # # #
 ```
-Further details on the other functionalities can be found in the tutorial."
+Further details on the other functionalities can be found in the tutorial.
 
 ### Homogeneous and Elementary Polynomials
 
@@ -66,7 +66,7 @@ from pysymmpol.utils import create_miwa
 We also imported the function `create_miwa` from the `utils` module for convenience. 
 Now, let's create the polynomials at level n=3. We can instantiate 
 them and find their explicit expressions using the `explicit(t)` method, where `t` 
-represents the Miwa coordinates. Then block
+represents the Miwa coordinates. The block
 ```python
 n = 3
 t = create_miwa(n)

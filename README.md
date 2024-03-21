@@ -9,11 +9,13 @@
 
 This Python package is designed for the manipulation of various
 symmetric polynomials or functions. It includes the following types:
+
     1. Complete homogeneous Symmetric Functions
     2. Elementary symmetric polynomials
     3. Monomial symmetric polynomials 
     4. Schur polynomials
     5. Hall-Littlewood polynomials
+
 Additionally, the package contains a module with basic functionalities
 for manipulating integer partitions and Young diagrams.
 
@@ -180,3 +182,21 @@ gives
 ```
 hall-littlewood: x1*x2*x3*(-Q**2*x1*x2*x3 - Q*x1*x2*x3 + x1**2*x2 + x1**2*x3 + x1*x2**2 + 2*x1*x2*x3 + x1*x3**2 + x2**2*x3 + x2*x3**2)
 ```
+
+# Citation & Contributing
+
+If you found this package useful in your research, please consider citing the companion 
+paper available here: [arxiv.org/abs/2403.13580](https://arxiv.org/abs/2403.13580). 
+```
+@article{Araujo:2024piv,
+    author = "Araujo, Thiago",
+    title = "{PySymmPol: Symmetric Polynomials in Python}",
+    eprint = "2403.13580",
+    archivePrefix = "arXiv",
+    primaryClass = "math.CO",
+    month = "3",
+    year = "2024"
+}
+```
+Feeling like contributing? Fork the project and open a pull request with your modifications. 
+Found a bug? Just open a GitHub issue.

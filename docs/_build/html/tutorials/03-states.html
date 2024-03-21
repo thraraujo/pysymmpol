@@ -70,6 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tests.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/thraraujo/pysymmpol">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pysymmpol">PyPI package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation &amp; Contributing</a></li>
 </ul>
 
@@ -119,7 +120,7 @@
 <h1>Class: State<a class="headerlink" href="#Class:-State" title="Link to this heading"></a></h1>
 <p>In two dimensions, there is a isomorphism between the bosonic and fermionic Fock spaces known as the Fermion-Boson correspondence. The bosonic states are represented in terms of conjugacy classes <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots)\)</span>, and the fermionic states <span class="math notranslate nohighlight">\(\lambda = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span> are represented in terms of partition states that we have discussed above. These states are not equivalent, but since the Fock space is decomposed in terms of the number of
 boxes, that we call <strong>level</strong>, therefore, we have an expansion of the form</p>
-<p>$ <span class="math">\tag{1}</span> |1^{k_1} 2^{k_2}:nbsphinx-math:<cite>cdots</cite><span class="math">\rangle `= :nbsphinx-math:</span>sum`<em>{:nbsphinx-math:`lambda`} C</em>{<span class="math">\lambda</span>} |:nbsphinx-math:<cite>lambda</cite>_1, <span class="math">\lambda</span>_2, <span class="math">\dots</span>, <span class="math">\lambda</span>_N:nbsphinx-math:<cite>rangle</cite><span class="math">\qquad `:nbsphinx-math:</span>left`(n = <span class="math">\sum</span>_i:nbsphinx-math:<cite>lambda</cite>_i = <span class="math">\sum</span>_j j k_j:nbsphinx-math:<cite>right</cite>) $</p>
+<p><span class="math notranslate nohighlight">\(|1^{k_1} 2^{k_2}\cdots\rangle = \sum_{\lambda} C_{\lambda} |\lambda_1, \lambda_2, \dots, \lambda_N\rangle\qquad \left(n = \sum_i\lambda_i = \sum_j j k_j\right)\)</span></p>
 <p>and the sum is over all partitions with <span class="math notranslate nohighlight">\(n\)</span> boxes, and the coefficients above are written in terms of Schur polynomials.</p>
 <p>Therefore, this module consider a given level <span class="math notranslate nohighlight">\(n\)</span>, number of boxes, and build all possible bosonic and fermionic states. From the mathematical viewpoint, we determine the partitions of the integers <span class="math notranslate nohighlight">\(n\)</span> and write these partitions in both forms <span class="math notranslate nohighlight">\(\lambda = (1^{k_1} 2^{k_2}\cdots) = (\lambda_1, \lambda_2, \dots, \lambda_N)\)</span>.</p>
 <p><em>As before, we represent conjugacy classes as dictionaries and partitions as tuples.</em></p>
