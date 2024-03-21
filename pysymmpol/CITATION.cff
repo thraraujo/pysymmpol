@@ -1,0 +1,37 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'pySymmPol: Symmetric Polynomials'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Thiago
+    family-names: Araujo
+    email: tr.araujo@unesp.br
+    affiliation: 'Institute for Theoretical Physics, UNESP'
+    orcid: 'https://orcid.org/0000-0001-5792-2530'
+  - {}
+identifiers:
+  - type: other
+    value: 'arxiv: 2403.13580 [math.CO]'
+    description: arXiv
+repository-code: 'https://github.com/thraraujo/pysymmpol'
+abstract: >-
+  PySymmPol is a Python package designed for efficient
+  manipulation of symmetric polynomials. It provides
+  functionalities for working with various types of
+  symmetric polynomials, including elementary, homogeneous,
+  monomial symmetric, (skew-) Schur, and Hall-Littlewood
+  polynomials. In addition to polynomial operations,
+  PySymmPol offers tools to explore key properties of
+  integer partitions and Young diagrams, such as
+  transposition, Frobenius coordinates, characters of
+  symmetric groups and others.
+keywords:
+  - python
+  - combinatorics
+  - high energy physics
+license: GPL-3.0
