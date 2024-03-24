@@ -21,6 +21,9 @@ identifiers:
   - type: doi
     value: 10.48550/arXiv.2403.13580
     description: Arxiv-issued DOI
+  - type: doi
+    value: 10.5281/zenodo.10865661
+    description: Zenodo-issued Doi
 repository-code: 'https://github.com/thraraujo/pysymmpol'
 keywords:
   - python
