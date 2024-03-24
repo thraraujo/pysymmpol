@@ -8,8 +8,8 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - family-names: Rocha Araujo
-    given-names: Thiago
+  - given-names: Thiago
+    family-names: Araujo
     email: tr.araujo@unesp.br
     affiliation: 'Institute for Theoretical Physics, UNESP'
     orcid: 'https://orcid.org/0000-0001-5792-2530'
