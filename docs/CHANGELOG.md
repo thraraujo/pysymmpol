@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.2 - in progress
+## v0.1.2
 - Add CONTRIBUTING.md
 
 ## v0.1.1
