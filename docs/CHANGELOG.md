@@ -1,6 +1,7 @@
 # Changelog
 
 ## v0.1.2
+- Improve documentation
 - Add CONTRIBUTING.md
 
 ## v0.1.1

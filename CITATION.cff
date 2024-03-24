@@ -9,7 +9,7 @@ message: >-
 type: software
 authors:
   - given-names: Thiago
-    family-names: Rocha Araujo
+    family-names: Araujo
     email: tr.araujo@unesp.br
     affiliation: 'Institute for Theoretical Physics, UNESP'
     orcid: 'https://orcid.org/0000-0001-5792-2530'
@@ -21,6 +21,9 @@ identifiers:
   - type: doi
     value: 10.48550/arXiv.2403.13580
     description: Arxiv-issued DOI
+  - type: doi
+    value: 10.5281/zenodo.10865661
+    description: Zenodo-issued Doi
 repository-code: 'https://github.com/thraraujo/pysymmpol'
 keywords:
   - python
