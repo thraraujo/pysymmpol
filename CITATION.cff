@@ -13,7 +13,6 @@ authors:
     email: tr.araujo@unesp.br
     affiliation: 'Institute for Theoretical Physics, UNESP'
     orcid: 'https://orcid.org/0000-0001-5792-2530'
-  - {}
 identifiers:
   - type: other
     value: 'arxiv: 2403.13580 [math.CO]'
