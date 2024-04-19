@@ -41,8 +41,8 @@ Symmetric polynomials play a crucial role across various domains of
 mathematics and theoretical physics due to their rich structure and
 broad applications. They arise naturally in combinatorics, algebraic
 geometry, representation theory, and mathematical
-physics [@Macdonald:1998, @Fulton:2004, @Babelon:2003,
- @Korepin:1993, @Marino:2005, @Wheeler:2010]. These polynomials encode
+physics [@Macdonald:1998], [@Fulton:2004], [@Babelon:2003],
+and [@Wheeler:2010]. These polynomials encode
 essential information about symmetries and patterns, making them
 indispensable in the study of symmetric functions and their
 connections to diverse mathematical structures. Moreover, symmetric
