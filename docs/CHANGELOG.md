@@ -4,6 +4,7 @@
 - Improve documentation
 - Add CONTRIBUTING.md
 - Add Zenodo DOI
+- Fix typos
 
 ## v0.1.1
 - Add Arxiv DOI
