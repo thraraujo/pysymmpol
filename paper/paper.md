@@ -87,7 +87,7 @@ $$ t_j = \frac{1}{j} \sum_{i=1}^N x_i^j $$ where $\vec{x} =
 # Acknowledgements
 
 I would like to thank Fapesp, São Paulo Research Foundation, for
-finantial support, grant \textbf{2022/06599-0}. I would also like to
+financial support, grant \textbf{2022/06599-0}. I would also like to
 thank the Free and Open Source Software community.
 
 # References
