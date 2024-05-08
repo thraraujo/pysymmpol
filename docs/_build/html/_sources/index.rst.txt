@@ -38,5 +38,5 @@ Acknowledgements
 ==================
 
 I would like to thank `FAPESP, São Paulo Research Foundation <https://fapesp.br/en>`_,
-for finantial support, grant **2022/06599-0**. I would also like to thank the
+for financial support, grant **2022/06599-0**. I would also like to thank the
 Free and Open Source Software community.

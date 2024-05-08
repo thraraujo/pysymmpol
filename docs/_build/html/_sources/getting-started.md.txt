@@ -74,7 +74,7 @@ t = create_miwa(n)
 homogeneous = HomogeneousPolynomial(n)
 elementary = ElementaryPolynomial(n)
 print(f"homogeneous: {homogeneous.explicit(t)}")
-print(f"elementary: {elementary.explicit(t)})
+print(f"elementary: {elementary.explicit(t)}")
 ```
 gives the output 
 ```

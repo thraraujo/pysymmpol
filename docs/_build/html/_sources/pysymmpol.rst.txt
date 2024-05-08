@@ -10,11 +10,3 @@ Subpackages
    pysymmpol.partitions
    pysymmpol.polynomials
    pysymmpol.utils
-
-Module contents
----------------
-
-.. automodule:: pysymmpol
-   :members:
-   :undoc-members:
-   :show-inheritance:
