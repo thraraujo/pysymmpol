@@ -56,6 +56,19 @@ PySymmPol provide researchers and practitioners with efficient means
 to explore and manipulate symmetric polynomials, facilitating
 advancements in both theoretical studies and practical applications.
 
+## Target audience and comparison with other software
+
+Our utilization of Miwa coordinates (or power sums) in the definitions
+renders this software especially advantageous for physicists and
+mathematicians immersed in the domains of statistical physics, quantum
+field theory, and integrable systems.
+
+To the author's knowledge, there are limited open-source software
+solutions dedicated to similar problems, with SageMath [@sagemath]
+being a notable example. One standout characteristic of **PySymmPol**
+is its incorporation of power sums and its Pythonic nature, requiring
+minimal dependencies.
+
 # Core features and functionalities 
 
 **PySymmPol** is composed of several modules in two main packages. 
