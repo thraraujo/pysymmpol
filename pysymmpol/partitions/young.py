@@ -5,13 +5,8 @@ import numpy as np
 import sympy as sp
 
 '''
-In this module we define 2 concepts that
-are completely connected.
-
-    1. First we define the class of Young (or Ferrers) Diagrams
-    using the usual partition notation.
-
-    2. Then we define the class of Conjugacy Classes.
+In this module we define the class of Young (or Ferrers) Diagrams
+using the usual partition notation.
 '''
 
 @dataclass(frozen=True)
@@ -34,14 +29,13 @@ class YoungDiagram:
         2) The argument is a tuple.
         '''
 
-        # Validate _partition as a tuple
-        if not isinstance(self.partition, tuple):
-            raise TypeError(f"Argument must be a tuple, and you passed a {type(self._partition)}")
+        if isinstance(self.partition, tuple) or isinstance(self.partition, np.ndarray):
+            par = self._partition
+        else:
+            raise TypeError(f"Argument must be a tuple or a numpy array, you had a {type(self._partition)}")
 
         # Validade if the partition is a monotonic decreasing sequence. 
-        par = self._partition
         A = all([x >= y for x,y in zip(par, par[1:])])
-        #A = all([self._partition[i+1] <= self._partition[i] for i in range(len(self._partition) -1)])
 
         if not A:
             raise ValueError("Argument must be a monotonic decreasing sequence.")
@@ -98,15 +92,16 @@ class YoungDiagram:
         the method represents the Young diagram as a 
         partition[0] x len(partition) matrix filled
         with 1 and 0. After that, it sums over the diagonal.
+
+        Observe that numpy trace can be defined for non-square
+        matrices, so, we can use it here.
         '''
 
-        matrix = np.zeros((self.rows, self.columns))
+        matrix = []
 
-        diagonal = 0
+        for n in range(self.rows):
+            matrix.append( np.concatenate((np.ones(self.partition[n]), np.zeros(self.partition[0] - self.partition[n])), axis=0) ) 
 
-        for row in range(self.rows):
-            for column in range(self.partition[row]):
-                matrix[row][column] = 1
         return int(np.trace(matrix))
 
 
@@ -154,15 +149,17 @@ class YoungDiagram:
                 j = 1 transposed_diagram[0] = 2
         and now we have transposed_diagram = [2,2,1]
         '''
-        transposed_diagram = [0] * (self.partition[0])
+
+        transposed_diagram = np.array( [0] * (self.partition[0]) )
 
         for i, row_length in enumerate(self.partition):
             for j in range(row_length):
                 transposed_diagram[j] += 1
 
-        transposed_diagram_tuple = tuple(transposed_diagram)
+        if isinstance(self.partition, tuple):
+            transposed_diagram = tuple(transposed_diagram)
 
-        return YoungDiagram(transposed_diagram_tuple)
+        return YoungDiagram(transposed_diagram)
 
 
     def contains(self, other_young: YoungDiagram) -> bool:
@@ -180,12 +177,11 @@ class YoungDiagram:
         elif len(other_partition) > len(partition):
             partition += (0,)*abs(len(partition) - len(other_partition))
 
-        sub_partition_condition = [x >= y for x, y in zip(partition, other_partition)]
+        for x,y in zip(partition, other_partition):
+            if x < y:
+                return False
 
-        if all(sub_partition_condition):
-            return True
-        else:
-            return False
+        return True
 
 
     def interlaces(self, other_young: YoungDiagram) -> bool:
@@ -203,13 +199,15 @@ class YoungDiagram:
         elif len(other_partition) > len(partition):
             partition += (0,)*abs(len(partition) - len(other_partition))
 
-        interlacing_condition   = [x >= y for x, y in zip(other_partition, partition[1:])]
-
-        if self.contains(other_young) and all(interlacing_condition):
-            return True
-        else:
+        if not self.contains(other_young):
             return False
+        else:
+            for x,y in zip(other_partition, partition[1:]):
+                if x < y:
+                    return False
 
+        return True
+            
 
     def conjugacy_partition(self) -> dict:
         '''
