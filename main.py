@@ -9,34 +9,34 @@ from sympy import Symbol
 def main():
     # YOUNG  DIAGRAMS
     young = YoungDiagram((3,2,1))
-    #conjugacy = ConjugacyClass({1: 1, 2: 1, 3: 1})
+    conjugacy = ConjugacyClass({1: 1, 2: 1, 3: 1})
 
-    #young.draw_diagram(4)
-    #conjugacy.draw_diagram(4)
+    young.draw_diagram(4)
+    conjugacy.draw_diagram(4)
 
 
     # HOMOGENEOUS AND ELEMENTARY POLYNOMIALS
-    #n = 3
-    #t = create_miwa(n)
+    n = 3
+    t = create_miwa(n)
 
-    #homogeneous = HomogeneousPolynomial(n)
-    #elementary = ElementaryPolynomial(n)
-    #print(f"homogeneous: {homogeneous.explicit(t)}")
-    #print(f"elementary: {elementary.explicit(t)}")
+    homogeneous = HomogeneousPolynomial(n)
+    elementary = ElementaryPolynomial(n)
+    print(f"=> homogeneous: {homogeneous.explicit(t)}")
+    print(f"=> elementary: {elementary.explicit(t)}")
 
     # SCHUR POLYNOMIALS
-    # t = create_miwa(young.boxes)
+    t = create_miwa(young.boxes)
 
-    #schur = SchurPolynomial(young)
+    schur = SchurPolynomial(young)
 
-    #print(f"schur: {schur.explicit(t)}")
+    print(f"=> schur: {schur.explicit(t)}")
 
-    #n = 3
-    #x = create_x_coord(n)
+    n = 3
+    x = create_x_coord(n)
 
-    #monomial = MonomialPolynomial(young)
+    monomial = MonomialPolynomial(young)
 
-    #print(f"monomial: {monomial.explicit(x)}")
+    print(f"=> monomial: {monomial.explicit(x)}")
 
     Q = Symbol('Q')
     young = YoungDiagram((3,2,1))
@@ -46,7 +46,7 @@ def main():
 
     hall_littlewood = HallLittlewoodPolynomial(young)
 
-    print(f"hall-littlewood: {hall_littlewood.explicit(x, Q)}")
+    print(f"=> hall-littlewood: {hall_littlewood.explicit(x, Q)}")
 
 
 
