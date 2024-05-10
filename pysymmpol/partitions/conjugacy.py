@@ -36,8 +36,10 @@ class ConjugacyClass:
         '''
         Validates the form of the dictionary: {1: k1, 2: k2, ..., n: kn}
         '''
+
         keys = tuple(self._conjugacy_vector.keys())
         A = all([keys[i] - keys[i-1] == 1 for i in range(1, len(keys))])
+
         if keys[0] != 1 or not A:
            raise TypeError("Argument must be a dictionary in the form {1: k1, 2: k2, ..., n: kn}")
 
@@ -129,7 +131,6 @@ class ConjugacyClass:
         partition = np.array([])
 
         for i in range(len(self.conjugacy)):
-            #row = list(np.repeat(i+1, self.conjugacy[i]))
             row = np.repeat(i+1, self.conjugacy[i])
             partition = np.concatenate((partition, row), axis=0)
 

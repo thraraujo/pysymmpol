@@ -29,7 +29,7 @@ class YoungDiagram:
         2) The argument must be monotonic decreasing.
         '''
 
-        # Validade if its type
+        # Validade its type.
         if isinstance(self.partition, tuple) or isinstance(self.partition, np.ndarray):
             par = self._partition
         else:
