@@ -32,24 +32,24 @@ class State:
         (the conjugacy class states) that belong to this subspace.
         Remember that these states are built with the operators J_{-m} 
         of the Heisenberg algebra. In other words, these are
-        bosonic states. This nonpublic method can make our life easier.
+        bosonic states. 
         '''
         lev = self.level
 
         if lev == 0:
             return tuple()
         else:
-            vectors_k = [] # Here I create a list to save the vectors
+            vectors_k = []       # Here I create a list to save the vectors
             vectors_k_tuple = [] # Here I create a list to save the tuples after all manipulations
 
             for a in _accel_asc(lev):
-                vec = [0]*lev
+                vec = np.array([0]*lev)
                 for i in range(len(a)):
                     vec[a[i]-1] += 1
                 vectors_k.append(vec)
 
             for a in vectors_k:
-                vectors_k_tuple.append(tuple(a))
+                vectors_k_tuple.append(a)
 
             return tuple(vectors_k_tuple)
 
