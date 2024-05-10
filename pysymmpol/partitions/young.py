@@ -157,7 +157,11 @@ class YoungDiagram:
                 transposed_diagram[j] += 1
 
         if isinstance(self.partition, tuple):
-            transposed_diagram = tuple(transposed_diagram)
+
+            transposed_diagram_tuple = tuple(transposed_diagram)
+
+            return YoungDiagram(transposed_diagram_tuple)
+
 
         return YoungDiagram(transposed_diagram)
 
