@@ -8,7 +8,7 @@ from .young import YoungDiagram
 @dataclass(frozen=True)
 class ConjugacyClass: 
     '''
-    Represents the conjugacy class of the partitions. For example,
+    Represents the conjugacy class of partitions. For example,
     the partition L = (5, 3, 2, 2, 2, 1, 1) can represented by
     L = (1: 2, 2: 3, 3: 1, 4: 0, 5: 1) that means 2 rows of
     length 1, 3 rows of length 2, 2 rows of length 3, 0 rows of
@@ -21,9 +21,9 @@ class ConjugacyClass:
 
     The dictionary must be in the form {1: k1, 2: k2, ..., n: kn}
 
-    The vectors k=(k1,k2, ..., kn) is one conjugacy class of the
-    symmetric group S_n, and for this reason, we call it
-    conjugacy class vectors.
+    The vectors k = (k1,k2, ..., kn) represents one conjugacy class of
+    the symmetric group S_n, and for this reason, we call it conjugacy
+    class vectors.
 
     In terms of the Heisenberg algebra, the components of these vectors
     denote the power of the Heisenberg operator J_{-n} when acting on the
