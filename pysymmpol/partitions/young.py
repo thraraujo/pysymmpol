@@ -13,10 +13,10 @@ using the usual partition notation.
 class YoungDiagram:
     '''
     Represents Young diagrams in the standard
-    partition notation: It is a monotonic decreasing sequence
+    partition notation. It is a monotonic decreasing sequence
     L = (L1, L2, L3, ...,Ln) with L1 >= L2 >=L3 >= ... >= Ln.
 
-    Example: (3,2,2,1)
+    Example: (3,2,2,1).
     '''
     _partition: tuple
 
@@ -25,16 +25,17 @@ class YoungDiagram:
 
         '''
         Validade Young diagram:
-        1) The argument must be monotonic decreasing.
-        2) The argument is a tuple.
+        1) The argument is a tuple or a numpy array.
+        2) The argument must be monotonic decreasing.
         '''
 
+        # Validade if its type
         if isinstance(self.partition, tuple) or isinstance(self.partition, np.ndarray):
             par = self._partition
         else:
             raise TypeError(f"Argument must be a tuple or a numpy array, you had a {type(self._partition)}")
 
-        # Validade if the partition is a monotonic decreasing sequence. 
+        # Validade if it is a monotonic decreasing sequence. 
         A = all([x >= y for x,y in zip(par, par[1:])])
 
         if not A:

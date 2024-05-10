@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pysymmpol.partitions.young &mdash; pySymmPol 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
   
@@ -15,7 +15,7 @@
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../_static/documentation_options.js?v=01f34227"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tests.html">Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/thraraujo/pysymmpol">Github Repository</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pysymmpol">PyPI package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../citation.html">Citation &amp; Contributing</a></li>
 </ul>
 
@@ -84,13 +85,8 @@
 <span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">In this module we define 2 concepts that</span>
-<span class="sd">are completely connected.</span>
-
-<span class="sd">    1. First we define the class of Young (or Ferrers) Diagrams</span>
-<span class="sd">    using the usual partition notation.</span>
-
-<span class="sd">    2. Then we define the class of Conjugacy Classes.</span>
+<span class="sd">In this module we define the class of Young (or Ferrers) Diagrams</span>
+<span class="sd">using the usual partition notation.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <div class="viewcode-block" id="YoungDiagram">
@@ -99,10 +95,10 @@
 <span class="k">class</span> <span class="nc">YoungDiagram</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Represents Young diagrams in the standard</span>
-<span class="sd">    partition notation: It is a monotonic decreasing sequence</span>
+<span class="sd">    partition notation. It is a monotonic decreasing sequence</span>
 <span class="sd">    L = (L1, L2, L3, ...,Ln) with L1 &gt;= L2 &gt;=L3 &gt;= ... &gt;= Ln.</span>
 
-<span class="sd">    Example: (3,2,2,1)</span>
+<span class="sd">    Example: (3,2,2,1).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">_partition</span><span class="p">:</span> <span class="nb">tuple</span>
 
@@ -111,18 +107,18 @@
 
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Validade Young diagram:</span>
-<span class="sd">        1) The argument must be monotonic decreasing.</span>
-<span class="sd">        2) The argument is a tuple.</span>
+<span class="sd">        1) The argument is a tuple or a numpy array.</span>
+<span class="sd">        2) The argument must be monotonic decreasing.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="c1"># Validate _partition as a tuple</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Argument must be a tuple, and you passed a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_partition</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Validade if its type</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Argument must be a tuple or a numpy array, you had a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_partition</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Validade if the partition is a monotonic decreasing sequence. </span>
-        <span class="n">par</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition</span>
+        <span class="c1"># Validade if it is a monotonic decreasing sequence. </span>
         <span class="n">A</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">:])])</span>
-        <span class="c1">#A = all([self._partition[i+1] &lt;= self._partition[i] for i in range(len(self._partition) -1)])</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">A</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Argument must be a monotonic decreasing sequence.&quot;</span><span class="p">)</span>
@@ -184,15 +180,16 @@
 <span class="sd">        the method represents the Young diagram as a </span>
 <span class="sd">        partition[0] x len(partition) matrix filled</span>
 <span class="sd">        with 1 and 0. After that, it sums over the diagonal.</span>
+
+<span class="sd">        Observe that numpy trace can be defined for non-square</span>
+<span class="sd">        matrices, so, we can use it here.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">diagonal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">n</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">n</span><span class="p">])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span> 
 
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">row</span><span class="p">]):</span>
-                <span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span></div>
 
 
@@ -246,15 +243,21 @@
 <span class="sd">                j = 1 transposed_diagram[0] = 2</span>
 <span class="sd">        and now we have transposed_diagram = [2,2,1]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">transposed_diagram</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">transposed_diagram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row_length</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row_length</span><span class="p">):</span>
                 <span class="n">transposed_diagram</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="n">transposed_diagram_tuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
 
-        <span class="k">return</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="n">transposed_diagram_tuple</span><span class="p">)</span></div>
+            <span class="n">transposed_diagram_tuple</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="n">transposed_diagram_tuple</span><span class="p">)</span>
+
+
+        <span class="k">return</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">)</span></div>
 
 
 
@@ -275,12 +278,11 @@
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
             <span class="n">partition</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">))</span>
 
-        <span class="n">sub_partition_condition</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">other_partition</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">other_partition</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">sub_partition_condition</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
 
 
@@ -301,14 +303,16 @@
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">):</span>
             <span class="n">partition</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_partition</span><span class="p">))</span>
 
-        <span class="n">interlacing_condition</span>   <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">other_partition</span><span class="p">,</span> <span class="n">partition</span><span class="p">[</span><span class="mi">1</span><span class="p">:])]</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">other_young</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">interlacing_condition</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">other_young</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div>
+            <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">other_partition</span><span class="p">,</span> <span class="n">partition</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
 
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+            
 
 <div class="viewcode-block" id="YoungDiagram.conjugacy_partition">
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.conjugacy_partition">[docs]</a>
