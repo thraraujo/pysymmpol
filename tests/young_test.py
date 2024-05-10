@@ -35,6 +35,50 @@ class TestYoung(unittest.TestCase):
         self.assertEqual(young1.count_diagonal(), 2)
 
 
+    def test_contains_interlacing_young(self) -> None:
+        mu = sy.YoungDiagram((7,5,3,1))
+        nu1 = sy.YoungDiagram((6,))
+        nu2 = sy.YoungDiagram((6,3,2))
+        nu3 = sy.YoungDiagram((5,4,2,1))
+        nu4 = sy.YoungDiagram((5,2,2,1))
+        nu5 = sy.YoungDiagram((5,2,2,1,1))
+        self.assertEqual(mu.contains(nu1), True)
+        self.assertEqual(mu.contains(nu2), True)
+        self.assertEqual(mu.contains(nu3), True)
+        self.assertEqual(mu.contains(nu4), True)
+        self.assertEqual(mu.contains(nu5), False)
+        self.assertEqual(mu.interlaces(nu1), False)
+        self.assertEqual(mu.interlaces(nu2), True)
+        self.assertEqual(mu.interlaces(nu3), True)
+        self.assertEqual(mu.interlaces(nu4), False)
+        self.assertEqual(mu.interlaces(nu5), False)
+
+
+    def test_diagonal_transpose_young(self) -> None:
+        mu1 = sy.YoungDiagram((7,5,3,1))
+        mu2 = sy.YoungDiagram((6,))
+        mu3 = sy.YoungDiagram((6,3,2))
+        mu4 = sy.YoungDiagram((5,4,2,1))
+        mu5 = sy.YoungDiagram((7,7,6,5,5,1,1))
+        self.assertEqual(mu1.count_diagonal(), 3)
+        self.assertEqual(mu2.count_diagonal(), 1)
+        self.assertEqual(mu3.count_diagonal(), 2)
+        self.assertEqual(mu4.count_diagonal(), 2)
+        self.assertEqual(mu5.count_diagonal(), 5)
+
+        self.assertEqual(mu1.transpose().partition, (4,3,3,2,2,1,1))
+        self.assertEqual(mu2.transpose().partition, (1,1,1,1,1,1))
+        self.assertEqual(mu3.transpose().partition, (3,3,2,1,1,1))
+        self.assertEqual(mu4.transpose().partition, (4,3,2,2,1))
+        self.assertEqual(mu5.transpose().partition, (7,5,5,5,5,3,2))
+
+        self.assertEqual(mu1.count_diagonal(), 3)
+        self.assertEqual(mu2.count_diagonal(), 1)
+        self.assertEqual(mu3.count_diagonal(), 2)
+        self.assertEqual(mu4.count_diagonal(), 2)
+        self.assertEqual(mu5.count_diagonal(), 5)
+
+
     def test_properties_conjugacy(self) -> None:
         conjugacy1 = sy.ConjugacyClass({1: 0, 2: 1, 3: 1, 4: 1})
         self.assertEqual(conjugacy1.conjugacy, (0, 1, 1, 1))
