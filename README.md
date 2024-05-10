@@ -24,9 +24,9 @@ Tutorials can be found in the [documentation page](https://thraraujo.github.io/p
 ## Dependencies
 
 This package has been tested with the following versions:
-- Python 3.12
-- SymPy 1.12
-- NumPy 1.26.4
+- Python >= 3.11
+- SymPy >= 1.11
+- NumPy >= 1.26.2
 
 ## Installation
 
