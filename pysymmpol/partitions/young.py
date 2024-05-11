@@ -137,20 +137,20 @@ class YoungDiagram:
 
     def frobenius_coordinates(self, fermionic: bool=True) -> list:
         '''
-        Frobenius coordinates for the diagrams.
+        Frobenius coordinates for the diagrams are determined as follows:
 
-        Given the partition L = (L1, L2, ...)
-        the Frobenius coordinates are defined by (a_n , b_n)
-        where a_n = L_n - n and b_n = L'_n - n (the prime denotes
-        the conjugate diagram). We need to add -1 because python lists
-        start at 0. For the fermionic representations (the default value),
-        we need to add 1/2 because indices are half-integers. Overall,
-        we need an offset of -1/2 if we want fermionic representation
-        and -1 for the standard representation.
+        Given a partition L = (L1, L2, ...), the Frobenius coordinates
+        are defined by (a_n , b_n), where a_n = L_n -n and b_n - L'_n - n,
+        (the prime denotes the conjugate diagram). Note that
+        we subtract 1 because Python lists start at 0. For fermionic
+        representations (which are the default), we need to add 1/2 because
+        indices are half-integers. Therefore, an overall offset of -1/2 is
+        required for fermionic representation, while -1 suffices for the
+        standard representation.
 
-        I also like to consider the representation where all negative sites
-        are occupied, so I will change the notation to -b in the fermionic
-        representation.
+        Additionally, I prefer to consider the representation where all
+        negative sites are occupied. Thus, in the fermionic
+        representation, I adjust the notation to -b for clarity.
         '''
 
         if fermionic:
