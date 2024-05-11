@@ -156,6 +156,17 @@
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">)</span>
 
 
+<div class="viewcode-block" id="YoungDiagram.count_diagonal">
+<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.count_diagonal">[docs]</a>
+    <span class="k">def</span> <span class="nf">count_diagonal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gives the number of boxes in the diagonal.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frobenius_coordinates</span><span class="p">())</span></div>
+
+
+
 <div class="viewcode-block" id="YoungDiagram.draw_diagram">
 <a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.draw_diagram">[docs]</a>
     <span class="k">def</span> <span class="nf">draw_diagram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -167,51 +178,6 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">emo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
-
-
-
-<div class="viewcode-block" id="YoungDiagram.count_diagonal">
-<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.count_diagonal">[docs]</a>
-    <span class="k">def</span> <span class="nf">count_diagonal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> 
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Gives the number of boxes in the diagonal.</span>
-
-<span class="sd">        In order to do this calculation,</span>
-<span class="sd">        the method represents the Young diagram as a </span>
-<span class="sd">        partition[0] x len(partition) matrix filled</span>
-<span class="sd">        with 1 and 0. After that, it sums over the diagonal.</span>
-
-<span class="sd">        Observe that numpy trace can be defined for non-square</span>
-<span class="sd">        matrices, so, we can use it here.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-
-        <span class="n">matrix</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">):</span>
-            <span class="n">matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">n</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">n</span><span class="p">])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span> 
-
-        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span></div>
-
-
-
-<div class="viewcode-block" id="YoungDiagram.frobenius_coordinates">
-<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates">[docs]</a>
-    <span class="k">def</span> <span class="nf">frobenius_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Frobenius coordinates for a given partition.</span>
-
-<span class="sd">        The minus in the definition below is related</span>
-<span class="sd">        to the fact that python lists start at 0 and not 1.</span>
-<span class="sd">        Moreover, the method uses the definition where the coordinates</span>
-<span class="sd">        are half integers. </span>
-<span class="sd">        &#39;&#39;&#39;</span>
-
-        <span class="n">transposed_diagram</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">partition</span>
-        <span class="n">FrobCoor</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count_diagonal</span><span class="p">()):</span>
-            <span class="n">FrobCoor</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-                             <span class="o">-</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
-        <span class="k">return</span> <span class="n">FrobCoor</span></div>
 
 
 
@@ -256,8 +222,52 @@
 
             <span class="k">return</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="n">transposed_diagram_tuple</span><span class="p">)</span>
 
-
         <span class="k">return</span> <span class="n">YoungDiagram</span><span class="p">(</span><span class="n">transposed_diagram</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="YoungDiagram.frobenius_coordinates">
+<a class="viewcode-back" href="../../../pysymmpol.partitions.html#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates">[docs]</a>
+    <span class="k">def</span> <span class="nf">frobenius_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fermionic</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Frobenius coordinates for the diagrams.</span>
+
+<span class="sd">        Given the partition L = (L1, L2, ...)</span>
+<span class="sd">        the Frobenius coordinates are defined by (a_n , b_n)</span>
+<span class="sd">        where a_n = L_n - n and b_n = L&#39;_n - n (the prime denotes</span>
+<span class="sd">        the conjugate diagram). We need to add -1 because python lists</span>
+<span class="sd">        start at 0. For the fermionic representations (the default value),</span>
+<span class="sd">        we need to add 1/2 because indices are half-integers. Overall,</span>
+<span class="sd">        we need an offset of -1/2 if we want fermionic representation</span>
+<span class="sd">        and -1 for the standard representation.</span>
+
+<span class="sd">        I also like to consider the representation where all negative sites</span>
+<span class="sd">        are occupied, so I will change the notation to -b in the fermionic</span>
+<span class="sd">        representation.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">fermionic</span><span class="p">:</span>
+            <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> 
+            <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="n">FrobCoor</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">short</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">partition</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">short</span><span class="p">)):</span>
+
+            <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="n">offset</span>
+            <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">partition</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="n">offset</span>
+
+            <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">beta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> 
+                <span class="k">break</span>
+
+            <span class="n">FrobCoor</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">alpha</span><span class="p">,</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">beta</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">FrobCoor</span></div>
 
 
 

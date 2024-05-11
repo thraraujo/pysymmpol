@@ -346,12 +346,6 @@ conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}</p>
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.count_diagonal">
 <span class="sig-name descname"><span class="pre">count_diagonal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.count_diagonal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.count_diagonal" title="Link to this definition"></a></dt>
 <dd><p>Gives the number of boxes in the diagonal.</p>
-<p>In order to do this calculation,
-the method represents the Young diagram as a 
-partition[0] x len(partition) matrix filled
-with 1 and 0. After that, it sums over the diagonal.</p>
-<p>Observe that numpy trace can be defined for non-square
-matrices, so, we can use it here.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -363,12 +357,19 @@ French notation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates">
-<span class="sig-name descname"><span class="pre">frobenius_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.frobenius_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates" title="Link to this definition"></a></dt>
-<dd><p>Frobenius coordinates for a given partition.</p>
-<p>The minus in the definition below is related
-to the fact that python lists start at 0 and not 1.
-Moreover, the method uses the definition where the coordinates
-are half integers.</p>
+<span class="sig-name descname"><span class="pre">frobenius_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fermionic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/pysymmpol/partitions/young.html#YoungDiagram.frobenius_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.partitions.young.YoungDiagram.frobenius_coordinates" title="Link to this definition"></a></dt>
+<dd><p>Frobenius coordinates for the diagrams.</p>
+<p>Given the partition L = (L1, L2, …)
+the Frobenius coordinates are defined by (a_n , b_n)
+where a_n = L_n - n and b_n = L’_n - n (the prime denotes
+the conjugate diagram). We need to add -1 because python lists
+start at 0. For the fermionic representations (the default value),
+we need to add 1/2 because indices are half-integers. Overall,
+we need an offset of -1/2 if we want fermionic representation
+and -1 for the standard representation.</p>
+<p>I also like to consider the representation where all negative sites
+are occupied, so I will change the notation to -b in the fermionic
+representation.</p>
 </dd></dl>
 
 <dl class="py method">
