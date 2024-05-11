@@ -183,6 +183,17 @@ gives
 hall-littlewood: x1*x2*x3*(-Q**2*x1*x2*x3 - Q*x1*x2*x3 + x1**2*x2 + x1**2*x3 + x1*x2**2 + 2*x1*x2*x3 + x1*x3**2 + x2**2*x3 + x2*x3**2)
 ```
 
+# References
+
+Here are some recommended resources covering symmetric polynomials,
+combinatorics, and their significance in theoretical physics:
+
+- [Symmetric Functions and Hall Polynomials - Ian Macdonald](https://books.google.com.br/books/about/Symmetric_Functions_and_Hall_Polynomials.html?id=srv90XiUbZoC&redir_esc=y)
+- [An Introduction to Symmetric Functions and Their Combinatorics - Eric S. Egge](https://bookstore.ams.org/stml-91)
+- [Counting with Symmetric Functions - Mendes and Remmel](https://link.springer.com/book/10.1007/978-3-319-23618-6)
+- [Solitons: Differential Equations, Symmetries and Infinite Dimensional Algebras - Miwa, Jimbo and Date](https://books.google.com.br/books/about/Solitons.html?id=kQDw1ZcqLjUC&redir_esc=y)
+- [The uses of random partitions - Andrei Okounkov](https://arxiv.org/abs/math-ph/0309015)
+
 # Citation & Contributing
 
 If you found this package useful in your research, please consider citing the companion 
