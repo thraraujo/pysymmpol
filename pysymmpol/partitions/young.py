@@ -74,6 +74,14 @@ class YoungDiagram:
         return sum(self.partition)
 
 
+    def count_diagonal(self) -> int: 
+        '''
+        Gives the number of boxes in the diagonal.
+        '''
+
+        return len(self.frobenius_coordinates())
+
+
     def draw_diagram(self, n: int=0) -> None:
         '''
         Pictorial representation of the Young/Ferrers diagram in
@@ -83,45 +91,6 @@ class YoungDiagram:
         for i in range(self.rows):
             if self.partition[-i-1] > 0:
                 print(f"{emo[n]} " * self.partition[-i-1])
-
-
-    def count_diagonal(self) -> int: 
-        '''
-        Gives the number of boxes in the diagonal.
-
-        In order to do this calculation,
-        the method represents the Young diagram as a 
-        partition[0] x len(partition) matrix filled
-        with 1 and 0. After that, it sums over the diagonal.
-
-        Observe that numpy trace can be defined for non-square
-        matrices, so, we can use it here.
-        '''
-
-        matrix = []
-
-        for n in range(self.rows):
-            matrix.append( np.concatenate((np.ones(self.partition[n]), np.zeros(self.partition[0] - self.partition[n])), axis=0) ) 
-
-        return int(np.trace(matrix))
-
-
-    def frobenius_coordinates(self) -> list:
-        '''
-        Frobenius coordinates for a given partition.
-
-        The minus in the definition below is related
-        to the fact that python lists start at 0 and not 1.
-        Moreover, the method uses the definition where the coordinates
-        are half integers. 
-        '''
-
-        transposed_diagram = self.transpose().partition
-        FrobCoor = []
-        for i in range(self.count_diagonal()):
-            FrobCoor.append([self.partition[i] - i - sp.Rational(1,2),
-                             -(transposed_diagram[i] - i - sp.Rational(1,2))])
-        return FrobCoor
 
 
     def transpose(self) -> YoungDiagram:
@@ -163,8 +132,49 @@ class YoungDiagram:
 
             return YoungDiagram(transposed_diagram_tuple)
 
-
         return YoungDiagram(transposed_diagram)
+
+
+    def frobenius_coordinates(self, fermionic: bool=True) -> list:
+        '''
+        Frobenius coordinates for the diagrams.
+
+        Given the partition L = (L1, L2, ...)
+        the Frobenius coordinates are defined by (a_n , b_n)
+        where a_n = L_n - n and b_n = L'_n - n (the prime denotes
+        the conjugate diagram). We need to add -1 because python lists
+        start at 0. For the fermionic representations (the default value),
+        we need to add 1/2 because indices are half-integers. Overall,
+        we need an offset of -1/2 if we want fermionic representation
+        and -1 for the standard representation.
+
+        I also like to consider the representation where all negative sites
+        are occupied, so I will change the notation to -b in the fermionic
+        representation.
+        '''
+
+        if fermionic:
+            sign = -1
+            offset = - sp.Rational(1,2)
+        else: 
+            sign = 1
+            offset = - 1
+
+        FrobCoor = []
+
+        short = min([self.partition, self.transpose().partition], key=len)
+
+        for m in range(len(short)):
+
+            alpha = self.partition[m] - m + offset
+            beta = self.transpose().partition[m] - m + offset
+
+            if alpha < 0 or beta < 0: 
+                break
+
+            FrobCoor.append((alpha, sign * beta))
+
+        return FrobCoor
 
 
     def contains(self, other_young: YoungDiagram) -> bool:

@@ -3,6 +3,7 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 import unittest
+import numpy as np
 import sympy as sp
 import pysymmpol as sy
 
@@ -77,6 +78,21 @@ class TestYoung(unittest.TestCase):
         self.assertEqual(mu3.count_diagonal(), 2)
         self.assertEqual(mu4.count_diagonal(), 2)
         self.assertEqual(mu5.count_diagonal(), 5)
+
+
+    def test_diagonal_hook_length(self) -> None:
+        mu = [
+            sy.YoungDiagram(np.array((10, 9, 9, 8, 8, 8, 7, 7, 7, 7, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4,
+                                      3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1))),
+            sy.YoungDiagram(np.array((54,53,52,51,50,49,48,47,46,45,44,43,42,41,40))), 
+            sy.YoungDiagram(np.array((33,30,28,26,26,22,20,18,18,17,15,12,11))), 
+            sy.YoungDiagram(np.array((12,12,12,12,12,12,12,12,12,12,12,12))), 
+            sy.YoungDiagram(np.array((10,))), 
+            sy.YoungDiagram(np.array((1,1,1,1,1,1,1,1,1,1,1))), 
+            ]
+
+        for m in mu:
+            self.assertEqual(m.count_diagonal(), m.boxes - np.sum(m.frobenius_coordinates(False)))
 
 
     def test_properties_conjugacy(self) -> None:
