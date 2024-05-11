@@ -160,14 +160,16 @@ class YoungDiagram:
             sign = 1
             offset = - 1
 
+        partition = self.partition
+        conjugate = self.transpose().partition
         FrobCoor = []
 
-        short = min([self.partition, self.transpose().partition], key=len)
+        short = min([partition, conjugate], key=len)
 
         for m in range(len(short)):
 
-            alpha = self.partition[m] - m + offset
-            beta = self.transpose().partition[m] - m + offset
+            alpha = partition[m] - m + offset
+            beta  = conjugate[m] - m + offset
 
             if alpha < 0 or beta < 0: 
                 break
