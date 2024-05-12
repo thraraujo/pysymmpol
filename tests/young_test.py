@@ -81,11 +81,11 @@ class TestYoung(unittest.TestCase):
         self.assertEqual(mu4.transpose().partition, (4,3,2,2,1))
         self.assertEqual(mu5.transpose().partition, (7,5,5,5,5,3,2))
 
-        self.assertEqual(mu1.transpose().partition, _conjugate((7,5,3,1)))
-        self.assertEqual(mu2.transpose().partition, _conjugate((6,)))
-        self.assertEqual(mu3.transpose().partition, _conjugate((6,3,2)))
-        self.assertEqual(mu4.transpose().partition, _conjugate((5,4,2,1)))
-        self.assertEqual(mu5.transpose().partition, _conjugate((7,7,6,5,5,1,1)))
+        self.assertEqual(mu1.transpose().partition, _conjugate(mu1.partition))
+        self.assertEqual(mu2.transpose().partition, _conjugate(mu2.partition))
+        self.assertEqual(mu3.transpose().partition, _conjugate(mu3.partition))
+        self.assertEqual(mu4.transpose().partition, _conjugate(mu4.partition))
+        self.assertEqual(mu5.transpose().partition, _conjugate(mu5.partition))
 
 
     def test_diagonal_hook_length(self) -> None:
