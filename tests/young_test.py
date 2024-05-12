@@ -6,6 +6,7 @@ import unittest
 import numpy as np
 import sympy as sp
 import pysymmpol as sy
+from pysymmpol.utils.inner import _conjugate
 
 
 class TestYoung(unittest.TestCase):
@@ -61,6 +62,13 @@ class TestYoung(unittest.TestCase):
         mu3 = sy.YoungDiagram((6,3,2))
         mu4 = sy.YoungDiagram((5,4,2,1))
         mu5 = sy.YoungDiagram((7,7,6,5,5,1,1))
+
+        self.assertEqual(mu1.count_diagonal(), 3)
+        self.assertEqual(mu2.count_diagonal(), 1)
+        self.assertEqual(mu3.count_diagonal(), 2)
+        self.assertEqual(mu4.count_diagonal(), 2)
+        self.assertEqual(mu5.count_diagonal(), 5)
+
         self.assertEqual(mu1.count_diagonal(), 3)
         self.assertEqual(mu2.count_diagonal(), 1)
         self.assertEqual(mu3.count_diagonal(), 2)
@@ -73,11 +81,11 @@ class TestYoung(unittest.TestCase):
         self.assertEqual(mu4.transpose().partition, (4,3,2,2,1))
         self.assertEqual(mu5.transpose().partition, (7,5,5,5,5,3,2))
 
-        self.assertEqual(mu1.count_diagonal(), 3)
-        self.assertEqual(mu2.count_diagonal(), 1)
-        self.assertEqual(mu3.count_diagonal(), 2)
-        self.assertEqual(mu4.count_diagonal(), 2)
-        self.assertEqual(mu5.count_diagonal(), 5)
+        self.assertEqual(mu1.transpose().partition, _conjugate((7,5,3,1)))
+        self.assertEqual(mu2.transpose().partition, _conjugate((6,)))
+        self.assertEqual(mu3.transpose().partition, _conjugate((6,3,2)))
+        self.assertEqual(mu4.transpose().partition, _conjugate((5,4,2,1)))
+        self.assertEqual(mu5.transpose().partition, _conjugate((7,7,6,5,5,1,1)))
 
 
     def test_diagonal_hook_length(self) -> None:

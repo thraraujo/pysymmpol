@@ -35,6 +35,22 @@ def _accel_asc(n):
         y = x + y - 1
         yield a[:k + 1]
 
+def _conjugate(p):
+    '''
+    Find the conjugate of a partition.
+    E.g. len(p) = max(conjugate(p)) and vice versa.
+
+    See more here: https://www.ics.uci.edu/~eppstein/PADS/IntegerPartitions.py
+    '''
+    result = []
+    j = len(p)
+    while True:
+        result.append(j)
+        while len(result) >= p[j-1]:
+            j -= 1
+            if j == 0:
+                return tuple(result)
+
 
 def _power_sum(x: tuple, j: int): #Power Sum
     '''
