@@ -19,6 +19,8 @@ symmetric polynomials or functions. It includes the following types:
 Additionally, the package contains a module with basic functionalities
 for manipulating integer partitions and Young diagrams.
 
+Read our Statement of need [here](stneed.md).
+
 Tutorials can be found in the [documentation page](https://thraraujo.github.io/pysymmpol/index.html).
 
 ## Dependencies

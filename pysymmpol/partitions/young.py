@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import pairwise
+from numbers import Number
+
 import numpy as np
 import sympy as sp
 
@@ -30,15 +33,17 @@ class YoungDiagram:
         '''
 
         # Validade its type.
-        if isinstance(self.partition, tuple) or isinstance(self.partition, np.ndarray):
+        val_A = isinstance(self._partition, (tuple, np.ndarray))
+        val_B = all(isinstance(m, Number) for m in self._partition )
+        if val_A and val_B:
             par = self._partition
         else:
-            raise TypeError(f"Argument must be a tuple or a numpy array, you had a {type(self._partition)}")
+            raise TypeError(f"Argument must be a tuple or a numpy array with numeric entries.")
 
         # Validade if it is a monotonic decreasing sequence. 
-        A = all([x >= y for x,y in zip(par, par[1:])])
+        val_C = all(x >= y for x,y in pairwise(par))
 
-        if not A:
+        if not val_C:
             raise ValueError("Argument must be a monotonic decreasing sequence.")
         
 

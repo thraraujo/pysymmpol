@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import pairwise
+from numbers import Number
+
 import numpy as np
 from .young import YoungDiagram
 
@@ -38,10 +41,14 @@ class ConjugacyClass:
         '''
 
         keys = tuple(self._conjugacy_vector.keys())
-        A = all([keys[i] - keys[i-1] == 1 for i in range(1, len(keys))])
 
-        if keys[0] != 1 or not A:
+        val_A = all(y - x == 1 for x,y in pairwise(keys))
+        val_B = all(isinstance(m, Number) for m in self._conjugacy_vector.values())
+
+        if keys[0] != 1 or not val_A:
            raise TypeError("Argument must be a dictionary in the form {1: k1, 2: k2, ..., n: kn}")
+        elif not val_B:
+           raise TypeError("Values in the dictionary must be numeric.")
 
 
     @property

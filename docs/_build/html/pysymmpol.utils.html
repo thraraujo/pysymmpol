@@ -47,6 +47,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stneed.html">Statement of Need</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">PySymmPol</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="pysymmpol.html">pysymmpol package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="pysymmpol.html#subpackages">Subpackages</a><ul class="current">
@@ -108,6 +109,18 @@ partitions is the heart of this project.</p>
 <p>The author of this beauty is Jerome Kelleher, and 
 He argues that it is the fasted algorithm available nowadays.
 See more here: <a class="reference external" href="https://jeromekelleher.net/category/combinatorics.html">https://jeromekelleher.net/category/combinatorics.html</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pysymmpol.utils.inner._conjugate">
+<span class="sig-prename descclassname"><span class="pre">pysymmpol.utils.inner.</span></span><span class="sig-name descname"><span class="pre">_conjugate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysymmpol/utils/inner.html#_conjugate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pysymmpol.utils.inner._conjugate" title="Link to this definition"></a></dt>
+<dd><p>Find the conjugate of a partition.
+E.g. len(p) = max(conjugate(p)) and vice versa.</p>
+<p>See more here: <a class="reference external" href="https://www.ics.uci.edu/~eppstein/PADS/IntegerPartitions.py">https://www.ics.uci.edu/~eppstein/PADS/IntegerPartitions.py</a></p>
+<p>This algorithm is good for tests, but my algorithm is better than
+this one. Partitions that have zeros at the end give wrong
+results. For example, the self dual partition (2,1,0,0,0) gives
+the conjugate (5,1).</p>
 </dd></dl>
 
 <dl class="py function">

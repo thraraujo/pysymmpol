@@ -1,6 +1,7 @@
 # Changelog
 
 ## v0.1.2
+- Optimization of some methods
 - Improve documentation
 - Add CONTRIBUTING.md
 - Add Zenodo DOI
