@@ -18,6 +18,7 @@ Learn more:
    :maxdepth: 1
 
    getting-started.md
+   Statement of need <https://github.com/thraraujo/pysymmpol/blob/main/STATEMENT-OF-NEED.md>
    modules
    tutorials/tutorials.rst
    tests
