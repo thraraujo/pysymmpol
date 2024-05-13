@@ -57,33 +57,35 @@ in quantum field theory and related fields.
 
 One of the main goals of the package is to provide the definitions of the 
 polynomials in terms of the Miwa coordinates, or power sums, 
-$$ t_j = \frac{1}{j} \sum_{i=1}^N x_i^j $$ where $\vec{x} = 
-(x_1, \dots, x_N)$ and $\mathbf{t} = (t_1, t_2, \dots)$.
 
-In terms of these coordiantes, the \emph{Complete Homogeneous} $h_n(\mathbf{t})$ 
-and \emph{Elementary Symmetric Polynomials} $e_n(\mathbf{t}) = 
+$$ t_j = \frac{1}{j} \sum_{i=1}^N x_i^j $$ 
+
+where $\vec{x} = (x_1, \dots, x_N)$ and $\mathbf{t} = (t_1, t_2, \dots)$.
+
+In terms of these coordiantes, the *Complete Homogeneous* $h_n(\mathbf{t})$ 
+and *Elementary Symmetric Polynomials* $e_n(\mathbf{t}) = 
 (-1)^n h_n(-\mathbf{t})$ are defined via 
 
 $$ h_n(\mathbf{t}) = \sum_{k_1 + 2k_2+ \cdots = n} 
 \frac{t_1^{k_1}}{k_1}\frac{t_2^{k_2}}{k_2} \cdots $$
 
-From these expressions, we obtain the \emph{(skew-) Schur polynomials}
+From these expressions, we obtain the *(skew-) Schur polynomials*
 $s_{\lambda/\mu}(\mathbf{t})$, where 
-$\lambda$ and $\mu$ are integer partitions, via \emph{Jacobi-Trudi identity}
+$\lambda$ and $\mu$ are integer partitions, via *Jacobi-Trudi identity*
 
 $$ s_{\lambda/\mu} = \det_{p,q}(h_{\lambda_q - \mu_p - q + p}(\mathbf{t})) \; . $$
 
-The \emph{Hall-Littlewood polynomials} are defined via
+The *Hall-Littlewood polynomials* are defined via
 
 $$
 P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
-\frac{1-Q}{1-Q^j} \sum_{\omega \in \mathfrak{S}_N} \omega\left(
+\frac{1-Q}{1-Q^j} \sum_{\omega \in S_N} \omega\left(
 x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{i<j} \frac{x_i - Q
   x_j}{x_i - x_j} \right)
 $$
 
 where $p(i)$ is the number of rows of size $i$ in $\lambda$, and
-$\mathfrak{S}_N$ is the symmetric group. The limit $Q=0$ in the
+$S_N$ is the symmetric group. The limit $Q=0$ in the
 Hall-Littlewood polynomials gives the Schur polynomials, while $Q=1$
-returns the \emph{Monomial Symmetric Polynomials} $m_\lambda(x_1,
+returns the *Monomial Symmetric Polynomials* $m_\lambda(x_1,
 \dots, x_N)$. 
