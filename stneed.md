@@ -77,12 +77,10 @@ $$ s_{\lambda/\mu} = \det_{p,q}(h_{\lambda_q - \mu_p - q + p}(\mathbf{t})) \; . 
 
 The *Hall-Littlewood polynomials* are defined via
 
-$$
-P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
+$$ P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
 \frac{1-Q}{1-Q^j} \sum_{\omega \in S_N} \omega\left(
 x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{i<j} \frac{x_i - Q
-  x_j}{x_i - x_j} \right)
-$$
+  x_j}{x_i - x_j} \right) $$
 
 where $p(i)$ is the number of rows of size $i$ in $\lambda$, and
 $S_N$ is the symmetric group. The limit $Q=0$ in the
