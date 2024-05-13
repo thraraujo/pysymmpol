@@ -93,46 +93,85 @@ class YoungDiagram:
                 print(f"{emo[n]} " * self.partition[-i-1])
 
 
+    def conjugacy_partition(self) -> dict:
+        '''
+        Converts the partition notation to 
+        the conjugacy class notation
+        Example:
+        [4,4,4,2,2,1] to {1: 1, 2: 2, 3: 0, 4: 3}.
+
+        The algorithm works as follows:
+
+        It creates a list of zeros with length equal
+        to the largest row. In our case, 4
+        conjugacy = [0, 0, 0, 0].
+
+        It iterates over the partition, adding 1s to the
+        corresponding slot in the conjugacy vector, for example
+        partition (4,4,4,2,2,1) gives
+        - loop 01: i = 4
+            conjugacy[3] = 1
+            conjugacy = [0,0,0,1]
+        - loop 02: i = 4
+            conjugacy[3] = 2
+            conjugacy = [0,0,0,2]
+        - loop 03: i = 4
+            conjugacy[3] = 3
+            conjugacy = [0,0,0,3]
+        - loop 04: i = 2
+            conjugacy[1] = 1
+            conjugacy = [0,1,0,3]
+        - loop 05: i = 2
+            conjugacy[1] = 2
+            conjugacy = [0,2,0,3]
+        - loop 06: i = 1
+            conjugacy[0] = 1
+            conjugacy = [1,2,0,3]
+
+        At the end we convert to a dictionary, and
+        conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}
+        '''
+
+        length = self.partition[0]
+        conjugacy = [0]*length
+
+        for i in self.partition:
+            conjugacy[i-1] += 1
+
+        # We finally create a dictionary for the conjugacy class
+        conjugacy_class = dict(enumerate(conjugacy,1)) 
+
+        return conjugacy_class
+
+
     def transpose(self) -> YoungDiagram:
         '''
         Gives the transposed (or conjugate) Young diagram. 
         For example, the conjugate of [3,2] is [2,2,1].
 
-        The algorithm follows the logic: 
+        Here I follow an interesting property that Knuth mentions in
+        TAOCP, volume 4A, equation (11) of section 7.2.1.4 - Other
+        representations of partitions. He claims that for any partiton
+        L = (L1, L2, ...), its coeficcients satisfy
 
-        The method builds a list of zeros and length equal
-        to the highest column: that is the partition[0].
-        In our example: partition[0]=3, then [0,0,0]
+                            Li - L(i+1) = LTci
 
-        We now fill in the list defined above, we loop over
-        the length of the original partition, in our case i =1, 2
-
-        transposed_diagram = [0,0,0]
-
-        - loop 01: (i, row_length) = (0,3) => j =0,1,2. 
-                j = 0 transporsed_diagram[0] = 1
-                j = 1 transposed_diagram[1] = 1
-                j = 2 transposed diagram[2] = 1
-        and now we have transposed_diagram = [1,1,1]
-        - loop 02 (i, row_length) = (1, 2) => j =0,1
-                j = 0 transposed_diagram[0] = 2
-                j = 1 transposed_diagram[0] = 2
-        and now we have transposed_diagram = [2,2,1]
+        where LTc is the conjugate of L in the conjugacy class notation. 
         '''
 
-        transposed_diagram = np.array( [0] * (self.partition[0]) )
+        m = tuple(self.partition) + (0,) # pad a zero at the end of the partition tuple
 
-        for i, row_length in enumerate(self.partition):
-            for j in range(row_length):
-                transposed_diagram[j] += 1
+        m_transpose_un = np.array([])
 
-        if isinstance(self.partition, tuple):
+        for j in range(len(m)-1):
+            rows = m[j] - m[j+1] # This gives the number of rows of length j+1
+            m_transpose_un = np.append(m_transpose_un, np.array(rows * [j+1]))
 
-            transposed_diagram_tuple = tuple(transposed_diagram)
 
-            return YoungDiagram(transposed_diagram_tuple)
+        m_transpose = -np.sort(-m_transpose_un, axis=0) # Sorts the numpy array in decreasing order.
+        m_transpose = m_transpose.astype(int) # Converts entries into integers
 
-        return YoungDiagram(transposed_diagram)
+        return YoungDiagram(tuple(m_transpose))
 
 
     def frobenius_coordinates(self, fermionic: bool=True) -> list:
@@ -226,52 +265,3 @@ class YoungDiagram:
         return True
             
 
-    def conjugacy_partition(self) -> dict:
-        '''
-        Converts the partition notation to 
-        the conjugacy class notation
-        Example:
-        [4,4,4,2,2,1] to {1: 1, 2: 2, 3: 0, 4: 3}.
-
-        The algorithm works as follows:
-
-        It creates a list of zeros with length equal
-        to the largest row. In our case, 4
-        conjugacy = [0, 0, 0, 0].
-
-        It iterates over the partition, adding 1s to the
-        corresponding slot in the conjugacy vector, for example
-        partition (4,4,4,2,2,1) gives
-        - loop 01: i = 4
-            conjugacy[3] = 1
-            conjugacy = [0,0,0,1]
-        - loop 02: i = 4
-            conjugacy[3] = 2
-            conjugacy = [0,0,0,2]
-        - loop 03: i = 4
-            conjugacy[3] = 3
-            conjugacy = [0,0,0,3]
-        - loop 04: i = 2
-            conjugacy[1] = 1
-            conjugacy = [0,1,0,3]
-        - loop 05: i = 2
-            conjugacy[1] = 2
-            conjugacy = [0,2,0,3]
-        - loop 06: i = 1
-            conjugacy[0] = 1
-            conjugacy = [1,2,0,3]
-
-        At the end we convert to a dictionary, and
-        conjugacy = {1: 1, 2: 2, 3: 0, 4: 3}
-        '''
-
-        length = self.partition[0]
-        conjugacy = [0]*length
-
-        for i in self.partition:
-            conjugacy[i-1] += 1
-
-        # We finally create a dictionary for the conjugacy class
-        conjugacy_class = dict(enumerate(conjugacy,1)) 
-
-        return conjugacy_class

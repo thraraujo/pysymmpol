@@ -41,7 +41,13 @@ def _conjugate(p):
     E.g. len(p) = max(conjugate(p)) and vice versa.
 
     See more here: https://www.ics.uci.edu/~eppstein/PADS/IntegerPartitions.py
+
+    This algorithm is good for tests, but my algorithm is better than
+    this one. Partitions that have zeros at the end give wrong
+    results. For example, the self dual partition (2,1,0,0,0) gives
+    the conjugate (5,1).
     '''
+
     result = []
     j = len(p)
     while True:
