@@ -3,21 +3,20 @@
 Symmetric polynomials play a crucial role across various domains of
 mathematics and theoretical physics due to their rich structure and
 broad applications. They arise naturally in combinatorics, algebraic
-geometry, representation theory, and mathematical
-physics~\cite{Macdonald:1998, Fulton:2004, Babelon:2003,
-  Korepin:1993, Marino:2005, Wheeler:2010}. These polynomials encode
-essential information about symmetries and patterns, making them
-indispensable in the study of symmetric functions and their
-connections to diverse mathematical structures. Moreover, symmetric
-polynomials find extensive applications in theoretical physics,
-particularly in quantum mechanics, statistical mechanics, and quantum
-field theory. Their utility extends to areas such as algebraic
-combinatorics, where they serve as powerful tools for solving
-combinatorial problems and understanding intricate relationships
-between different mathematical objects. Thus, tools and libraries like
-PySymmPol provide researchers and practitioners with efficient means
-to explore and manipulate symmetric polynomials, facilitating
-advancements in both theoretical studies and practical applications.
+geometry, representation theory, and mathematical physics. These
+polynomials encode essential information about symmetries and
+patterns, making them indispensable in the study of symmetric
+functions and their connections to diverse mathematical
+structures. Moreover, symmetric polynomials find extensive
+applications in theoretical physics, particularly in quantum
+mechanics, statistical mechanics, and quantum field theory. Their
+utility extends to areas such as algebraic combinatorics, where they
+serve as powerful tools for solving combinatorial problems and
+understanding intricate relationships between different mathematical
+objects. Thus, tools and libraries like PySymmPol provide researchers
+and practitioners with efficient means to explore and manipulate
+symmetric polynomials, facilitating advancements in both theoretical
+studies and practical applications.
  
 Let's now provide a brief overview of the addressed problems. In the
 next section, we will explain how the package can be utilized.
