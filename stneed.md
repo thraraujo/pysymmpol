@@ -79,7 +79,7 @@ The *Hall-Littlewood polynomials* are defined via
 
 $$ P_{\lambda}(x_1, \dots, x_N; Q) = \prod_{i\geq 0} \prod_{j=1}^{p(i)}
 \frac{1-Q}{1-Q^j} \sum_{\omega \in S_N} \omega\left(
-x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{j<i} \frac{x_i - Q
+x_1^{\lambda_1}\cdots x_n^{\lambda_n} \prod_{j>i} \frac{x_i - Q
   x_j}{x_i - x_j} \right) $$
 
 where $p(i)$ is the number of rows of size $i$ in $\lambda$, and
