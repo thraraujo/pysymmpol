@@ -56,19 +56,6 @@ PySymmPol provide researchers and practitioners with efficient means
 to explore and manipulate symmetric polynomials, facilitating
 advancements in both theoretical studies and practical applications.
 
-## Target audience and comparison with other software
-
-Our utilization of Miwa coordinates (or power sums) in the definitions
-renders this software especially advantageous for physicists and
-mathematicians immersed in the domains of statistical physics, quantum
-field theory, and integrable systems.
-
-To the author's knowledge, there are limited open-source software
-solutions dedicated to similar problems, with SageMath [@sagemath]
-being a notable example. One standout characteristic of **PySymmPol**
-is its incorporation of power sums and its Pythonic nature, requiring
-minimal dependencies.
-
 # Core features and functionalities 
 
 **PySymmPol** is composed of several modules in two main packages. 
@@ -76,17 +63,20 @@ minimal dependencies.
 1. Partitions
 2. Polynomials
 
-Our keen interest in exploring these representations stems
-from their relevance in the realm of two-dimensional Conformal Field
-Theories (CFTs). In this context, bosonic states are labeled by
-conjugacy class vectors, highlighting the importance of
-understanding and manipulating such representations. Conversely,
-fermions are represented using the standard representation,
-emphasizing the need to bridge the conceptual gap between these
-distinct frameworks. Investigating these representations not only
-sheds light on the fundamental properties of fermion states within
-CFTs but also provides valuable insights for theoretical developments
-in quantum field theory and related fields.
+Our keen interest in exploring these representations stems from their
+relevance in the realm of two-dimensional Conformal and Integrable
+Field Theories (CFTs), see [@Babelon:2003] [@Marino:2005]
+[@Okounkov:2006] for a small sample examples of physical problems that
+require tools to manipulate these (and others) combinatorics
+objects. In this context, bosonic states are labeled by conjugacy
+class vectors, highlighting the importance of understanding and
+manipulating such representations. Conversely, fermions are
+represented using the standard representation, emphasizing the need to
+bridge the conceptual gap between these distinct
+frameworks. Investigating these representations not only sheds light
+on the fundamental properties of fermion states within CFTs but also
+provides valuable insights for theoretical developments in quantum
+field theory and related fields.
 
 Further details on the other functionalities can be found in the tutorial.
 The *ACCELASC* algorithm [@Kelleher:2009] greatly improved the
@@ -96,6 +86,34 @@ One of the main goals of the package is to provide the definitions of the
 polynomials in terms of the Miwa coordinates, or power sums, 
 $$ t_j = \frac{1}{j} \sum_{i=1}^N x_i^j $$ where $\vec{x} = 
 (x_1, \dots, x_N)$ and $\mathbf{t} = (t_1, t_2, \dots)$.
+
+
+# State of the Field and Target Audience 
+
+To the best of the author's knowledge, there are few open-source
+software solutions dedicated to similar problems, with SageMath
+[@sagemath] standing out as a notable exception. While there are
+overlaps between the problems addressed and some implementations
+available in SageMath, significant differences exist. One prominent
+dissimilarity is that SageMath constitutes a collection of open-source
+mathematical software, whereas **PySymmPol** is a Python package. A
+notable characteristic of **PySymmPol** is its utilization of power
+sums and its Pythonic nature, which minimizes dependencies.
+
+Furthermore, implementations in SageMath primarily emphasize
+applications in combinatorics. Although the author extensively used
+SageMath, the development of **PySymmPol** stemmed from the need for a
+more physics-oriented software. For instance, it offers features such
+as the translation of standard notation of partitions (representing
+fermionic states in certain 2D field theories) and the conjugacy class
+notation of partitions (representing bosonic states).
+
+Another significant distinction between our implementation and
+SageMath is the use of Miwa coordinates (or power sums) in the
+definitions. This aspect proves advantageous for physicists and
+mathematicians involved in statistical physics, quantum field theory,
+and integrable systems.
+
 
 # Acknowledgements
 
