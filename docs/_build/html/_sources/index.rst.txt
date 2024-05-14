@@ -21,7 +21,6 @@ Learn more:
    Statement of need <https://github.com/thraraujo/pysymmpol/blob/main/STATEMENT-OF-NEED.md>
    modules
    tutorials/tutorials.rst
-   tests
    CHANGELOG.md
    Github Repository <https://github.com/thraraujo/pysymmpol>
    PyPI package <https://pypi.org/project/pysymmpol>
