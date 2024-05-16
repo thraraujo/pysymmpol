@@ -30,10 +30,10 @@ diagrams, such as transposition, Frobenius coordinates, characters of
 symmetric groups and others. 
 
 This package originated from research conducted in the field of
-integrable systems applied to string theory, and the AdS/CFT
-correspondence. **PySymmPol** aims to facilitate computational tasks
-related to symmetric polynomials and their applications in diverse
-fields.
+integrable systems applied to string theory, and the AdS/CFT (Anti-de
+Sitter/Conformal Field Theory) correspondence. **PySymmPol** aims to
+facilitate computational tasks related to symmetric polynomials and
+their applications in diverse fields.
 
 # Statement of need 
 
@@ -64,7 +64,7 @@ advancements in both theoretical studies and practical applications.
 2. Polynomials
 
 Our keen interest in exploring these representations stems from their
-relevance in the realm of two-dimensional Conformal and Integrable
+relevance in the realm of two-dimensional Integrable and Conformal
 Field Theories (CFTs), see [@Babelon:2003] [@Marino:2005]
 [@Okounkov:2006] for a small sample examples of physical problems that
 require tools to manipulate these (and others) combinatorics
