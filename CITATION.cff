@@ -21,7 +21,7 @@ identifiers:
     value: 10.48550/arXiv.2403.13580
     description: Arxiv-issued DOI
   - type: doi
-    value: 10.5281/zenodo.10865661
+    value: 10.5281/zenodo.11214736
     description: Zenodo-issued Doi
 repository-code: 'https://github.com/thraraujo/pysymmpol'
 keywords:
@@ -29,4 +29,4 @@ keywords:
   - combinatorics
   - high energy physics
 license: GPL-3.0
-version: v0.1.1
+version: v0.1.2
