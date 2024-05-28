@@ -39,10 +39,9 @@ their applications in diverse fields.
 
 Symmetric polynomials play a crucial role across various domains of
 mathematics and theoretical physics due to their rich structure and
-broad applications. They arise naturally in combinatorics, algebraic
-geometry, representation theory, and mathematical
-physics [@Macdonald:1998], [@Fulton:2004], [@Babelon:2003],
-and [@Wheeler:2010]. These polynomials encode
+broad applications. They arise naturally in combinatorics [@Macdonald:1998], 
+representation theory [@Fulton:2004], algebraic geometry, and mathematical
+physics [@Babelon:2003; @Wheeler:2010]. These polynomials encode
 essential information about symmetries and patterns, making them
 indispensable in the study of symmetric functions and their
 connections to diverse mathematical structures. Moreover, symmetric
@@ -65,18 +64,17 @@ advancements in both theoretical studies and practical applications.
 
 Our keen interest in exploring these representations stems from their
 relevance in the realm of two-dimensional Integrable and Conformal
-Field Theories (CFTs), see [@Babelon:2003] [@Marino:2005]
-[@Okounkov:2006] for a small sample examples of physical problems that
-require tools to manipulate these (and others) combinatorics
-objects. In this context, bosonic states are labeled by conjugacy
-class vectors, highlighting the importance of understanding and
-manipulating such representations. Conversely, fermions are
-represented using the standard representation, emphasizing the need to
-bridge the conceptual gap between these distinct
-frameworks. Investigating these representations not only sheds light
-on the fundamental properties of fermion states within CFTs but also
-provides valuable insights for theoretical developments in quantum
-field theory and related fields.
+Field Theories, see [@Babelon:2003; @Marino:2005; @Okounkov:2006] for
+a small sample of physical problems that require tools to manipulate
+these (and others) combinatorics objects. In this context, bosonic
+states are labeled by conjugacy class vectors, highlighting the
+importance of understanding and manipulating such
+representations. Conversely, fermions are represented using the
+standard representation, emphasizing the need to bridge the conceptual
+gap between these distinct frameworks. Investigating these
+representations not only sheds light on the fundamental properties of
+fermion states within CFTs but also provides valuable insights for
+theoretical developments in quantum field theory and related fields.
 
 Further details on the other functionalities can be found in the tutorial.
 The *ACCELASC* algorithm [@Kelleher:2009] greatly improved the
