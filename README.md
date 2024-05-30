@@ -1,5 +1,7 @@
 # pySymmPol: Symmetric Polynomials
 
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.06724/status.svg)](https://doi.org/10.21105/joss.06724)   
+
 ![Static Badge](https://img.shields.io/badge/3.12-green?style=plastic&logo=python&logoColor=yellow&label=python)
 ![Static Badge](https://img.shields.io/badge/Lab-blue?style=plastic&logo=jupyter&logoColor=yellow&label=Jupyter)
 ![Static Badge](https://img.shields.io/badge/1.26-orange?style=plastic&logo=numpy&logoColor=green&label=Numpy)
