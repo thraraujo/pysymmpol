@@ -64,7 +64,7 @@
 
 \begin{document}
 
-\title[PySymmPol]{PySymmPol: Symmetric Polynomials in Python}
+\title[PySymmPol]{PySymmPol: Symmetric Polynomials in Python (v0.1.2)}
 
 \author{Thiago Araujo}
 
@@ -100,10 +100,10 @@ diagrams, such as transposition, Frobenius coordinates, characters of
 symmetric groups and others. 
 
 This package originated from research conducted in the field of
-integrable systems applied to string theory, and the AdS/CFT
-correspondence. \textbf{PySymmPol} aims to facilitate computational tasks
-related to symmetric polynomials and their applications in diverse
-fields.
+integrable systems applied to string theory, and the AdS/CFT (Anti-de
+Sitter/Conformal Field Theory) correspondence. \textbf{PySymmPol} aims to
+facilitate computational tasks related to symmetric polynomials and
+their applications in diverse fields.
 
 Instructions for instalation and tutorials for the different modules
 are in the documentation page. 
@@ -122,10 +122,9 @@ Instalation with pip
 
 Symmetric polynomials play a crucial role across various domains of
 mathematics and theoretical physics due to their rich structure and
-broad applications. They arise naturally in combinatorics, algebraic
-geometry, representation theory, and mathematical
-physics~\cite{Macdonald:1998, Fulton:2004, Babelon:2003,
-  Korepin:1993, Marino:2005, Wheeler:2010}. These polynomials encode
+broad applications. They arise naturally in combinatorics \cite{Macdonald:1998}, 
+representation theory \cite{Fulton:2004}, algebraic geometry, and mathematical
+physics \cite{Babelon:2003, Wheeler:2010}. These polynomials encode
 essential information about symmetries and patterns, making them
 indispensable in the study of symmetric functions and their
 connections to diverse mathematical structures. Moreover, symmetric
@@ -161,17 +160,19 @@ vectors. This alternative representation offers insights into the
 structural properties of integer partitions and facilitates their
 manipulation within the framework of group theory.
 
-Our keen interest in exploring these representations stems
-from their relevance in the realm of two-dimensional Conformal Field
-Theories (CFTs). In this context, bosonic states are labeled by
-conjugacy class vectors, highlighting the importance of
-understanding and manipulating such representations. Conversely,
-fermions are represented using the standard representation,
-emphasizing the need to bridge the conceptual gap between these
-distinct frameworks. Investigating these representations not only
-sheds light on the fundamental properties of fermion states within
-CFTs but also provides valuable insights for theoretical developments
-in quantum field theory and related fields.
+Our keen interest in exploring these representations stems from their
+relevance in the realm of two-dimensional Integrable and Conformal
+Field Theories, see \cite{Babelon:2003, Marino:2005, Okounkov:2006} for
+a small sample of physical problems that require tools to manipulate
+these (and others) combinatorics objects. In this context, bosonic
+states are labeled by conjugacy class vectors, highlighting the
+importance of understanding and manipulating such
+representations. Conversely, fermions are represented using the
+standard representation, emphasizing the need to bridge the conceptual
+gap between these distinct frameworks. Investigating these
+representations not only sheds light on the fundamental properties of
+fermion states within CFTs but also provides valuable insights for
+theoretical developments in quantum field theory and related fields.
 
 \subsection{Symmetric Polynomials}
 
@@ -203,7 +204,6 @@ Hall-Littlewood polynomials gives the Schur polynomials, while $Q=1$
 returns the \emph{Monomial Symmetric Polynomials} $m_\lambda(x_1,
 \dots, x_N)$. For more information on these topics, see the references
 below.
-
 
 \section{Basic Usage}
 
@@ -360,6 +360,32 @@ gives
 \begin{lstlisting}[language=Python]
 hall-littlewood: x1*x2*x3*(-Q**2*x1*x2*x3 - Q*x1*x2*x3 + x1**2*x2 + x1**2*x3 + x1*x2**2 + 2*x1*x2*x3 + x1*x3**2 + x2**2*x3 + x2*x3**2)
 \end{lstlisting}
+
+\section{State of the field and target audience}
+
+To the best of the author's knowledge, there are few open-source
+software solutions dedicated to similar problems, with SageMath
+\cite{sagemath} standing out as a notable exception. While there are
+overlaps between the problems addressed and some implementations
+available in SageMath, significant differences exist. One prominent
+dissimilarity is that SageMath constitutes a collection of open-source
+mathematical software, whereas \textbf{PySymmPol} is a Python package. A
+notable characteristic of \textbf{PySymmPol} is its utilization of power
+sums and its Pythonic nature, which minimizes dependencies.
+
+Furthermore, implementations in SageMath primarily emphasize
+applications in combinatorics. Although the author extensively used
+SageMath, the development of \textbf{PySymmPol} stemmed from the need for a
+more physics-oriented software. For instance, it offers features such
+as the translation of standard notation of partitions (representing
+fermionic states in certain 2D field theories) and the conjugacy class
+notation of partitions (representing bosonic states).
+
+Another significant distinction between our implementation and
+SageMath is the use of Miwa coordinates (or power sums) in the
+definitions. This aspect proves advantageous for physicists and
+mathematicians involved in statistical physics, quantum field theory,
+and integrable systems.
 
 \section{Acknowledgements}
 
