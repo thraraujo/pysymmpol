@@ -209,7 +209,10 @@ paper available here: [arxiv.org/abs/2403.13580](https://arxiv.org/abs/2403.1358
     eprint = "2403.13580",
     archivePrefix = "arXiv",
     primaryClass = "math.CO",
-    month = "3",
+    doi = "10.21105/joss.06724",
+    journal = "J. Open Source Softw.",
+    volume = "9",
+    pages = "6724",
     year = "2024"
 }
 ```
